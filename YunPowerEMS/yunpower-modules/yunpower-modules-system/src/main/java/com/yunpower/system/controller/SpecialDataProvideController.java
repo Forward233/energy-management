@@ -6,8 +6,8 @@ import com.yunpower.system.domain.vo.time.TimesVo;
 import com.yunpower.system.service.ISpecialDataProvideService;
 import com.yunpower.system.service.impl.PublicServiceImpl;
 import com.yunpower.system.utils.GenerateTimeUtils;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +22,7 @@ import java.util.Map;
  * @Author: Jiajiaglam
  * @Date: 2024/6/22 10:17
  */
-@Api(tags = "D 大屏专用数据")
+@Tag(name = "D 大屏专用数据", description = "D 大屏专用数据")
 @RestController
 @RequestMapping("/common-provide")
 public class SpecialDataProvideController extends BaseController {
@@ -35,7 +35,7 @@ public class SpecialDataProvideController extends BaseController {
     /**
      * 通用>>获取数据接口
      */
-    @ApiOperation("通用>>获取数据接口")
+    @Operation(summary = "通用>>获取数据接口")
     @InnerAuth
     @GetMapping("/inner/tableList")
     public Object GetSpecialData(@RequestParam Map<String, Object> param) {

@@ -22,8 +22,8 @@ import com.yunpower.system.api.*;
 import com.yunpower.system.api.domain.*;
 import com.yunpower.system.api.domain.vo.FeignVariableConfigPresetsUtils;
 import com.yunpower.system.api.domain.vo.FeignVariableConfigVo;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,7 +38,7 @@ import java.util.*;
  * @date: 2024-05-08 10:00
  * @description: 图表接口
  */
-@Api(tags = ">>> 能耗概览（用电）<<<")
+@Tag(name = ">>> 能耗概览（用电）<<<", description = ">>> 能耗概览（用电）<<<")
 @RestController
 @RequestMapping("/power/chart")
 public class PowerChartController extends BaseController {
@@ -87,7 +87,7 @@ public class PowerChartController extends BaseController {
      * @param yearTime  按年筛选，格式：2023（三选一）
      * @return 结果
      */
-    @ApiOperation("获取>>能耗概览【普通】图表数据")
+    @Operation(summary = "获取>>能耗概览【普通】图表数据")
     @GetMapping("/getChart")
     public AjaxResult getChartData(String pageValue, String dayTime, String monthTime, String yearTime) {
         if (StringUtils.isEmpty(pageValue)) {
@@ -162,7 +162,7 @@ public class PowerChartController extends BaseController {
      * @param endTime   结束日期
      * @return 结果
      */
-    @ApiOperation("获取>>能耗概览【堆叠】图表数据")
+    @Operation(summary = "获取>>能耗概览【堆叠】图表数据")
     @GetMapping("/getStackChart")
     public AjaxResult getStackChart(String pageValue, String beginTime, String endTime) {
         if (StringUtils.isEmpty(pageValue)) {
@@ -202,7 +202,7 @@ public class PowerChartController extends BaseController {
      * @param yearTime  按年筛选，格式：2023（三选一）
      * @return 结果
      */
-    @ApiOperation("获取通用【单日期】图表数据")
+    @Operation(summary = "获取通用【单日期】图表数据")
     @GetMapping("/getChartBySingleDate")
     public AjaxResult getChartBySingleDate(String pageValue, String deviceSn, String dayTime, String monthTime, String yearTime) {
         if (StringUtils.isEmpty(pageValue)) {
@@ -246,7 +246,7 @@ public class PowerChartController extends BaseController {
      * @param endTime   结束日期
      * @return 结果
      */
-    @ApiOperation("获取通用【双日期】图表数据")
+    @Operation(summary = "获取通用【双日期】图表数据")
     @GetMapping("/getChartByDoubleDate")
     public AjaxResult getChartByDoubleDate(String pageValue, String deviceSn, String beginTime, String endTime) {
         if (StringUtils.isEmpty(pageValue)) {
@@ -304,7 +304,7 @@ public class PowerChartController extends BaseController {
      * @param yearTime  按年筛选，格式：2023（三选一）
      * @return 结果
      */
-    @ApiOperation("获取【尖峰平谷】表格数据")
+    @Operation(summary = "获取【尖峰平谷】表格数据")
     @GetMapping("/ppfvList")
     public AjaxResult ppfvList(String[] deviceSns, String dayTime, String monthTime, String yearTime) {
         if (deviceSns == null || deviceSns.length == 0) {
@@ -333,7 +333,7 @@ public class PowerChartController extends BaseController {
      * @param yearTime  按年筛选，格式：2023（三选一）
      * @return 结果
      */
-    @ApiOperation("获取【基础报表】表格数据")
+    @Operation(summary = "获取【基础报表】表格数据")
     @GetMapping("/basicDataList")
     public AjaxResult basicDataList(String[] deviceSns, String paramType, String dayTime, String monthTime, String yearTime) {
         if (deviceSns == null || deviceSns.length == 0) {
@@ -608,7 +608,7 @@ public class PowerChartController extends BaseController {
      * @param pageSign 页面标志，如历史数据：history-data
      * @return 返回 pageValue 列表
      */
-    @ApiOperation("获取页面图表种类")
+    @Operation(summary = "获取页面图表种类")
     @GetMapping("/getPageValueList")
     public AjaxResult getPageValueList(String pageSign) {
         pageSign = pageSign.replace("_", "-");
@@ -657,7 +657,7 @@ public class PowerChartController extends BaseController {
      * @param endTime   结束日期
      * @return 结果
      */
-    @ApiOperation("获取【能源流向】数据")
+    @Operation(summary = "获取【能源流向】数据")
     @GetMapping("/getEnergySteamDate")
     public AjaxResult getEnergySteamDate(String pageValue, String beginTime, String endTime) {
         if (StringUtils.isEmpty(pageValue)) {
@@ -937,7 +937,7 @@ public class PowerChartController extends BaseController {
      * @param yearTime  按年筛选，格式：2023（三选一）
      * @return 结果
      */
-    @ApiOperation("获取>>光伏电站【辅助分析】图表数据")
+    @Operation(summary = "获取>>光伏电站【辅助分析】图表数据")
     @GetMapping("/getAuxiliaryAnalysis")
     public AjaxResult getAuxiliaryAnalysis(String deviceSn, String dayTime, String monthTime, String yearTime) {
         // 光伏设备分组是固定的，分别是: 逆变器、汇流箱、并网柜、电能表、气象站，五个所以，你前端不需要判断，你只传入deviseSn即可，

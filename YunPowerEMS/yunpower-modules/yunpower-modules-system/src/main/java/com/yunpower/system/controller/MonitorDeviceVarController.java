@@ -26,8 +26,8 @@ import com.yunpower.system.domain.MonitorDeviceVar;
 import com.yunpower.system.domain.MonitorDeviceVarMap;
 import com.yunpower.system.domain.vo.PVVo;
 import com.yunpower.system.service.*;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -42,7 +42,7 @@ import java.util.stream.Collectors;
  * @author JUNFU.WANG
  * @date 2023-10-07
  */
-@Api(tags = "J 监控设备变量表")
+@Tag(name = "J 监控设备变量表", description = "J 监控设备变量表")
 @RestController
 @RequestMapping("/device-var")
 public class MonitorDeviceVarController extends BaseController {
@@ -76,7 +76,7 @@ public class MonitorDeviceVarController extends BaseController {
     /**
      * 查询监控设备变量列表
      */
-    @ApiOperation("查询监控设备变量列表")
+    @Operation(summary = "查询监控设备变量列表")
     @RequiresPermissions("system:device-var:list")
     @GetMapping("/list")
     public TableDataInfo list(MonitorDeviceVar monitorDeviceVar) {
@@ -89,7 +89,7 @@ public class MonitorDeviceVarController extends BaseController {
     /**
      * 查询监控设备变量列表（不分页）
      */
-    @ApiOperation("查询监控设备变量列表（不分页）")
+    @Operation(summary = "查询监控设备变量列表（不分页）")
     @RequiresPermissions("system:device-var:list")
     @GetMapping("/listAll")
     public AjaxResult listAll(MonitorDeviceVar monitorDeviceVar) {
@@ -125,7 +125,7 @@ public class MonitorDeviceVarController extends BaseController {
     /**
      * 获取第一部分显示变量
      */
-    @ApiOperation("获取第一部分显示变量")
+    @Operation(summary = "获取第一部分显示变量")
     @RequiresPermissions("system:device-var:list")
     @GetMapping("/configRunTimeList")
     public AjaxResult getConfigRunTimeList(String deviceSn, Integer stationType) {
@@ -190,7 +190,7 @@ public class MonitorDeviceVarController extends BaseController {
     /**
      * 获取第二部分显示变量（实时数据）
      */
-    @ApiOperation("获取第二部分显示变量（实时数据）")
+    @Operation(summary = "获取第二部分显示变量（实时数据）")
     @RequiresPermissions("system:device-var:list")
     @GetMapping("/runTimeList")
     public AjaxResult getrunTimeList(String deviceSn, Integer stationType) {
@@ -249,7 +249,7 @@ public class MonitorDeviceVarController extends BaseController {
     /**
      * 获取【组串】电流电压功率（光伏）
      */
-    @ApiOperation("获取【组串】电流电压功率（光伏）")
+    @Operation(summary = "获取【组串】电流电压功率（光伏）")
     @RequiresPermissions("system:device-var:query")
     @GetMapping(value = "/getPVPowerInfo/{deviceId}")
     public AjaxResult getPVPowerInfo(@PathVariable("deviceId") Long deviceId) {
@@ -319,7 +319,7 @@ public class MonitorDeviceVarController extends BaseController {
     /**
      * 获取【交流】电流电压频率（光伏）
      */
-    @ApiOperation("获取【交流】电流电压频率（光伏）")
+    @Operation(summary = "获取【交流】电流电压频率（光伏）")
     @RequiresPermissions("system:device-var:query")
     @GetMapping(value = "/getPVElectricInfo/{deviceId}")
     public AjaxResult getPVElectricInfo(@PathVariable("deviceId") Long deviceId) {
@@ -376,7 +376,7 @@ public class MonitorDeviceVarController extends BaseController {
     /**
      * 获取【温度】数据
      */
-    @ApiOperation("获取【温度】数据")
+    @Operation(summary = "获取【温度】数据")
     @RequiresPermissions("system:device-var:query")
     @GetMapping(value = "/getTemperatureInfo/{deviceId}/{type}")
     public AjaxResult getTemperatureInfo(@PathVariable("deviceId") Long deviceId, @PathVariable("type") Integer type) {
@@ -403,7 +403,7 @@ public class MonitorDeviceVarController extends BaseController {
      * 【导出】监控设备变量列表
      * 注意：变量编码不可修改，不可新增，但可以删除
      */
-    @ApiOperation("【导出】监控设备变量列表")
+    @Operation(summary = "【导出】监控设备变量列表")
     @RequiresPermissions("system:device-var:export")
     @Log(title = "监控设备变量", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
@@ -417,7 +417,7 @@ public class MonitorDeviceVarController extends BaseController {
     /**
      * 【导入】监控设备变量列表
      */
-    @ApiOperation("【导入】监控设备变量列表")
+    @Operation(summary = "【导入】监控设备变量列表")
     @Log(title = "监控设备变量", businessType = BusinessType.IMPORT)
     @RequiresPermissions("system:device-var:import")
     @PostMapping("/importData")
@@ -432,7 +432,7 @@ public class MonitorDeviceVarController extends BaseController {
     /**
      * 获取监控设备变量详细信息
      */
-    @ApiOperation("获取监控设备变量详细信息")
+    @Operation(summary = "获取监控设备变量详细信息")
     @RequiresPermissions("system:device-var:query")
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") Long id) {
@@ -449,7 +449,7 @@ public class MonitorDeviceVarController extends BaseController {
     /**
      * 新增监控设备变量
      */
-    @ApiOperation("新增监控设备变量")
+    @Operation(summary = "新增监控设备变量")
     @RequiresPermissions("system:device-var:add")
     @Log(title = "监控设备变量", businessType = BusinessType.INSERT)
     @PostMapping
@@ -553,7 +553,7 @@ public class MonitorDeviceVarController extends BaseController {
     /**
      * 修改监控设备变量
      */
-    @ApiOperation("修改监控设备变量")
+    @Operation(summary = "修改监控设备变量")
     @RequiresPermissions("system:device-var:edit")
     @Log(title = "监控设备变量", businessType = BusinessType.UPDATE)
     @PutMapping
@@ -586,7 +586,7 @@ public class MonitorDeviceVarController extends BaseController {
     /**
      * 修改监控设备变量状态
      */
-    @ApiOperation("修改监控设备变量状态")
+    @Operation(summary = "修改监控设备变量状态")
     @RequiresPermissions("system:device-var:state")
     @Log(title = "监控设备变量", businessType = BusinessType.UPDATE)
     @PutMapping("/changeStatus/{id}/{state}")
@@ -597,7 +597,7 @@ public class MonitorDeviceVarController extends BaseController {
     /**
      * 修改监控设备变量【监控状态】
      */
-    @ApiOperation("修改监控设备变量【监控状态】")
+    @Operation(summary = "修改监控设备变量【监控状态】")
     @RequiresPermissions("system:device-var:state")
     @Log(title = "监控设备变量", businessType = BusinessType.UPDATE)
     @PutMapping("/changeMonitorStatus/{id}/{state}")
@@ -608,7 +608,7 @@ public class MonitorDeviceVarController extends BaseController {
     /**
      * 删除监控设备变量
      */
-    @ApiOperation("删除监控设备变量")
+    @Operation(summary = "删除监控设备变量")
     @RequiresPermissions("system:device-var:remove")
     @Log(title = "监控设备变量", businessType = BusinessType.DELETE)
     @DeleteMapping("/{ids}")

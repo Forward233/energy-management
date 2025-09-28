@@ -17,8 +17,8 @@ import com.yunpower.system.service.IPublicService;
 import com.yunpower.system.service.ISysDeptService;
 import com.yunpower.system.service.ISysStationService;
 import com.yunpower.common.log.annotation.Log;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,7 +37,7 @@ import com.yunpower.system.service.ICommunicationChannelService;
  * @author JUNFU.WANG
  * @date 2023-10-07
  */
-@Api(tags = "T 通讯通道表")
+@Tag(name = "通讯通道", description = "通讯通道管理")
 @RestController
 @RequestMapping("/channel")
 public class CommunicationChannelController extends BaseController {
@@ -56,7 +56,7 @@ public class CommunicationChannelController extends BaseController {
     /**
      * 查询通讯通道列表（不分页）
      */
-    @ApiOperation("查询通讯通道列表（不分页）")
+    @Operation(summary = "查询通讯通道列表（不分页）")
     @RequiresPermissions("system:channel:list")
     @GetMapping("/listAll")
     public AjaxResult listAll(CommunicationChannel communicationChannel) {
@@ -67,7 +67,7 @@ public class CommunicationChannelController extends BaseController {
     /**
      * 获取通讯通道详细信息
      */
-    @ApiOperation("获取通讯通道详细信息")
+    @Operation(summary = "获取通讯通道详细信息")
     @RequiresPermissions("system:channel:query")
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") Long id) {

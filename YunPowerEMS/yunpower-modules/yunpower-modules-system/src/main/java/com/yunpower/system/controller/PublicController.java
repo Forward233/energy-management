@@ -11,8 +11,8 @@ import com.yunpower.system.api.domain.SysStation;
 import com.yunpower.system.service.IPublicService;
 import com.yunpower.system.service.ISysDeptService;
 import com.yunpower.system.service.ISysStationService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +29,7 @@ import java.util.List;
  * @date: 2023-09-27 15:29
  * @description:
  */
-@Api(tags = "G 公共方法")
+@Tag(name = "G 公共方法", description = "G 公共方法")
 @RestController
 @RequestMapping("/public")
 public class PublicController extends BaseController {
@@ -49,7 +49,7 @@ public class PublicController extends BaseController {
     /**
      * 获取用户的站点列表
      */
-    @ApiOperation("获取用户的站点列表")
+    @Operation(summary = "获取用户的站点列表")
     @GetMapping("/getStationlist")
     public AjaxResult list(SysDept dept) {
         List<SysDept> deptList = deptService.selectDeptList(dept);
@@ -72,7 +72,7 @@ public class PublicController extends BaseController {
     /**
      * 保存用户选择的站点（部门）
      */
-    @ApiOperation("保存用户选择的站点")
+    @Operation(summary = "保存用户选择的站点")
     @PostMapping("/setStation")
     public AjaxResult setCurrentStation(Long deptId) {
         boolean isNext = publicService.setCurrentStation(deptId);
@@ -83,7 +83,7 @@ public class PublicController extends BaseController {
      * 保存用户权限范围内的第一个站点，并返回结果
      * 说明：@innerAuth+AOP 实现 yunpower-api 远程接口
      */
-    @ApiOperation("保存用户权限范围内的第一个站点")
+    @Operation(summary = "保存用户权限范围内的第一个站点")
     @InnerAuth
     @GetMapping("/setUserFirstStation")
     public AjaxResult setCurrentStation() {
@@ -94,7 +94,7 @@ public class PublicController extends BaseController {
     /**
      * 远程内部调用-获取当前用户站点信息
      */
-    @ApiOperation("获取用户当前站点（部门）信息")
+    @Operation(summary = "获取用户当前站点（部门）信息")
     @InnerAuth
     @GetMapping("/getCurrentStationInfo/inner")
     public SysStation getCurrentStationInfo() {
@@ -104,7 +104,7 @@ public class PublicController extends BaseController {
     /**
      * 获取用户当前站点（部门）
      */
-    @ApiOperation("获取用户当前站点")
+    @Operation(summary = "获取用户当前站点")
     @GetMapping("/getStation")
     public AjaxResult getCurrentStation() {
         return success(publicService.getCurrentStation());
@@ -113,7 +113,7 @@ public class PublicController extends BaseController {
     /**
      * 获取用户当前企业
      */
-    @ApiOperation("获取用户当前企业")
+    @Operation(summary = "获取用户当前企业")
     @GetMapping("/getEnterprise")
     public AjaxResult getCurrentEnterprise() {
         return success(publicService.getCurrentEnterprise());
@@ -127,7 +127,7 @@ public class PublicController extends BaseController {
      * @param len     长度（必填）
      * @return 结果
      */
-    @ApiOperation("生成随机字符串")
+    @Operation(summary = "生成随机字符串")
     @GetMapping("/genRandomKey")
     public AjaxResult genRandomKey(Integer genType, Integer len) {
         if (StringUtils.isNull(genType)) {

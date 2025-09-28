@@ -27,8 +27,8 @@ import com.yunpower.system.api.domain.SysStation;
 import com.yunpower.system.domain.*;
 import com.yunpower.system.domain.jsonvo.AssociatedDevicesVo;
 import com.yunpower.system.service.*;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -43,7 +43,7 @@ import java.util.List;
  * @author JUNFU.WANG
  * @date 2023-10-07
  */
-@Api(tags = "J监控设备表")
+@Tag(name = "J监控设备表", description = "J监控设备表")
 @RestController
 @RequestMapping("/device")
 public class MonitorDeviceController extends BaseController {
@@ -76,7 +76,7 @@ public class MonitorDeviceController extends BaseController {
     /**
      * 查询能源监控设备列表（融合分组）
      */
-    @ApiOperation("查询能源监控设备列表（融合分组）")
+    @Operation(summary = "查询能源监控设备列表（融合分组）")
     @RequiresPermissions("system:device:list")
     @GetMapping("/listFusionGroup")
     public AjaxResult listFusionGroup(MonitorDevice monitorDevice) {
@@ -102,7 +102,7 @@ public class MonitorDeviceController extends BaseController {
     /**
      * 查询能源监控设备列表
      */
-    @ApiOperation("查询能源监控设备列表")
+    @Operation(summary = "查询能源监控设备列表")
     @RequiresPermissions("system:device:list")
     @GetMapping("/list")
     public TableDataInfo list(MonitorDevice monitorDevice) {
@@ -118,7 +118,7 @@ public class MonitorDeviceController extends BaseController {
     /**
      * 查询能源监控设备列表（不分页）
      */
-    @ApiOperation("查询能源监控设备列表（不分页）")
+    @Operation(summary = "查询能源监控设备列表（不分页）")
     @RequiresPermissions("system:device:list")
     @GetMapping("/listAll")
     public AjaxResult listAll(MonitorDevice monitorDevice) {
@@ -132,7 +132,7 @@ public class MonitorDeviceController extends BaseController {
     /**
      * 获取【设备连接】信息
      */
-    @ApiOperation("获取【设备连接】信息")
+    @Operation(summary = "获取【设备连接】信息")
     @GetMapping("/getAssociatedDevices/{id}")
     public AjaxResult getAssociatedDevices(@PathVariable("id") Long id) {
         MonitorDevice monitorDevice = monitorDeviceService.selectMonitorDeviceById(id);
@@ -191,7 +191,7 @@ public class MonitorDeviceController extends BaseController {
      * 【导出】能源监控设备
      * 注意：设备编码不可修改，不可新增，但可以删除
      */
-    @ApiOperation("【导出】能源监控设备")
+    @Operation(summary = "【导出】能源监控设备")
     @RequiresPermissions("system:device:export")
     @Log(title = "能源监控设备", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
@@ -204,7 +204,7 @@ public class MonitorDeviceController extends BaseController {
     /**
      * 【导入】能源监控设备
      */
-    @ApiOperation("【导入】能源监控设备")
+    @Operation(summary = "【导入】能源监控设备")
     @Log(title = "能源监控设备", businessType = BusinessType.IMPORT)
     @RequiresPermissions("system:device:import")
     @PostMapping("/importData")
@@ -222,7 +222,7 @@ public class MonitorDeviceController extends BaseController {
     /**
      * 获取能源监控设备详细信息
      */
-    @ApiOperation("获取能源监控设备详细信息")
+    @Operation(summary = "获取能源监控设备详细信息")
     @RequiresPermissions("system:device:query")
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") Long id) {
@@ -235,7 +235,7 @@ public class MonitorDeviceController extends BaseController {
     /**
      * 新增能源监控设备
      */
-    @ApiOperation("新增能源监控设备")
+    @Operation(summary = "新增能源监控设备")
     @RequiresPermissions("system:device:add")
     @Log(title = "能源监控设备", businessType = BusinessType.INSERT)
     @PostMapping
@@ -343,7 +343,7 @@ public class MonitorDeviceController extends BaseController {
     /**
      * 修改能源监控设备
      */
-    @ApiOperation("修改能源监控设备")
+    @Operation(summary = "修改能源监控设备")
     @RequiresPermissions("system:device:edit")
     @Log(title = "能源监控设备", businessType = BusinessType.UPDATE)
     @PutMapping
@@ -366,7 +366,7 @@ public class MonitorDeviceController extends BaseController {
     /**
      * 修改能源监控设备状态
      */
-    @ApiOperation("修改能源监控设备状态")
+    @Operation(summary = "修改能源监控设备状态")
     @RequiresPermissions("system:device:state")
     @Log(title = "能源监控设备", businessType = BusinessType.UPDATE)
     @PutMapping("/changeStatus/{id}/{state}")
@@ -380,7 +380,7 @@ public class MonitorDeviceController extends BaseController {
     /**
      * 删除能源监控设备
      */
-    @ApiOperation("删除能源监控设备")
+    @Operation(summary = "删除能源监控设备")
     @RequiresPermissions("system:device:remove")
     @Log(title = "能源监控设备", businessType = BusinessType.DELETE)
     @DeleteMapping("/{id}")
@@ -393,7 +393,7 @@ public class MonitorDeviceController extends BaseController {
     //endregion
 
     //region 光伏设备列表页动态Tab
-    @ApiOperation("光伏设备列表页动态Tab")
+    @Operation(summary = "光伏设备列表页动态Tab")
     @GetMapping("/getPVTab")
     public AjaxResult getPVTab() {
         //取出所有报警级别

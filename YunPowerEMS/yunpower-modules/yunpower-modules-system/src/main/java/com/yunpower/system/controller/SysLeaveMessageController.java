@@ -4,8 +4,8 @@ import java.util.List;
 import jakarta.servlet.http.HttpServletResponse;
 
 import com.yunpower.common.core.utils.StringUtils;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,7 +31,7 @@ import com.yunpower.common.core.web.page.TableDataInfo;
  * @author JUNFU.WANG
  * @date 2023-10-07
  */
-@Api(tags = "L 留言回复管理表")
+@Tag(name = "L 留言回复管理表", description = "L 留言回复管理表")
 @RestController
 @RequestMapping("/leave-message")
 public class SysLeaveMessageController extends BaseController {
@@ -41,7 +41,7 @@ public class SysLeaveMessageController extends BaseController {
     /**
      * 查询留言回复管理列表
      */
-    @ApiOperation("查询留言回复管理列表")
+    @Operation(summary = "查询留言回复管理列表")
     @RequiresPermissions("system:leave-message:list")
     @GetMapping("/list")
     public TableDataInfo list(SysLeaveMessage sysLeaveMessage) {
@@ -60,7 +60,7 @@ public class SysLeaveMessageController extends BaseController {
     /**
      * 查询留言回复管理列表（不分页）
      */
-    @ApiOperation("查询留言回复管理列表（不分页）")
+    @Operation(summary = "查询留言回复管理列表（不分页）")
     @RequiresPermissions("system:leave-message:list")
     @GetMapping("/listAll")
     public AjaxResult listAll(SysLeaveMessage sysLeaveMessage) {
@@ -78,7 +78,7 @@ public class SysLeaveMessageController extends BaseController {
     /**
      * 导出留言回复管理列表
      */
-    @ApiOperation("导出留言回复管理列表")
+    @Operation(summary = "导出留言回复管理列表")
     @RequiresPermissions("system:leave-message:export")
     @Log(title = "留言回复管理", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
@@ -91,7 +91,7 @@ public class SysLeaveMessageController extends BaseController {
     /**
      * 获取留言回复管理详细信息
      */
-    @ApiOperation("获取留言回复管理详细信息")
+    @Operation(summary = "获取留言回复管理详细信息")
     @RequiresPermissions("system:leave-message:query")
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") Long id) {
@@ -101,7 +101,7 @@ public class SysLeaveMessageController extends BaseController {
     /**
      * 新增留言回复管理
      */
-    @ApiOperation("新增留言回复管理")
+    @Operation(summary = "新增留言回复管理")
     @RequiresPermissions("system:leave-message:add")
     @Log(title = "留言回复管理", businessType = BusinessType.INSERT)
     @PostMapping
@@ -118,7 +118,7 @@ public class SysLeaveMessageController extends BaseController {
     /**
      * 修改留言回复管理
      */
-    @ApiOperation("修改留言回复管理")
+    @Operation(summary = "修改留言回复管理")
     @RequiresPermissions("system:leave-message:edit")
     @Log(title = "留言回复管理", businessType = BusinessType.UPDATE)
     @PutMapping
@@ -129,7 +129,7 @@ public class SysLeaveMessageController extends BaseController {
     /**
      * 修改留言回复管理状态
      */
-    @ApiOperation("修改留言回复管理状态")
+    @Operation(summary = "修改留言回复管理状态")
     @RequiresPermissions("system:leave-message:state")
     @Log(title = "留言回复管理", businessType = BusinessType.UPDATE)
     @PutMapping("/changeStatus/{id}/{state}")
@@ -140,7 +140,7 @@ public class SysLeaveMessageController extends BaseController {
     /**
      * 删除留言回复管理
      */
-    @ApiOperation("删除留言回复管理")
+    @Operation(summary = "删除留言回复管理")
     @RequiresPermissions("system:leave-message:remove")
     @Log(title = "留言回复管理", businessType = BusinessType.DELETE)
     @DeleteMapping("/{ids}")

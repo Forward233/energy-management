@@ -3,8 +3,8 @@ package com.yunpower.system.controller;
 import java.util.List;
 import jakarta.servlet.http.HttpServletResponse;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -31,7 +31,7 @@ import com.yunpower.system.service.ISysCommonDictService;
  * 
  * @author yunpower
  */
-@Api(tags = "S 数据字典表")
+@Tag(name = "S 数据字典表", description = "S 数据字典表")
 @RestController
 @RequestMapping("/dict/type")
 public class SysCommonDictController extends BaseController
@@ -39,7 +39,7 @@ public class SysCommonDictController extends BaseController
     @Autowired
     private ISysCommonDictService dictTypeService;
 
-    @ApiOperation("获取数据字典列表")
+    @Operation(summary = "获取数据字典列表")
     @RequiresPermissions("system:dict:list")
     @GetMapping("/list")
     public TableDataInfo list(SysCommonDict dictType)
@@ -49,7 +49,7 @@ public class SysCommonDictController extends BaseController
         return getDataTable(list);
     }
 
-    @ApiOperation("导出数据字典")
+    @Operation(summary = "导出数据字典")
     @Log(title = "字典类型", businessType = BusinessType.EXPORT)
     @RequiresPermissions("system:dict:export")
     @PostMapping("/export")
@@ -63,7 +63,7 @@ public class SysCommonDictController extends BaseController
     /**
      * 查询字典类型详细
      */
-    @ApiOperation("根据字典编号获取详细信息")
+    @Operation(summary = "根据字典编号获取详细信息")
     @RequiresPermissions("system:dict:query")
     @GetMapping(value = "/{dictId}")
     public AjaxResult getInfo(@PathVariable Long dictId)
@@ -74,7 +74,7 @@ public class SysCommonDictController extends BaseController
     /**
      * 新增字典类型
      */
-    @ApiOperation("新增字典类型")
+    @Operation(summary = "新增字典类型")
     @RequiresPermissions("system:dict:add")
     @Log(title = "字典类型", businessType = BusinessType.INSERT)
     @PostMapping
@@ -91,7 +91,7 @@ public class SysCommonDictController extends BaseController
     /**
      * 修改字典类型
      */
-    @ApiOperation("修改字典类型")
+    @Operation(summary = "修改字典类型")
     @RequiresPermissions("system:dict:edit")
     @Log(title = "字典类型", businessType = BusinessType.UPDATE)
     @PutMapping
@@ -108,7 +108,7 @@ public class SysCommonDictController extends BaseController
     /**
      * 修改通用字典状态
      */
-    @ApiOperation("修改通用字典状态")
+    @Operation(summary = "修改通用字典状态")
     @RequiresPermissions("system:dict:state")
     @Log(title = "通用字典", businessType = BusinessType.UPDATE)
     @PutMapping("/changeStatus/{id}/{state}")
@@ -119,7 +119,7 @@ public class SysCommonDictController extends BaseController
     /**
      * 删除字典类型
      */
-    @ApiOperation("删除字典类型")
+    @Operation(summary = "删除字典类型")
     @RequiresPermissions("system:dict:remove")
     @Log(title = "字典类型", businessType = BusinessType.DELETE)
     @DeleteMapping("/{dictIds}")
@@ -132,7 +132,7 @@ public class SysCommonDictController extends BaseController
     /**
      * 刷新字典缓存
      */
-    @ApiOperation("刷新字典缓存")
+    @Operation(summary = "刷新字典缓存")
     @RequiresPermissions("system:dict:remove")
     @Log(title = "字典类型", businessType = BusinessType.CLEAN)
     @DeleteMapping("/refreshCache")
@@ -145,7 +145,7 @@ public class SysCommonDictController extends BaseController
     /**
      * 获取字典选择框列表
      */
-    @ApiOperation("获取字典选择框")
+    @Operation(summary = "获取字典选择框")
     @GetMapping("/optionselect")
     public AjaxResult optionselect()
     {

@@ -7,8 +7,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.yunpower.system.domain.handler.JsonCommonTypeHandler;
 import com.yunpower.system.domain.jsonvo.JsonCommonVo;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.yunpower.common.core.annotation.Excel;
@@ -20,140 +20,140 @@ import com.yunpower.common.core.web.domain.BaseEntity;
  * @author JUNFU.WANG
  * @date 2023-11-02
  */
-@ApiModel("电价标准对象")
+@Schema(description = "电价标准对象")
 public class ElectricPriceScheme extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
     /** 编号ID */
-    @ApiModelProperty("编号ID")
+    @Schema(description = "编号ID")
     private Long id;
 
     /** 企业ID */
-    @ApiModelProperty("企业ID")
+    @Schema(description = "企业ID")
     @Excel(name = "企业ID")
     private Long entId;
 
     /** 部门ID */
-    @ApiModelProperty("部门ID")
+    @Schema(description = "部门ID")
     @Excel(name = "部门ID")
     private Long deptId;
 
     /** 上级ID */
-    @ApiModelProperty("上级ID")
+    @Schema(description = "上级ID")
     @Excel(name = "上级ID")
     private Long parentId;
 
     /** 电价名称 */
-    @ApiModelProperty("电价名称")
+    @Schema(description = "电价名称")
     @Excel(name = "电价名称")
     private String electricName;
 
     /** 地址省 */
-    @ApiModelProperty("地址省")
+    @Schema(description = "地址省")
     @Excel(name = "地址省")
     private Integer province;
 
     /** 地址市 */
-    @ApiModelProperty("地址市")
+    @Schema(description = "地址市")
     @Excel(name = "地址市")
     private Integer city;
 
     /** 地址县 */
-    @ApiModelProperty("地址县")
+    @Schema(description = "地址县")
     @Excel(name = "地址县")
     private Integer county;
 
     /** 用电分类 */
-    @ApiModelProperty("用电分类")
+    @Schema(description = "用电分类")
     @Excel(name = "用电分类")
     private Integer electricGroup;
 
     /** 用电标准 */
-    @ApiModelProperty("用电标准")
+    @Schema(description = "用电标准")
     @Excel(name = "用电标准")
     private Integer electricStandard;
 
     /** 电压等级 */
-    @ApiModelProperty("电压等级")
+    @Schema(description = "电压等级")
     @Excel(name = "电压等级")
     private Integer voltageLevel;
 
     /** 生效年份 */
-    @ApiModelProperty("生效年份")
+    @Schema(description = "生效年份")
     @Excel(name = "生效年份")
     private Integer effectYear;
 
     /** 执行开始日期 */
-    @ApiModelProperty("执行开始日期")
+    @Schema(description = "执行开始日期")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Excel(name = "执行开始日期", width = 30, dateFormat = "yyyy-MM-dd")
     private Date startDate;
 
     /** 执行结束日期 */
-    @ApiModelProperty("执行结束日期")
+    @Schema(description = "执行结束日期")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Excel(name = "执行结束日期", width = 30, dateFormat = "yyyy-MM-dd")
     private Date endDate;
 
     /** 电度电价 */
-    @ApiModelProperty("电度电价")
+    @Schema(description = "电度电价")
     @Excel(name = "电度电价")
     private String electricText;
 
     /** 容量电价 */
-    @ApiModelProperty("容量电价")
+    @Schema(description = "容量电价")
     @Excel(name = "容量电价")
     private Float capacityPrice;
 
     /** 需量电价 */
-    @ApiModelProperty("需量电价")
+    @Schema(description = "需量电价")
     @Excel(name = "需量电价")
     private Float demandPrice;
 
     /** 需量计费（超） */
-    @ApiModelProperty("需量计费（超）")
+    @Schema(description = "需量计费（超）")
     @Excel(name = "需量计费")
     private Float demandPercent;
 
     /** 需量计费（倍） */
-    @ApiModelProperty("需量计费（倍）")
+    @Schema(description = "需量计费（倍）")
     @Excel(name = "需量计费")
     private Float demandRate;
 
     /** 电量达到（千瓦） */
-    @ApiModelProperty("电量达到（千瓦）")
+    @Schema(description = "电量达到（千瓦）")
     @Excel(name = "电量达到")
     private Float electricUp;
 
     /** 电量达到（倍） */
-    @ApiModelProperty("电量达到（倍）")
+    @Schema(description = "电量达到（倍）")
     @Excel(name = "电量达到")
     private Float electricUpRate;
 
     /** 偏差电价（JSON格式） */
-    @ApiModelProperty("偏差电价（JSON格式）")
+    @Schema(description = "偏差电价（JSON格式）")
     @Excel(name = "偏差电价")
     @TableField(typeHandler = JsonCommonTypeHandler.class)
     private List<JsonCommonVo> deviationPrice;
 
     /** 加征电价（名称） */
-    @ApiModelProperty("加征电价（名称）")
+    @Schema(description = "加征电价（名称）")
     @Excel(name = "加征电价")
     private String additiveName;
 
     /** 加征电价（价格） */
-    @ApiModelProperty("加征电价（价格）")
+    @Schema(description = "加征电价（价格）")
     @Excel(name = "加征电价")
     private Float additivePrice;
 
     /** 是否停用（0正常 1停用） */
-    @ApiModelProperty("是否停用（0正常 1停用）")
+    @Schema(description = "是否停用（0正常 1停用）")
     @Excel(name = "是否停用", readConverterExp = "0=正常,1=停用")
     private Integer stopFlag;
 
     /** 是否删除（0正常 1删除） */
-    @ApiModelProperty("是否删除（0正常 1删除）")
+    @Schema(description = "是否删除（0正常 1删除）")
     @Excel(name = "是否删除", readConverterExp = "0=正常,1=删除")
     private Integer deleteFlag;
 

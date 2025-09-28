@@ -4,8 +4,8 @@ import java.util.List;
 import jakarta.servlet.http.HttpServletResponse;
 
 import com.yunpower.system.service.IPublicService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,7 +31,7 @@ import com.yunpower.common.core.web.page.TableDataInfo;
  * @author JUNFU.WANG
  * @date 2023-11-02
  */
-@Api(tags = "D 电价标准表")
+@Tag(name = "D 电价标准表", description = "D 电价标准表")
 @RestController
 @RequestMapping("/price-scheme")
 public class ElectricPriceSchemeController extends BaseController {
@@ -44,7 +44,7 @@ public class ElectricPriceSchemeController extends BaseController {
     /**
      * 查询电价标准列表
      */
-    @ApiOperation("查询电价标准列表")
+    @Operation(summary = "查询电价标准列表")
     @RequiresPermissions("system:price-scheme:list")
     @GetMapping("/list")
     public TableDataInfo list(ElectricPriceScheme electricPriceScheme) {
@@ -56,7 +56,7 @@ public class ElectricPriceSchemeController extends BaseController {
     /**
      * 查询电价标准列表（不分页）
      */
-    @ApiOperation("查询电价标准列表（不分页）")
+    @Operation(summary = "查询电价标准列表（不分页）")
     @RequiresPermissions("system:price-scheme:list")
     @GetMapping("/listAll")
     public AjaxResult listAll(ElectricPriceScheme electricPriceScheme) {
@@ -67,7 +67,7 @@ public class ElectricPriceSchemeController extends BaseController {
     /**
      * 导出电价标准列表
      */
-    @ApiOperation("导出电价标准列表")
+    @Operation(summary = "导出电价标准列表")
     @RequiresPermissions("system:price-scheme:export")
     @Log(title = "电价标准", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
@@ -80,7 +80,7 @@ public class ElectricPriceSchemeController extends BaseController {
     /**
      * 获取电价标准详细信息
      */
-    @ApiOperation("获取电价标准详细信息")
+    @Operation(summary = "获取电价标准详细信息")
     @RequiresPermissions("system:price-scheme:query")
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") Long id) {
@@ -90,7 +90,7 @@ public class ElectricPriceSchemeController extends BaseController {
     /**
      * 新增电价标准
      */
-    @ApiOperation("新增电价标准")
+    @Operation(summary = "新增电价标准")
     @RequiresPermissions("system:price-scheme:add")
     @Log(title = "电价标准", businessType = BusinessType.INSERT)
     @PostMapping
@@ -114,7 +114,7 @@ public class ElectricPriceSchemeController extends BaseController {
     /**
      * 修改电价标准
      */
-    @ApiOperation("修改电价标准")
+    @Operation(summary = "修改电价标准")
     @RequiresPermissions("system:price-scheme:edit")
     @Log(title = "电价标准", businessType = BusinessType.UPDATE)
     @PutMapping
@@ -129,7 +129,7 @@ public class ElectricPriceSchemeController extends BaseController {
     /**
      * 修改电价标准状态
      */
-    @ApiOperation("修改电价标准状态")
+    @Operation(summary = "修改电价标准状态")
     @RequiresPermissions("system:price-scheme:state")
     @Log(title = "电价标准", businessType = BusinessType.UPDATE)
     @PutMapping("/changeStatus/{id}/{state}")
@@ -148,7 +148,7 @@ public class ElectricPriceSchemeController extends BaseController {
     /**
      * 删除电价标准
      */
-    @ApiOperation("删除电价标准")
+    @Operation(summary = "删除电价标准")
     @RequiresPermissions("system:price-scheme:remove")
     @Log(title = "电价标准", businessType = BusinessType.DELETE)
     @DeleteMapping("/{ids}")

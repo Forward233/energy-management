@@ -1,7 +1,7 @@
 package com.yunpower.system.domain;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.yunpower.common.core.annotation.Excel;
@@ -13,62 +13,62 @@ import com.yunpower.common.core.web.domain.BaseEntity;
  * @author JUNFU.WANG
  * @date 2023-10-07
  */
-@ApiModel("第三方接入申请对象")
+@Schema(description = "第三方接入申请对象")
 public class SysCommonApiApply extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
     /** 编号ID */
-    @ApiModelProperty("编号ID")
+    @Schema(description = "编号ID")
     private Long id;
 
     /** 接入公司 */
-    @ApiModelProperty("接入公司")
+    @Schema(description = "接入公司")
     @Excel(name = "接入公司")
     private String companyName;
 
     /** 联系人员 */
-    @ApiModelProperty("联系人员")
+    @Schema(description = "联系人员")
     @Excel(name = "联系人员")
     private String linkName;
 
     /** 联系电话 */
-    @ApiModelProperty("联系电话")
+    @Schema(description = "联系电话")
     @Excel(name = "联系电话")
     private String linkMobile;
 
     /** 唯一标识 */
-    @ApiModelProperty("唯一标识")
+    @Schema(description = "唯一标识")
     @Excel(name = "唯一标识")
     private String appId;
 
     /** 帐号 */
-    @ApiModelProperty("帐号")
+    @Schema(description = "帐号")
     @Excel(name = "帐号")
     private String appKey;
 
     /** 密钥 */
-    @ApiModelProperty("密钥")
+    @Schema(description = "密钥")
     @Excel(name = "密钥")
     private String appSecret;
 
     /** 令牌 */
-    @ApiModelProperty("令牌")
+    @Schema(description = "令牌")
     @Excel(name = "令牌")
     private String token;
 
     /** 令牌有效期 */
-    @ApiModelProperty("令牌有效期")
+    @Schema(description = "令牌有效期")
     @Excel(name = "令牌有效期")
     private Integer effectMinute;
 
     /** 是否停用（0正常 1停用） */
-    @ApiModelProperty("是否停用（0正常 1停用）")
+    @Schema(description = "是否停用（0正常 1停用）")
     @Excel(name = "是否停用", readConverterExp = "0=正常,1=停用")
     private Integer stopFlag;
 
     /** 是否删除（0正常 1删除） */
-    @ApiModelProperty("是否删除（0正常 1删除）")
+    @Schema(description = "是否删除（0正常 1删除）")
     @Excel(name = "是否删除", readConverterExp = "0=正常,1=删除")
     private Integer deleteFlag;
 

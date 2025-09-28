@@ -2,8 +2,8 @@ package com.yunpower.system.domain;
 
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.yunpower.common.core.annotation.Excel;
@@ -16,150 +16,150 @@ import org.springframework.data.annotation.Transient;
  * @author JUNFU.WANG
  * @date 2023-10-11
  */
-@ApiModel("通讯通道对象")
+@Schema(description = "通讯通道对象")
 public class CommunicationChannel extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
     /** 编号ID */
-    @ApiModelProperty("编号ID")
+    @Schema(description = "编号ID")
     private Long id;
 
     /** 企业ID */
-    @ApiModelProperty("企业ID")
+    @Schema(description = "企业ID")
     @Excel(name = "企业ID")
     private Long entId;
 
     /** 部门ID */
-    @ApiModelProperty("部门ID")
+    @Schema(description = "部门ID")
     @Excel(name = "部门ID")
     private Long deptId;
 
     /** 电站类型（1配电 2光伏） */
-    @ApiModelProperty("电站类型（1配电 2光伏）")
+    @Schema(description = "电站类型（1配电 2光伏）")
     @Excel(name = "电站类型", readConverterExp = "1=配电,2=光伏")
     private Integer stationType;
 
     /** 通道名称 */
-    @ApiModelProperty("通道名称")
+    @Schema(description = "通道名称")
     @Excel(name = "通道名称")
     private String channelName;
 
     /** 通道编码 */
-    @ApiModelProperty("通道编码")
+    @Schema(description = "通道编码")
     @Excel(name = "通道编码")
     private String channelSn;
 
     /** 接入方式（1TCP 2MQTT） */
-    @ApiModelProperty("接入方式（1TCP 2MQTT）")
+    @Schema(description = "接入方式（1TCP 2MQTT）")
     @Excel(name = "接入方式", readConverterExp = "1=TCP,2=MQTT")
     private Integer accessType;
 
     /** IP地址 */
-    @ApiModelProperty("IP地址")
+    @Schema(description = "IP地址")
     @Excel(name = "IP地址")
     private String ipAddress;
 
     /** 端口 */
-    @ApiModelProperty("端口")
+    @Schema(description = "端口")
     @Excel(name = "端口")
     private Integer port;
 
     /** 通讯注册码 */
-    @ApiModelProperty("通讯注册码")
+    @Schema(description = "通讯注册码")
     @Excel(name = "通讯注册码")
     private String registrationCode;
 
     /** 注册码起始位置 */
-    @ApiModelProperty("注册码起始位置")
+    @Schema(description = "注册码起始位置")
     @Excel(name = "注册码起始位置")
     private Integer codeStart;
 
     /** 注册码长度 */
-    @ApiModelProperty("注册码长度")
+    @Schema(description = "注册码长度")
     @Excel(name = "注册码长度")
     private Integer codeLength;
 
     /** 注册回应码 */
-    @ApiModelProperty("注册回应码")
+    @Schema(description = "注册回应码")
     @Excel(name = "注册回应码")
     private String registrationRsp;
 
     /** 连接地址 */
-    @ApiModelProperty("连接地址")
+    @Schema(description = "连接地址")
     @Excel(name = "连接地址")
     private String connIp;
 
     /** 连接端口 */
-    @ApiModelProperty("连接端口")
+    @Schema(description = "连接端口")
     @Excel(name = "连接端口")
     private Integer connPort;
 
     /** 连接帐号 */
-    @ApiModelProperty("连接帐号")
+    @Schema(description = "连接帐号")
     @Excel(name = "连接帐号")
     private String connUsername;
 
     /** 连接密码 */
-    @ApiModelProperty("连接密码")
+    @Schema(description = "连接密码")
     @Excel(name = "连接密码")
     private String connPwd;
 
     /** 订阅主题 */
-    @ApiModelProperty("订阅主题")
+    @Schema(description = "订阅主题")
     @Excel(name = "订阅主题")
     private String subscribeTopic;
 
     /** 发布主题 */
-    @ApiModelProperty("发布主题")
+    @Schema(description = "发布主题")
     @Excel(name = "发布主题")
     private String publishTopic;
 
     /** 连接超时（s） */
-    @ApiModelProperty("连接超时（s）")
+    @Schema(description = "连接超时（s）")
     @Excel(name = "连接超时", readConverterExp = "s")
     private Integer timeout;
 
     /** 调度周期（ms） */
-    @ApiModelProperty("调度周期（ms）")
+    @Schema(description = "调度周期（ms）")
     @Excel(name = "调度周期", readConverterExp = "ms")
     private Integer scheduleInterval;
 
     /** 上线时间 */
-    @ApiModelProperty("上线时间")
+    @Schema(description = "上线时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Excel(name = "上线时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
     private Date onlineTime;
 
     /** 下线时间 */
-    @ApiModelProperty("下线时间")
+    @Schema(description = "下线时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Excel(name = "下线时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
     private Date offlineTime;
 
     /** 是否激活 */
-    @ApiModelProperty("是否激活")
+    @Schema(description = "是否激活")
     @Excel(name = "是否激活")
     private Integer isActive;
 
     /** 激活时间 */
-    @ApiModelProperty("激活时间")
+    @Schema(description = "激活时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Excel(name = "激活时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
     private Date activeUpdateTime;
 
     /** 通道连接报警 */
-    @ApiModelProperty("通道连接报警")
+    @Schema(description = "通道连接报警")
     @Excel(name = "通道连接报警")
     private Integer connectAlarm;
 
     /** 是否停用（0正常 1停用） */
-    @ApiModelProperty("是否停用（0正常 1停用）")
+    @Schema(description = "是否停用（0正常 1停用）")
     @Excel(name = "是否停用", readConverterExp = "0=正常,1=停用")
     private Integer stopFlag;
 
     /** 是否删除（0正常 1删除） */
-    @ApiModelProperty("是否删除（0正常 1删除）")
+    @Schema(description = "是否删除（0正常 1删除）")
     @Excel(name = "是否删除", readConverterExp = "0=正常,1=删除")
     private Integer deleteFlag;
 

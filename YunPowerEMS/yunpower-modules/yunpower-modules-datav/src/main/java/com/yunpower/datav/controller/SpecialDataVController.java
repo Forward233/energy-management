@@ -11,8 +11,8 @@ import com.yunpower.system.api.RemoteDashboardConfigCardService;
 import com.yunpower.system.api.RemotePublicService;
 import com.yunpower.system.api.RemoteSpecialDataVService;
 import com.yunpower.system.api.domain.SysStation;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.annotation.Validated;
@@ -32,7 +32,7 @@ import java.util.Map;
  * @Author: Jiajiaglam
  * @Date: 2024/6/21 18:14
  */
-@Api(tags = ">>> 大屏专用数据接口 <<<")
+@Tag(name = ">>> 大屏专用数据接口 <<<", description = ">>> 大屏专用数据接口 <<<")
 @RestController
 @RequestMapping("/common/special")
 public class SpecialDataVController extends BaseController {
@@ -63,7 +63,7 @@ public class SpecialDataVController extends BaseController {
      * @param specialQueryVo 查询参数
      * @return 结果
      */
-    @ApiOperation("获取>>专用模板【表格】数据")
+    @Operation(summary = "获取>>专用模板【表格】数据")
     @GetMapping("/getSpecialList")
     public AjaxResult getSpecialList(@Validated SpecialQueryVo specialQueryVo) {
         Map<String, Object> param = new HashMap<>();
@@ -85,7 +85,7 @@ public class SpecialDataVController extends BaseController {
      * @param specialQueryVo 查询参数
      * @return 结果
      */
-    @ApiOperation("获取>>专用模板【统计】数据")
+    @Operation(summary = "获取>>专用模板【统计】数据")
     @GetMapping("/getSpecialStatic")
     public AjaxResult getSpecialStatic(@Validated SpecialQueryVo specialQueryVo) {
         Map<String, Object> param = new HashMap<>();
@@ -101,7 +101,7 @@ public class SpecialDataVController extends BaseController {
     /**
      * 获取>>大屏固定数据（废弃）
      */
-    @ApiOperation("获取>>大屏固定数据")
+    @Operation(summary = "获取>>大屏固定数据")
     @GetMapping("/getSpecialData")
     public AjaxResult getSpecialData(String assignType) {
         SysStation station = publicService.getCurrentStationInfo(SecurityConstants.INNER);
@@ -111,7 +111,7 @@ public class SpecialDataVController extends BaseController {
     /**
      * 获取>>大屏配置数据
      */
-    @ApiOperation("获取>>大屏配置数据")
+    @Operation(summary = "获取>>大屏配置数据")
     @GetMapping("/getBiConfig/{stationId}/{isPre}")
     public AjaxResult getSpecialData(@PathVariable("stationId") Long stationId, @PathVariable("isPre") Integer isPre) {
         Map<String, Object> config = remoteDashboardConfigCardService.getDashboardConfigByStationId(stationId, isPre, SecurityConstants.INNER);

@@ -8,8 +8,8 @@ import com.yunpower.common.core.utils.ChineseToPinyinUtils;
 import com.yunpower.common.core.utils.StringUtils;
 import com.yunpower.system.service.IAutoGenSyncService;
 import com.yunpower.system.service.ISysDeptService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,7 +35,7 @@ import com.yunpower.common.core.web.page.TableDataInfo;
  * @author JUNFU.WANG
  * @date 2023-09-28
  */
-@Api(tags = "Q 企业信息表")
+@Tag(name = "Q 企业信息表", description = "Q 企业信息表")
 @RestController
 @RequestMapping("/enterprise")
 public class SysCommonEnterpriseController extends BaseController {
@@ -51,7 +51,7 @@ public class SysCommonEnterpriseController extends BaseController {
     /**
      * 查询企业信息列表
      */
-    @ApiOperation("查询企业信息列表")
+    @Operation(summary = "查询企业信息列表")
     @RequiresPermissions("system:enterprise:list")
     @GetMapping("/list")
     public TableDataInfo list(SysCommonEnterprise sysCommonEnterprise) {
@@ -63,7 +63,7 @@ public class SysCommonEnterpriseController extends BaseController {
     /**
      * 查询企业信息列表（不分页）
      */
-    @ApiOperation("查询企业信息列表（不分页）")
+    @Operation(summary = "查询企业信息列表（不分页）")
     @RequiresPermissions("system:enterprise:list")
     @GetMapping("/listAll")
     public AjaxResult listAll(SysCommonEnterprise sysCommonEnterprise) {
@@ -74,7 +74,7 @@ public class SysCommonEnterpriseController extends BaseController {
     /**
      * 导出企业信息列表
      */
-    @ApiOperation("导出企业信息列表")
+    @Operation(summary = "导出企业信息列表")
     @RequiresPermissions("system:enterprise:export")
     @Log(title = "企业信息", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
@@ -87,7 +87,7 @@ public class SysCommonEnterpriseController extends BaseController {
     /**
      * 获取企业信息详细信息
      */
-    @ApiOperation("获取企业信息详细信息")
+    @Operation(summary = "获取企业信息详细信息")
     @RequiresPermissions("system:enterprise:query")
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") Long id) {
@@ -97,7 +97,7 @@ public class SysCommonEnterpriseController extends BaseController {
     /**
      * 新增企业信息
      */
-    @ApiOperation("新增企业信息")
+    @Operation(summary = "新增企业信息")
     @RequiresPermissions("system:enterprise:add")
     @Log(title = "企业信息", businessType = BusinessType.INSERT)
     @PostMapping
@@ -130,7 +130,7 @@ public class SysCommonEnterpriseController extends BaseController {
     /**
      * 修改企业信息
      */
-    @ApiOperation("修改企业信息")
+    @Operation(summary = "修改企业信息")
     @RequiresPermissions("system:enterprise:edit")
     @Log(title = "企业信息", businessType = BusinessType.UPDATE)
     @PutMapping
@@ -157,7 +157,7 @@ public class SysCommonEnterpriseController extends BaseController {
     /**
      * 修改企业信息状态
      */
-    @ApiOperation("修改企业信息状态")
+    @Operation(summary = "修改企业信息状态")
     @RequiresPermissions("system:enterprise:state")
     @Log(title = "企业信息", businessType = BusinessType.UPDATE)
     @PutMapping("/changeStatus/{id}/{state}")
@@ -173,7 +173,7 @@ public class SysCommonEnterpriseController extends BaseController {
     /**
      * 删除企业信息
      */
-    @ApiOperation("删除企业信息")
+    @Operation(summary = "删除企业信息")
     @RequiresPermissions("system:enterprise:remove")
     @Log(title = "企业信息", businessType = BusinessType.DELETE)
     @DeleteMapping("/{id}")

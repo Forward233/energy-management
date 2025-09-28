@@ -2,8 +2,8 @@ package com.yunpower.system.controller;
 
 import java.util.Arrays;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,7 +34,7 @@ import com.yunpower.system.service.ISysUserService;
  * 
  * @author yunpower
  */
-@Api(tags = "Y 个人信息")
+@Tag(name = "Y 个人信息", description = "Y 个人信息")
 @RestController
 @RequestMapping("/user/profile")
 public class SysProfileController extends BaseController
@@ -51,7 +51,7 @@ public class SysProfileController extends BaseController
     /**
      * 个人信息
      */
-    @ApiOperation("获取个人信息")
+    @Operation(summary = "获取个人信息")
     @GetMapping
     public AjaxResult profile()
     {
@@ -66,7 +66,7 @@ public class SysProfileController extends BaseController
     /**
      * 修改用户
      */
-    @ApiOperation("修改个人信息")
+    @Operation(summary = "修改个人信息")
     @Log(title = "个人信息", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult updateProfile(@RequestBody SysUser user)
@@ -97,7 +97,7 @@ public class SysProfileController extends BaseController
     /**
      * 重置密码
      */
-    @ApiOperation("重置密码")
+    @Operation(summary = "重置密码")
     @Log(title = "个人信息", businessType = BusinessType.UPDATE)
     @PutMapping("/updatePwd")
     public AjaxResult updatePwd(String oldPassword, String newPassword)
@@ -128,7 +128,7 @@ public class SysProfileController extends BaseController
     /**
      * 头像上传
      */
-    @ApiOperation("头像上传")
+    @Operation(summary = "头像上传")
     @Log(title = "用户头像", businessType = BusinessType.UPDATE)
     @PostMapping("/avatar")
     public AjaxResult avatar(@RequestParam("avatarfile") MultipartFile file)

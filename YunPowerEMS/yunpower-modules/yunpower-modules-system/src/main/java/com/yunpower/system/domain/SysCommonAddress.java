@@ -2,8 +2,8 @@ package com.yunpower.system.domain;
 
 import com.yunpower.common.core.annotation.Excel;
 import com.yunpower.common.core.web.domain.BaseEntity;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -13,32 +13,32 @@ import org.apache.commons.lang3.builder.ToStringStyle;
  * @author yunpower
  * @date 2023-10-07
  */
-@ApiModel("全国四级行政区对象")
+@Schema(description = "全国四级行政区对象")
 public class SysCommonAddress extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
     /** 主键（省市镇县编码） */
-    @ApiModelProperty("主键（省市镇县编码）")
+    @Schema(description = "主键（省市镇县编码）")
     private Long id;
 
     /** 父级code */
-    @ApiModelProperty("父级code")
+    @Schema(description = "父级code")
     @Excel(name = "父级code")
     private Long parentId;
 
     /** 等级：1省 2市 3县/县级市/区 4镇/街道 5村/社区 */
-    @ApiModelProperty("等级：1省 2市 3县/县级市/区 4镇/街道 5村/社区")
+    @Schema(description = "等级：1省 2市 3县/县级市/区 4镇/街道 5村/社区")
     @Excel(name = "等级：1省 2市 3县/县级市/区 4镇/街道 5村/社区")
     private Integer level;
 
     /** 地区名称 */
-    @ApiModelProperty("地区名称")
+    @Schema(description = "地区名称")
     @Excel(name = "地区名称")
     private String name;
 
     /** 状态：1启用 0已作废 */
-    @ApiModelProperty("状态：1启用 0已作废")
+    @Schema(description = "状态：1启用 0已作废")
     @Excel(name = "状态：1启用 0已作废")
     private Integer valid;
     public void setId(Long id)

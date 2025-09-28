@@ -1,7 +1,7 @@
 package com.yunpower.system.api.domain;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.yunpower.common.core.annotation.Excel;
@@ -18,41 +18,41 @@ import jakarta.validation.constraints.Size;
  * @author yunpower
  * @date 2023-09-14
  */
-@ApiModel("通用字典对象")
+@Schema(description = "通用字典对象")
 public class SysCommonDict extends BaseEntity {
 
     private static final long serialVersionUID = -7130910602591636589L;
     /**
      * 编号ID
      */
-    @ApiModelProperty("编号ID")
+    @Schema(description = "编号ID")
     private Long id;
 
     /**
      * 枚举名称
      */
-    @ApiModelProperty("枚举名称")
+    @Schema(description = "枚举名称")
     @Excel(name = "枚举名称")
     private String dictName;
 
     /**
      * 字典编码
      */
-    @ApiModelProperty("字典编码")
+    @Schema(description = "字典编码")
     @Excel(name = "字典编码")
     private String dictSn;
 
     /**
      * 是否停用（0正常 1停用）
      */
-    @ApiModelProperty("是否停用（0正常 1停用）")
+    @Schema(description = "是否停用（0正常 1停用）")
     @Excel(name = "是否停用", readConverterExp = "0=正常,1=停用")
     private Integer stopFlag;
 
     /**
      * 是否删除（0正常 1删除）
      */
-    @ApiModelProperty("是否删除（0正常 1删除）")
+    @Schema(description = "是否删除（0正常 1删除）")
     @Excel(name = "是否删除", readConverterExp = "0=正常,1=删除")
     private Integer deleteFlag;
 

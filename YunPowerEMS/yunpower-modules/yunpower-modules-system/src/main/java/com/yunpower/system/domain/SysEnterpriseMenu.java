@@ -1,7 +1,7 @@
 package com.yunpower.system.domain;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.yunpower.common.core.annotation.Excel;
@@ -13,22 +13,22 @@ import com.yunpower.common.core.web.domain.BaseEntity;
  * @author JUNFU.WANG
  * @date 2023-09-27
  */
-@ApiModel("企业专属菜单对象")
+@Schema(description = "企业专属菜单对象")
 public class SysEnterpriseMenu extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
     /** 编号ID */
-    @ApiModelProperty("编号ID")
+    @Schema(description = "编号ID")
     private Long id;
 
     /** 企业ID */
-    @ApiModelProperty("企业ID")
+    @Schema(description = "企业ID")
     @Excel(name = "企业ID")
     private Long entId;
 
     /** 菜单ID */
-    @ApiModelProperty("菜单ID")
+    @Schema(description = "菜单ID")
     @Excel(name = "菜单ID")
     private Long menuId;
 

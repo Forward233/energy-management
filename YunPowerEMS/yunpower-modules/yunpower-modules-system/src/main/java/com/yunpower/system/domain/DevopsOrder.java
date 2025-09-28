@@ -7,8 +7,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.yunpower.system.domain.handler.JsonCommonTypeHandler;
 import com.yunpower.system.domain.jsonvo.JsonCommonVo;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.yunpower.common.core.annotation.Excel;
@@ -21,83 +21,83 @@ import org.springframework.data.annotation.Transient;
  * @author JUNFU.WANG
  * @date 2023-10-07
  */
-@ApiModel("工单管理对象")
+@Schema(description = "工单管理对象")
 public class DevopsOrder extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     /**
      * 编号ID
      */
-    @ApiModelProperty("编号ID")
+    @Schema(description = "编号ID")
     private Long id;
 
     /**
      * 企业ID
      */
-    @ApiModelProperty("企业ID")
+    @Schema(description = "企业ID")
     @Excel(name = "企业ID")
     private Long entId;
 
     /**
      * 部门ID
      */
-    @ApiModelProperty("部门ID")
+    @Schema(description = "部门ID")
     @Excel(name = "部门ID")
     private Long deptId;
 
     /**
      * 工单名称
      */
-    @ApiModelProperty("工单名称")
+    @Schema(description = "工单名称")
     @Excel(name = "工单名称")
     private String orderTitle;
 
     /**
      * 电站类型
      */
-    @ApiModelProperty("电站类型")
+    @Schema(description = "电站类型")
     @Excel(name = "电站类型")
     private Integer stationType;
 
     /**
      * 维修站点
      */
-    @ApiModelProperty("维修站点")
+    @Schema(description = "维修站点")
     @Excel(name = "维修站点")
     private Long stationId;
 
     /**
      * 维修设备
      */
-    @ApiModelProperty("维修设备")
+    @Schema(description = "维修设备")
     @Excel(name = "维修设备")
     private Long deviceId;
 
     /**
      * 关联报警
      */
-    @ApiModelProperty("关联报警")
+    @Schema(description = "关联报警")
     @Excel(name = "关联报警")
     private Long alarmId;
 
     /**
      * 优先级
      */
-    @ApiModelProperty("优先级")
+    @Schema(description = "优先级")
     @Excel(name = "优先级")
     private String priorityLevel;
 
     /**
      * 工单类型（1普通 2抢修）
      */
-    @ApiModelProperty("工单类型（1普通 2抢修）")
+    @Schema(description = "工单类型（1普通 2抢修）")
     @Excel(name = "工单类型", readConverterExp = "1=普通,2=抢修")
     private Integer orderType;
 
     /**
      * 计划开始时间
      */
-    @ApiModelProperty("计划开始时间")
+    @Schema(description = "计划开始时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Excel(name = "计划开始时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
     private Date planStartTime;
@@ -105,7 +105,7 @@ public class DevopsOrder extends BaseEntity {
     /**
      * 计划结束时间
      */
-    @ApiModelProperty("计划结束时间")
+    @Schema(description = "计划结束时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Excel(name = "计划结束时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
     private Date planEndTime;
@@ -113,14 +113,14 @@ public class DevopsOrder extends BaseEntity {
     /**
      * 工单描述
      */
-    @ApiModelProperty("工单描述")
+    @Schema(description = "工单描述")
     @Excel(name = "工单描述")
     private String orderContent;
 
     /**
      * 图片描述（JSON格式）
      */
-    @ApiModelProperty("图片描述（JSON格式）")
+    @Schema(description = "图片描述（JSON格式）")
     @Excel(name = "图片描述", readConverterExp = "JSON格式")
     @TableField(typeHandler = JsonCommonTypeHandler.class)
     private List<JsonCommonVo> orderFiles;
@@ -128,14 +128,14 @@ public class DevopsOrder extends BaseEntity {
     /**
      * 负责人
      */
-    @ApiModelProperty("负责人")
+    @Schema(description = "负责人")
     @Excel(name = "负责人")
     private String chargeBy;
 
     /**
      * 协作人（多人，JSON格式）
      */
-    @ApiModelProperty("协作人（多人，JSON格式）")
+    @Schema(description = "协作人（多人，JSON格式）")
     @Excel(name = "协作人", readConverterExp = "多人，JSON格式")
     @TableField(typeHandler = JsonCommonTypeHandler.class)
     private List<JsonCommonVo> collaborateFor;
@@ -143,7 +143,7 @@ public class DevopsOrder extends BaseEntity {
     /**
      * 抄送人（多人，JSON格式）
      */
-    @ApiModelProperty("抄送人（多人，JSON格式）")
+    @Schema(description = "抄送人（多人，JSON格式）")
     @Excel(name = "抄送人", readConverterExp = "多人，JSON格式")
     @TableField(typeHandler = JsonCommonTypeHandler.class)
     private List<JsonCommonVo> copyFor;
@@ -151,7 +151,7 @@ public class DevopsOrder extends BaseEntity {
     /**
      * 验证人（多人，JSON格式）
      */
-    @ApiModelProperty("验证人（多人，JSON格式）")
+    @Schema(description = "验证人（多人，JSON格式）")
     @Excel(name = "验证人", readConverterExp = "多人，JSON格式")
     @TableField(typeHandler = JsonCommonTypeHandler.class)
     private List<JsonCommonVo> verifyFor;
@@ -159,7 +159,7 @@ public class DevopsOrder extends BaseEntity {
     /**
      * 接单时间
      */
-    @ApiModelProperty("接单时间")
+    @Schema(description = "接单时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Excel(name = "接单时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
     private Date receiveTime;
@@ -167,7 +167,7 @@ public class DevopsOrder extends BaseEntity {
     /**
      * 开始时间
      */
-    @ApiModelProperty("开始时间")
+    @Schema(description = "开始时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Excel(name = "开始时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
     private Date startTime;
@@ -175,7 +175,7 @@ public class DevopsOrder extends BaseEntity {
     /**
      * 完成时间
      */
-    @ApiModelProperty("完成时间")
+    @Schema(description = "完成时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Excel(name = "完成时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
     private Date completeTime;
@@ -183,21 +183,21 @@ public class DevopsOrder extends BaseEntity {
     /**
      * 实时用时（分钟）
      */
-    @ApiModelProperty("实时用时（分钟）")
+    @Schema(description = "实时用时（分钟）")
     @Excel(name = "实时用时", readConverterExp = "分=钟")
     private Integer useMinutes;
 
     /**
      * 处理过程
      */
-    @ApiModelProperty("处理过程")
+    @Schema(description = "处理过程")
     @Excel(name = "处理过程")
     private String handleProcess;
 
     /**
      * 现场照片（JSON格式）
      */
-    @ApiModelProperty("现场照片（JSON格式）")
+    @Schema(description = "现场照片（JSON格式）")
     @Excel(name = "现场照片", readConverterExp = "JSON格式")
     @TableField(typeHandler = JsonCommonTypeHandler.class)
     private List<JsonCommonVo> handleFiles;
@@ -205,7 +205,7 @@ public class DevopsOrder extends BaseEntity {
     /**
      * 验证时间
      */
-    @ApiModelProperty("验证时间")
+    @Schema(description = "验证时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Excel(name = "验证时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
     private Date verifyTime;
@@ -213,35 +213,35 @@ public class DevopsOrder extends BaseEntity {
     /**
      * 验证意见
      */
-    @ApiModelProperty("验证意见")
+    @Schema(description = "验证意见")
     @Excel(name = "验证意见")
     private String verifyAdvice;
 
     /**
      * 超时状态（0正常 1已超时）
      */
-    @ApiModelProperty("超时状态（0正常 1已超时）")
+    @Schema(description = "超时状态（0正常 1已超时）")
     @Excel(name = "超时状态", readConverterExp = "0=正常,1=已超时")
     private Integer timeoutStatus;
 
     /**
      * 工单状态（-1已取消 0新工单 1已接单 2进行中 3已完成 10已验证 20延迟处理）
      */
-    @ApiModelProperty("工单状态（-1已取消 0新工单 1已接单 2进行中 3已完成 10已验证 20延迟处理）")
+    @Schema(description = "工单状态（-1已取消 0新工单 1已接单 2进行中 3已完成 10已验证 20延迟处理）")
     @Excel(name = "工单状态", readConverterExp = "-=1已取消,0=新工单,1=已接单,2=进行中,3=已完成,1=0已验证,2=0延迟处理")
     private Integer status;
 
     /**
      * 是否停用（0正常 1停用）
      */
-    @ApiModelProperty("是否停用（0正常 1停用）")
+    @Schema(description = "是否停用（0正常 1停用）")
     @Excel(name = "是否停用", readConverterExp = "0=正常,1=停用")
     private Integer stopFlag;
 
     /**
      * 是否删除（0正常 1删除）
      */
-    @ApiModelProperty("是否删除（0正常 1删除）")
+    @Schema(description = "是否删除（0正常 1删除）")
     @Excel(name = "是否删除", readConverterExp = "0=正常,1=删除")
     private Integer deleteFlag;
 
@@ -284,7 +284,7 @@ public class DevopsOrder extends BaseEntity {
     /**
      * 关联报警-名称
      */
-    @ApiModelProperty("关联报警名称")
+    @Schema(description = "关联报警名称")
     @Excel(name = "关联报警名称")
     @Transient
     private String alarmName;
@@ -292,7 +292,7 @@ public class DevopsOrder extends BaseEntity {
     /**
      * 关联报警-报警内容
      */
-    @ApiModelProperty("报警内容")
+    @Schema(description = "报警内容")
     @Excel(name = "报警内容")
     private String alarmContent;
 

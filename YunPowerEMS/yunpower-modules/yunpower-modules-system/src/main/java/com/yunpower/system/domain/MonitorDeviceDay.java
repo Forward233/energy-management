@@ -2,8 +2,8 @@ package com.yunpower.system.domain;
 
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.yunpower.common.core.annotation.Excel;
@@ -16,62 +16,62 @@ import org.springframework.data.annotation.Transient;
  * @author JUNFU.WANG
  * @date 2023-12-16
  */
-@ApiModel("监控设备日实时变量对象")
+@Schema(description = "监控设备日实时变量对象")
 public class MonitorDeviceDay extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
     /** 编号ID */
-    @ApiModelProperty("编号ID")
+    @Schema(description = "编号ID")
     private Long id;
 
     /** 设备ID */
-    @ApiModelProperty("设备ID")
+    @Schema(description = "设备ID")
     @Excel(name = "设备ID")
     private Long deviceId;
 
     /** 统计时间 */
-    @ApiModelProperty("统计时间")
+    @Schema(description = "统计时间")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Excel(name = "统计时间", width = 30, dateFormat = "yyyy-MM-dd")
     private Date staticTime;
 
     /** 设备状态 */
-    @ApiModelProperty("设备状态")
+    @Schema(description = "设备状态")
     @Excel(name = "设备状态")
     private Integer status = 0;
 
     /** 发电功率 */
-    @ApiModelProperty("发电功率")
+    @Schema(description = "发电功率")
     @Excel(name = "发电功率")
     private Float electricPower = 0F;
 
     /** 当日发电量 */
-    @ApiModelProperty("当日发电量")
+    @Schema(description = "当日发电量")
     @Excel(name = "当日发电量")
     private Float electricQuantity = 0F;
 
     /** 当日满发电小时 */
-    @ApiModelProperty("当日满发电小时")
+    @Schema(description = "当日满发电小时")
     @Excel(name = "当日满发电小时")
     private Float electricHours;
 
     /** 逆变器性能 */
-    @ApiModelProperty("逆变器性能")
+    @Schema(description = "逆变器性能")
     @Excel(name = "逆变器性能")
     private Integer inverterPerformance = 0;
 
-    @ApiModelProperty("逆变器性能名称")
+    @Schema(description = "逆变器性能名称")
     @Transient
     private String inverterPerformanceName = "停机";
 
     /** 直流离散率 */
-    @ApiModelProperty("直流离散率")
+    @Schema(description = "直流离散率")
     @Excel(name = "直流离散率")
     private Float dcDispersionRate = 0F;
 
     /** 归一化率 */
-    @ApiModelProperty("归一化率")
+    @Schema(description = "归一化率")
     @Excel(name = "归一化率")
     private Float normalizedRate = 0F;
 

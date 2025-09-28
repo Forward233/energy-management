@@ -4,8 +4,8 @@ import java.util.List;
 import jakarta.servlet.http.HttpServletResponse;
 
 import com.yunpower.common.core.utils.StringUtils;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,7 +31,7 @@ import com.yunpower.common.core.web.page.TableDataInfo;
  * @author JUNFU.WANG
  * @date 2023-10-07
  */
-@Api(tags = "X 消息模板表")
+@Tag(name = "X 消息模板表", description = "X 消息模板表")
 @RestController
 @RequestMapping("/message-template")
 public class SysMessageTemplateController extends BaseController {
@@ -41,7 +41,7 @@ public class SysMessageTemplateController extends BaseController {
     /**
      * 查询消息模板列表
      */
-    @ApiOperation("查询消息模板列表")
+    @Operation(summary = "查询消息模板列表")
     @RequiresPermissions("system:message-template:list")
     @GetMapping("/list")
     public TableDataInfo list(SysMessageTemplate sysMessageTemplate) {
@@ -53,7 +53,7 @@ public class SysMessageTemplateController extends BaseController {
     /**
      * 查询消息模板列表（不分页）
      */
-    @ApiOperation("查询消息模板列表（不分页）")
+    @Operation(summary = "查询消息模板列表（不分页）")
     @RequiresPermissions("system:message-template:list")
     @GetMapping("/listAll")
     public AjaxResult listAll(SysMessageTemplate sysMessageTemplate) {
@@ -64,7 +64,7 @@ public class SysMessageTemplateController extends BaseController {
     /**
      * 导出消息模板列表
      */
-    @ApiOperation("导出消息模板列表")
+    @Operation(summary = "导出消息模板列表")
     @RequiresPermissions("system:message-template:export")
     @Log(title = "消息模板", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
@@ -77,7 +77,7 @@ public class SysMessageTemplateController extends BaseController {
     /**
      * 获取消息模板详细信息
      */
-    @ApiOperation("获取消息模板详细信息")
+    @Operation(summary = "获取消息模板详细信息")
     @RequiresPermissions("system:message-template:query")
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") Long id) {
@@ -87,7 +87,7 @@ public class SysMessageTemplateController extends BaseController {
     /**
      * 新增消息模板
      */
-    @ApiOperation("新增消息模板")
+    @Operation(summary = "新增消息模板")
     @RequiresPermissions("system:message-template:add")
     @Log(title = "消息模板", businessType = BusinessType.INSERT)
     @PostMapping
@@ -107,7 +107,7 @@ public class SysMessageTemplateController extends BaseController {
     /**
      * 修改消息模板
      */
-    @ApiOperation("修改消息模板")
+    @Operation(summary = "修改消息模板")
     @RequiresPermissions("system:message-template:edit")
     @Log(title = "消息模板", businessType = BusinessType.UPDATE)
     @PutMapping
@@ -124,7 +124,7 @@ public class SysMessageTemplateController extends BaseController {
     /**
      * 修改消息模板状态
      */
-    @ApiOperation("修改消息模板状态")
+    @Operation(summary = "修改消息模板状态")
     @RequiresPermissions("system:message-template:state")
     @Log(title = "消息模板", businessType = BusinessType.UPDATE)
     @PutMapping("/changeStatus/{id}/{state}")
@@ -135,7 +135,7 @@ public class SysMessageTemplateController extends BaseController {
     /**
      * 删除消息模板
      */
-    @ApiOperation("删除消息模板")
+    @Operation(summary = "删除消息模板")
     @RequiresPermissions("system:message-template:remove")
     @Log(title = "消息模板", businessType = BusinessType.DELETE)
     @DeleteMapping("/{ids}")

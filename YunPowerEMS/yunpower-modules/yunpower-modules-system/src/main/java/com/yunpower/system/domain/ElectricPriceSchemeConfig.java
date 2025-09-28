@@ -4,8 +4,8 @@ import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.yunpower.system.domain.handler.SeasonalRangeTypeHandler;
 import com.yunpower.system.domain.jsonvo.SeasonalRangeVo;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.yunpower.common.core.annotation.Excel;
@@ -19,72 +19,72 @@ import java.util.List;
  * @author JUNFU.WANG
  * @date 2023-11-02
  */
-@ApiModel("电度电价配置对象")
+@Schema(description = "电度电价配置对象")
 public class ElectricPriceSchemeConfig extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
     /** 编号ID */
-    @ApiModelProperty("编号ID")
+    @Schema(description = "编号ID")
     private Long id;
 
     /** 电价标准ID */
-    @ApiModelProperty("电价标准ID")
+    @Schema(description = "电价标准ID")
     @Excel(name = "电价标准ID")
     private Long schemeId;
 
     /** 生效年份 */
-    @ApiModelProperty("生效年份")
+    @Schema(description = "生效年份")
     @Excel(name = "生效年份")
     private Integer effectYear;
 
     /** 生效月份集合 */
-    @ApiModelProperty("生效月份集合")
+    @Schema(description = "生效月份集合")
     @Excel(name = "生效月份集合")
     private String effectMonth;
 
     /** 电价类型：1分时电价 2统一电价 */
-    @ApiModelProperty("电价类型：1分时电价 2统一电价")
+    @Schema(description = "电价类型：1分时电价 2统一电价")
     @Excel(name = "电价类型：1分时电价 2统一电价")
     private Integer priceType;
 
     /** 统一电价 */
-    @ApiModelProperty("统一电价")
+    @Schema(description = "统一电价")
     @Excel(name = "统一电价")
     private Float uniformPrice;
 
     /** 尖峰电价 */
-    @ApiModelProperty("尖峰电价")
+    @Schema(description = "尖峰电价")
     @Excel(name = "尖峰电价")
     private Float jianPrice;
 
     /** 峰段电价 */
-    @ApiModelProperty("峰段电价")
+    @Schema(description = "峰段电价")
     @Excel(name = "峰段电价")
     private Float fengPrice;
 
     /** 平段电价 */
-    @ApiModelProperty("平段电价")
+    @Schema(description = "平段电价")
     @Excel(name = "平段电价")
     private Float pingPrice;
 
     /** 谷段电价 */
-    @ApiModelProperty("谷段电价")
+    @Schema(description = "谷段电价")
     @Excel(name = "谷段电价")
     private Float guPrice;
 
     /** 深谷电价 */
-    @ApiModelProperty("深谷电价")
+    @Schema(description = "深谷电价")
     @Excel(name = "深谷电价")
     private Float shenPrice;
 
     /** 全天电价 */
-    @ApiModelProperty("全天电价")
+    @Schema(description = "全天电价")
     @Excel(name = "全天电价")
     private Float wholePrice;
 
     /** 时间段（JSON格式） */
-    @ApiModelProperty("时间段（JSON格式）")
+    @Schema(description = "时间段（JSON格式）")
     @Excel(name = "时间段")
     @TableField(typeHandler = SeasonalRangeTypeHandler.class)
     private List<SeasonalRangeVo> seasonalRange;

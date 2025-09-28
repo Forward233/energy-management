@@ -1,7 +1,7 @@
 package com.yunpower.system.domain;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.yunpower.common.core.annotation.Excel;
@@ -13,32 +13,32 @@ import com.yunpower.common.core.web.domain.BaseEntity;
  * @author JUNFU.WANG
  * @date 2023-10-07
  */
-@ApiModel("能源监控设备关联对象")
+@Schema(description = "能源监控设备关联对象")
 public class MonitorDeviceAssociation extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
     /** 编号ID */
-    @ApiModelProperty("编号ID")
+    @Schema(description = "编号ID")
     private Long id;
 
     /** 设备ID */
-    @ApiModelProperty("设备ID")
+    @Schema(description = "设备ID")
     @Excel(name = "设备ID")
     private Long deviceId;
 
     /** 关联设备ID */
-    @ApiModelProperty("关联设备ID")
+    @Schema(description = "关联设备ID")
     @Excel(name = "关联设备ID")
     private Long correDeviceId;
 
     /** 关联设备名称 */
-    @ApiModelProperty("关联设备名称")
+    @Schema(description = "关联设备名称")
     @Excel(name = "关联设备名称")
     private String correDeviceName;
 
     /** 关联设备编号 */
-    @ApiModelProperty("关联设备编号")
+    @Schema(description = "关联设备编号")
     @Excel(name = "关联设备编号")
     private String correDeviceSn;
 

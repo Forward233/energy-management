@@ -6,8 +6,8 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.yunpower.common.core.xss.Xss;
 import com.yunpower.system.api.domain.SysStation;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.yunpower.common.core.annotation.Excel;
@@ -22,126 +22,126 @@ import jakarta.validation.constraints.Size;
  * @author JUNFU.WANG
  * @date 2023-09-27
  */
-@ApiModel("企业信息对象")
+@Schema(description = "企业信息对象")
 public class SysCommonEnterprise extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
     /** 编号ID */
-    @ApiModelProperty("编号ID")
+    @Schema(description = "编号ID")
     private Long id;
 
     /** 企业名称 */
-    @ApiModelProperty("企业名称")
+    @Schema(description = "企业名称")
     @Excel(name = "企业名称")
     private String entName;
 
     /** 企业编码 */
-    @ApiModelProperty("企业编码")
+    @Schema(description = "企业编码")
     @Excel(name = "企业编码")
     private String entSn;
 
     /** 企业类型 */
-    @ApiModelProperty("企业类型")
+    @Schema(description = "企业类型")
     @Excel(name = "企业类型")
     private Integer entType;
 
     /** 企业Logo */
-    @ApiModelProperty("企业Logo")
+    @Schema(description = "企业Logo")
     @Excel(name = "企业Logo")
     private String entLogo;
 
     /** 企业简介 */
-    @ApiModelProperty("企业简介")
+    @Schema(description = "企业简介")
     @Excel(name = "企业简介")
     private String entIntro;
 
     /** 统一社会信用代码 */
-    @ApiModelProperty("统一社会信用代码")
+    @Schema(description = "统一社会信用代码")
     @Excel(name = "统一社会信用代码")
     private String creditCode;
 
     /** 企业法人 */
-    @ApiModelProperty("企业法人")
+    @Schema(description = "企业法人")
     @Excel(name = "企业法人")
     private String legalPerson;
 
     /** 联系人 */
-    @ApiModelProperty("联系人")
+    @Schema(description = "联系人")
     @Excel(name = "联系人")
     private String linkName;
 
     /** 联系电话 */
-    @ApiModelProperty("联系电话")
+    @Schema(description = "联系电话")
     @Excel(name = "联系电话")
     private String linkMobile;
 
     /** 联系地址 */
-    @ApiModelProperty("联系地址")
+    @Schema(description = "联系地址")
     @Excel(name = "联系地址")
     private String linkAddress;
 
     /** 邮箱 */
-    @ApiModelProperty("邮箱")
+    @Schema(description = "邮箱")
     @Excel(name = "邮箱")
     private String email;
 
     /** 经营范围 */
-    @ApiModelProperty("经营范围")
+    @Schema(description = "经营范围")
     @Excel(name = "经营范围")
     private String businessScope;
 
     /** 注册资本 */
-    @ApiModelProperty("注册资本")
+    @Schema(description = "注册资本")
     @Excel(name = "注册资本")
     private String registeredCapital;
 
     /** 成立日期 */
-    @ApiModelProperty("成立日期")
+    @Schema(description = "成立日期")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Excel(name = "成立日期", width = 30, dateFormat = "yyyy-MM-dd")
     private Date foundDate;
 
     /** 营业期限开始 */
-    @ApiModelProperty("营业期限开始")
+    @Schema(description = "营业期限开始")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Excel(name = "营业期限开始", width = 30, dateFormat = "yyyy-MM-dd")
     private Date openStartDate;
 
     /** 营业期限结束 */
-    @ApiModelProperty("营业期限结束")
+    @Schema(description = "营业期限结束")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Excel(name = "营业期限结束", width = 30, dateFormat = "yyyy-MM-dd")
     private Date openEndDate;
 
     /** 住所 */
-    @ApiModelProperty("住所")
+    @Schema(description = "住所")
     @Excel(name = "住所")
     private String address;
 
     /** 登记机关 */
-    @ApiModelProperty("登记机关")
+    @Schema(description = "登记机关")
     @Excel(name = "登记机关")
     private String regOffice;
 
     /** 发证日期 */
-    @ApiModelProperty("发证日期")
+    @Schema(description = "发证日期")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Excel(name = "发证日期", width = 30, dateFormat = "yyyy-MM-dd")
     private Date issueDate;
 
     /** 逻辑代码 */
-    @ApiModelProperty("逻辑代码")
+    @Schema(description = "逻辑代码")
     @Excel(name = "逻辑代码")
     private String logicCode;
 
     /** 是否停用（0正常 1停用） */
-    @ApiModelProperty("是否停用（0正常 1停用）")
+    @Schema(description = "是否停用（0正常 1停用）")
     @Excel(name = "是否停用", readConverterExp = "0=正常,1=停用")
     private Integer stopFlag;
 
     /** 是否删除（0正常 1删除） */
-    @ApiModelProperty("是否删除（0正常 1删除）")
+    @Schema(description = "是否删除（0正常 1删除）")
     private Integer deleteFlag;
 
     /** 站点对象 */

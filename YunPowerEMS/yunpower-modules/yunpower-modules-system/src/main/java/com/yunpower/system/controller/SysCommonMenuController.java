@@ -18,8 +18,8 @@ import com.yunpower.system.domain.AlarmTriggerConfig;
 import com.yunpower.system.service.ISysCommonDictService;
 import com.yunpower.system.service.ISysUserService;
 import com.yunpower.common.log.annotation.Log;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -38,7 +38,7 @@ import com.yunpower.system.service.ISysCommonMenuService;
  *
  * @author yunpower
  */
-@Api(tags = "C 菜单信息表")
+@Tag(name = "C 菜单信息表", description = "C 菜单信息表")
 @RestController
 @RequestMapping("/menu")
 public class SysCommonMenuController extends BaseController {
@@ -54,7 +54,7 @@ public class SysCommonMenuController extends BaseController {
     /**
      * 获取菜单列表（不分页）
      */
-    @ApiOperation("获取菜单列表（不分页）")
+    @Operation(summary = "获取菜单列表（不分页）")
     @RequiresPermissions("system:menu:list")
     @GetMapping("/list")
     public AjaxResult list(SysCommonMenu menu) {
@@ -66,7 +66,7 @@ public class SysCommonMenuController extends BaseController {
     /**
      * 根据菜单编号获取详细信息
      */
-    @ApiOperation("根据菜单编号获取详细信息")
+    @Operation(summary = "根据菜单编号获取详细信息")
     @RequiresPermissions("system:menu:query")
     @GetMapping(value = "/{menuId}")
     public AjaxResult getInfo(@PathVariable Long menuId) {
@@ -76,7 +76,7 @@ public class SysCommonMenuController extends BaseController {
     /**
      * 获取菜单下拉树列表
      */
-    @ApiOperation("获取菜单下拉列表")
+    @Operation(summary = "获取菜单下拉列表")
     @GetMapping("/treeselect")
     public AjaxResult treeselect(SysCommonMenu menu) {
         Long userId = SecurityUtils.getUserId();
@@ -87,7 +87,7 @@ public class SysCommonMenuController extends BaseController {
     /**
      * 加载对应角色菜单列表树
      */
-    @ApiOperation("加载对应角色菜单列表树")
+    @Operation(summary = "加载对应角色菜单列表树")
     @GetMapping(value = "/roleMenuTreeselect/{roleId}")
     public AjaxResult roleMenuTreeselect(@PathVariable("roleId") Long roleId) {
         Long userId = SecurityUtils.getUserId();
@@ -101,7 +101,7 @@ public class SysCommonMenuController extends BaseController {
     /**
      * 新增菜单
      */
-    @ApiOperation("新增菜单")
+    @Operation(summary = "新增菜单")
     @RequiresPermissions("system:menu:add")
     @Log(title = "菜单管理", businessType = BusinessType.INSERT)
     @PostMapping
@@ -118,7 +118,7 @@ public class SysCommonMenuController extends BaseController {
     /**
      * 修改菜单
      */
-    @ApiOperation("修改菜单")
+    @Operation(summary = "修改菜单")
     @RequiresPermissions("system:menu:edit")
     @Log(title = "菜单管理", businessType = BusinessType.UPDATE)
     @PutMapping
@@ -137,7 +137,7 @@ public class SysCommonMenuController extends BaseController {
     /**
      * 删除菜单
      */
-    @ApiOperation("删除菜单")
+    @Operation(summary = "删除菜单")
     @RequiresPermissions("system:menu:remove")
     @Log(title = "菜单管理", businessType = BusinessType.DELETE)
     @DeleteMapping("/{menuId}")
@@ -156,7 +156,7 @@ public class SysCommonMenuController extends BaseController {
      *
      * @return 路由信息
      */
-    @ApiOperation("获取菜单路由信息")
+    @Operation(summary = "获取菜单路由信息")
     @GetMapping("getRouters")
     public AjaxResult getRouters() {
         Long userId = SecurityUtils.getUserId();
@@ -173,7 +173,7 @@ public class SysCommonMenuController extends BaseController {
      * @param menuModel 模块标识（可选）
      * @return 路由信息
      */
-    @ApiOperation("获取（新能源）菜单路由信息")
+    @Operation(summary = "获取（新能源）菜单路由信息")
     @GetMapping("getEnergyRouters")
     public AjaxResult getEnergyRouters(Integer menuModel) {
         Long userId = SecurityUtils.getUserId();
@@ -186,7 +186,7 @@ public class SysCommonMenuController extends BaseController {
      *
      * @return 模块列表
      */
-    @ApiOperation("获取（新能源）菜单模块")
+    @Operation(summary = "获取（新能源）菜单模块")
     @GetMapping("getEnergyMenuModels")
     public AjaxResult getEnergyMenuModels() {
         //当前用户
@@ -221,7 +221,7 @@ public class SysCommonMenuController extends BaseController {
     /**
      * 修改菜单状态
      */
-    @ApiOperation("修改菜单状态")
+    @Operation(summary = "修改菜单状态")
     @RequiresPermissions("system:menu:state")
     @Log(title = "菜单", businessType = BusinessType.UPDATE)
     @PutMapping("/changeStatus/{id}/{state}")

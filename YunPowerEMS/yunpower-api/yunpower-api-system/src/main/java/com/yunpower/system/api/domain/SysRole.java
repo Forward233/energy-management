@@ -1,7 +1,7 @@
 package com.yunpower.system.api.domain;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.yunpower.common.core.annotation.Excel;
@@ -20,91 +20,91 @@ import java.util.Set;
  * @author yunpower
  * @date 2023-09-13
  */
-@ApiModel("角色信息对象")
+@Schema(description = "角色信息对象")
 public class SysRole extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     /**
      * 编号ID
      */
-    @ApiModelProperty("编号ID")
+    @Schema(description = "编号ID")
     @Excel(name = "角色编号", cellType = ColumnType.NUMERIC)
     private Long id;
 
     /**
      * 企业ID
      */
-    @ApiModelProperty("企业ID")
+    @Schema(description = "企业ID")
     @Excel(name = "企业ID")
     private Long entId;
 
     /**
      * 部门ID
      */
-    @ApiModelProperty("部门ID")
+    @Schema(description = "部门ID")
     @Excel(name = "部门ID")
     private Long deptId;
 
     /**
      * 角色名称
      */
-    @ApiModelProperty("角色名称")
+    @Schema(description = "角色名称")
     @Excel(name = "角色名称")
     private String roleName;
 
     /**
      * 权限字符
      */
-    @ApiModelProperty("权限字符")
+    @Schema(description = "权限字符")
     @Excel(name = "权限字符")
     private String roleKey;
 
     /**
      * 显示顺序
      */
-    @ApiModelProperty("显示顺序")
+    @Schema(description = "显示顺序")
     @Excel(name = "显示顺序")
     private Integer orderNum;
 
     /**
      * 菜单范围（1全部菜单 2仅浏览 3自定义菜单）
      */
-    @ApiModelProperty("菜单范围（1全部菜单 2仅浏览 3自定义菜单）")
+    @Schema(description = "菜单范围（1全部菜单 2仅浏览 3自定义菜单）")
     @Excel(name = "菜单范围", readConverterExp = "1=全部菜单,2=仅浏览,3=自定义菜单")
     private Integer menuScope;
 
     /**
      * 数据范围（1全部数据权限 2自定数据权限 3本部门数据权限 4本部门及以下数据权限 5仅本人数据权限）
      */
-    @ApiModelProperty("数据范围")
+    @Schema(description = "数据范围")
     @Excel(name = "数据范围", readConverterExp = "1=全部数据权限,2=自定数据权限,3=本部门数据权限,4=本部门及以下数据权限,5=仅本人数据权限")
     private Integer dataScope;
 
     /**
      * 菜单树选择项是否关联显示（父子联动）
      */
-    @ApiModelProperty("菜单树选择项是否关联显示")
+    @Schema(description = "菜单树选择项是否关联显示")
     @Excel(name = "菜单树选择项是否关联显示")
     private boolean menuCheckStrictly;
 
     /**
      * 部门树选择项是否关联显示（父子联动）
      */
-    @ApiModelProperty("部门树选择项是否关联显示")
+    @Schema(description = "部门树选择项是否关联显示")
     @Excel(name = "部门树选择项是否关联显示")
     private boolean deptCheckStrictly;
 
     /**
      * 是否停用（0正常 1停用）
      */
-    @ApiModelProperty("是否停用（0正常 1停用）")
+    @Schema(description = "是否停用（0正常 1停用）")
     @Excel(name = "是否停用", readConverterExp = "0=正常,1=停用")
     private Integer stopFlag;
 
     /**
      * 是否删除（0正常1删除）
      */
-    @ApiModelProperty("是否删除（0正常 1删除）")
+    @Schema(description = "是否删除（0正常 1删除）")
     private Integer deleteFlag;
 
     /** 扩展 */

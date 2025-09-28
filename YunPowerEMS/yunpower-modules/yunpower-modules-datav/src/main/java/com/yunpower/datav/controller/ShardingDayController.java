@@ -10,8 +10,8 @@ import com.yunpower.common.core.web.page.TableDataInfo;
 import com.yunpower.common.log.annotation.Log;
 import com.yunpower.common.log.enums.BusinessType;
 import com.yunpower.common.security.annotation.RequiresPermissions;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +24,7 @@ import java.util.List;
  * @author JUNFU.WANG
  * @date 2023-10-18
  */
-@Api(tags = "C 日数据存储表")
+@Tag(name = "C 日数据存储表", description = "C 日数据存储表")
 @RestController
 @RequestMapping("/sharding-day")
 public class ShardingDayController extends BaseController {
@@ -35,7 +35,7 @@ public class ShardingDayController extends BaseController {
      * 查询日数据存储列表
      * /system/day/list?params[beginTime]=2023-10-03 00:00:00&params[endTime]=2023-10-05 23:59:59
      */
-    @ApiOperation("查询日数据存储列表")
+    @Operation(summary = "查询日数据存储列表")
     @RequiresPermissions("system:day:list")
     @GetMapping("/list")
     public TableDataInfo list(ShardingDay shardingDay) {
@@ -51,7 +51,7 @@ public class ShardingDayController extends BaseController {
     /**
      * 导出日数据存储列表
      */
-    @ApiOperation("导出日数据存储列表")
+    @Operation(summary = "导出日数据存储列表")
     @RequiresPermissions("system:day:export")
     @Log(title = "日数据存储", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
@@ -64,7 +64,7 @@ public class ShardingDayController extends BaseController {
     /**
      * 获取日数据存储详细信息
      */
-    @ApiOperation("获取日数据存储详细信息")
+    @Operation(summary = "获取日数据存储详细信息")
     @RequiresPermissions("system:day:query")
     @GetMapping(value = "/{variableName}")
     public AjaxResult getInfo(@PathVariable("variableName") String variableName) {
@@ -74,7 +74,7 @@ public class ShardingDayController extends BaseController {
     /**
      * 查询：1小时数据
      */
-    @ApiOperation("查询：1小时数据")
+    @Operation(summary = "查询：1小时数据")
     @RequiresPermissions("system:day:query")
     @GetMapping(value = "/getHourData")
     public AjaxResult getHourData(ShardingDay shardingDay, Integer storageType) {
@@ -86,7 +86,7 @@ public class ShardingDayController extends BaseController {
     /**
      * 查询：30分钟数据
      */
-    @ApiOperation("查询：30分钟数据")
+    @Operation(summary = "查询：30分钟数据")
     @RequiresPermissions("system:day:query")
     @GetMapping(value = "/getMinuteData30")
     public AjaxResult getMinuteData30(ShardingDay shardingDay, Integer storageType) {

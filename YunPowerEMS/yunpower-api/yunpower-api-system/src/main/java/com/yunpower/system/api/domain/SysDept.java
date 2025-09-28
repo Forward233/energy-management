@@ -1,7 +1,7 @@
 package com.yunpower.system.api.domain;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.yunpower.common.core.annotation.Excel;
@@ -21,110 +21,110 @@ import java.util.List;
  * @author yunpower
  * @date 2023-09-13
  */
-@ApiModel("部门对象")
+@Schema(description = "部门对象")
 public class SysDept extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     /**
      * 编号ID
      */
-    @ApiModelProperty("编号ID")
+    @Schema(description = "编号ID")
     private Long id;
 
     /**
      * 企业ID
      */
-    @ApiModelProperty("企业ID")
+    @Schema(description = "企业ID")
     @Excel(name = "企业ID")
     private Long entId;
 
     /**
      * 上级ID（部门ID）
      */
-    @ApiModelProperty("上级ID")
+    @Schema(description = "上级ID")
     @Excel(name = "上级ID", readConverterExp = "部门ID")
     private Long parentId;
 
     /**
      * 来源类型（1企业 2站点）
      */
-    @ApiModelProperty("来源类型（1企业 2站点）")
+    @Schema(description = "来源类型（1企业 2站点）")
     @Excel(name = "来源类型", readConverterExp = "1=企业,2=站点")
     private Integer originType;
 
     /**
      * 对应ID
      */
-    @ApiModelProperty("对应ID")
+    @Schema(description = "对应ID")
     @Excel(name = "对应ID")
     private Long correId;
 
     /**
      * 逻辑代码
      */
-    @ApiModelProperty("逻辑代码")
+    @Schema(description = "逻辑代码")
     @Excel(name = "逻辑代码")
     private String ancestors;
 
     /**
      * 是否可选择（0否 1是）
      */
-    @ApiModelProperty("是否可选择（0否 1是）")
+    @Schema(description = "是否可选择（0否 1是）")
     @Excel(name = "是否可选择", readConverterExp = "0=否,1=是")
     private Integer isCanSelect;
 
     /**
      * 部门名称
      */
-    @ApiModelProperty("部门名称")
+    @Schema(description = "部门名称")
     @Excel(name = "部门名称")
     private String deptName;
 
     /**
      * 部门编码
      */
-    @ApiModelProperty("部门编码")
+    @Schema(description = "部门编码")
     @Excel(name = "部门编码")
     private String deptSn;
 
     /**
      * 负责人
      */
-    @ApiModelProperty("负责人")
+    @Schema(description = "负责人")
     @Excel(name = "负责人")
     private String leader;
 
     /**
      * 联系电话
      */
-    @ApiModelProperty("联系电话")
+    @Schema(description = "联系电话")
     @Excel(name = "联系电话")
     private String mobile;
 
     /**
      * 联系邮箱
      */
-    @ApiModelProperty("联系邮箱")
+    @Schema(description = "联系邮箱")
     @Excel(name = "联系邮箱")
     private String email;
 
     /**
      * 显示顺序
      */
-    @ApiModelProperty("显示顺序")
+    @Schema(description = "显示顺序")
     private Integer orderNum;
 
     /**
      * 是否停用（0正常 1停用）
      */
-    @ApiModelProperty("是否停用（0正常 1停用）")
+    @Schema(description = "是否停用（0正常 1停用）")
     @Excel(name = "是否停用", readConverterExp = "0=正常,1=停用")
     private Integer stopFlag;
 
     /**
      * 是否删除（0正常 1删除）
      */
-    @ApiModelProperty("是否删除（0正常 1删除）")
+    @Schema(description = "是否删除（0正常 1删除）")
     private Integer deleteFlag;
 
     /**

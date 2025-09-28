@@ -3,8 +3,8 @@ package com.yunpower.system.controller;
 import java.util.List;
 import jakarta.servlet.http.HttpServletResponse;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,7 +30,7 @@ import com.yunpower.common.core.web.page.TableDataInfo;
  * @author JUNFU.WANG
  * @date 2024-01-18
  */
-@Api(tags = "R 执行日志表")
+@Tag(name = "R 执行日志表", description = "R 执行日志表")
 @RestController
 @RequestMapping("/executelog")
 public class SysLogExecuteController extends BaseController
@@ -41,7 +41,7 @@ public class SysLogExecuteController extends BaseController
     /**
      * 查询执行日志列表
      */
-    @ApiOperation("查询执行日志列表")
+    @Operation(summary = "查询执行日志列表")
     @RequiresPermissions("system:execute:list")
     @GetMapping("/list")
     public TableDataInfo list(SysLogExecute sysLogExecute)
@@ -54,7 +54,7 @@ public class SysLogExecuteController extends BaseController
     /**
      * 导出执行日志列表
      */
-    @ApiOperation("导出执行日志列表")
+    @Operation(summary = "导出执行日志列表")
     @RequiresPermissions("system:execute:export")
     @Log(title = "执行日志", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
@@ -68,7 +68,7 @@ public class SysLogExecuteController extends BaseController
     /**
      * 获取执行日志详细信息
      */
-    @ApiOperation("获取执行日志详细信息")
+    @Operation(summary = "获取执行日志详细信息")
     @RequiresPermissions("system:execute:query")
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") Long id)
@@ -79,7 +79,7 @@ public class SysLogExecuteController extends BaseController
     /**
      * 新增执行日志
      */
-    @ApiOperation("新增执行日志")
+    @Operation(summary = "新增执行日志")
     @RequiresPermissions("system:execute:add")
     @Log(title = "执行日志", businessType = BusinessType.INSERT)
     @PostMapping
@@ -91,7 +91,7 @@ public class SysLogExecuteController extends BaseController
     /**
      * 修改执行日志
      */
-    @ApiOperation("修改执行日志")
+    @Operation(summary = "修改执行日志")
     @RequiresPermissions("system:execute:edit")
     @Log(title = "执行日志", businessType = BusinessType.UPDATE)
     @PutMapping
@@ -103,7 +103,7 @@ public class SysLogExecuteController extends BaseController
     /**
      * 删除执行日志
      */
-    @ApiOperation("删除执行日志")
+    @Operation(summary = "删除执行日志")
     @RequiresPermissions("system:execute:remove")
     @Log(title = "执行日志", businessType = BusinessType.DELETE)
 	@DeleteMapping("/{ids}")

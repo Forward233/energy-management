@@ -17,8 +17,8 @@ import com.yunpower.system.service.IDashboardConfigService;
 import com.yunpower.system.service.ISysCommonEnterpriseService;
 import com.yunpower.system.service.ISysDeptService;
 import com.yunpower.system.service.ISysStationService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +33,7 @@ import java.util.Map;
  * @author yunpower
  * @date 2024-05-30
  */
-@Api(tags = "D 仪表盘配置表")
+@Tag(name = "D 仪表盘配置表", description = "D 仪表盘配置表")
 @RestController
 @RequestMapping("/dashboard/config")
 public class DashboardConfigController extends BaseController {
@@ -52,7 +52,7 @@ public class DashboardConfigController extends BaseController {
 	/**
 	 * 查询仪表盘配置列表
 	 */
-	@ApiOperation("查询仪表盘配置列表")
+	@Operation(summary = "查询仪表盘配置列表")
 	@RequiresPermissions("system:dashboard-config:list")
 	@GetMapping("/list")
 	public TableDataInfo list(DashboardConfig dashboardConfig) {
@@ -70,7 +70,7 @@ public class DashboardConfigController extends BaseController {
 	/**
 	 * 导出仪表盘配置列表
 	 */
-	@ApiOperation("导出仪表盘配置列表")
+	@Operation(summary = "导出仪表盘配置列表")
 	@RequiresPermissions("system:dashboard-config:export")
 	@Log(title = "仪表盘配置", businessType = BusinessType.EXPORT)
 	@PostMapping("/export")
@@ -83,7 +83,7 @@ public class DashboardConfigController extends BaseController {
 	/**
 	 * 获取仪表盘配置详细信息-id
 	 */
-	@ApiOperation("获取仪表盘配置详细信息")
+	@Operation(summary = "获取仪表盘配置详细信息")
 	@RequiresPermissions("system:dashboard-config:query")
 	@GetMapping(value = "/getInfo/{id}")
 	public AjaxResult getInfo(@PathVariable("id") Long pageKey) {
@@ -125,7 +125,7 @@ public class DashboardConfigController extends BaseController {
 	/**
 	 * 获取仪表盘配置详细信息-pageKey
 	 */
-	@ApiOperation("获取仪表盘配置详细信息")
+	@Operation(summary = "获取仪表盘配置详细信息")
 	@RequiresPermissions("system:dashboard-config:query")
 	@GetMapping(value = "/{pageKey}")
 	public AjaxResult getInfo(@PathVariable("pageKey") String pageKey) {

@@ -5,8 +5,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,7 +31,7 @@ import com.yunpower.system.service.ISysUserOnlineService;
  * 
  * @author yunpower
  */
-@Api(tags = "Y 在线用户监控")
+@Tag(name = "Y 在线用户监控", description = "Y 在线用户监控")
 @RestController
 @RequestMapping("/online")
 public class SysUserOnlineController extends BaseController
@@ -42,7 +42,7 @@ public class SysUserOnlineController extends BaseController
     @Autowired
     private RedisService redisService;
 
-    @ApiOperation("获取在线用户列表")
+    @Operation(summary = "获取在线用户列表")
     @RequiresPermissions("monitor:online:list")
     @GetMapping("/list")
     public TableDataInfo list(String ipaddr, String userName)
@@ -77,7 +77,7 @@ public class SysUserOnlineController extends BaseController
     /**
      * 强退用户
      */
-    @ApiOperation("强退用户")
+    @Operation(summary = "强退用户")
     @RequiresPermissions("monitor:online:forceLogout")
     @Log(title = "在线用户", businessType = BusinessType.FORCE)
     @DeleteMapping("/{tokenId}")

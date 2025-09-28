@@ -3,8 +3,8 @@ package com.yunpower.system.controller;
 import java.util.List;
 import jakarta.servlet.http.HttpServletResponse;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +29,7 @@ import com.yunpower.system.service.ISysLogOperService;
  * 
  * @author yunpower
  */
-@Api(tags = "R 操作日志记录表")
+@Tag(name = "R 操作日志记录表", description = "R 操作日志记录表")
 @RestController
 @RequestMapping("/operlog")
 public class SysLogOperController extends BaseController
@@ -44,7 +44,7 @@ public class SysLogOperController extends BaseController
      * @param operLog 实体类
      * @return 结果
      */
-    @ApiOperation("获取操作日志记录列表")
+    @Operation(summary = "获取操作日志记录列表")
     @RequiresPermissions("system:operlog:list")
     @GetMapping("/list")
     public TableDataInfo list(SysLogOper operLog)
@@ -54,7 +54,7 @@ public class SysLogOperController extends BaseController
         return getDataTable(list);
     }
 
-    @ApiOperation("导出操作日志记录")
+    @Operation(summary = "导出操作日志记录")
     @Log(title = "操作日志", businessType = BusinessType.EXPORT)
     @RequiresPermissions("system:operlog:export")
     @PostMapping("/export")
@@ -65,7 +65,7 @@ public class SysLogOperController extends BaseController
         util.exportExcel(response, list, "操作日志");
     }
 
-    @ApiOperation("删除操作日志记录")
+    @Operation(summary = "删除操作日志记录")
     @Log(title = "操作日志", businessType = BusinessType.DELETE)
     @RequiresPermissions("system:operlog:remove")
     @DeleteMapping("/{operIds}")
@@ -74,7 +74,7 @@ public class SysLogOperController extends BaseController
         return toAjax(operLogService.deleteOperLogByIds(operIds));
     }
 
-    @ApiOperation("清空操作日志记录")
+    @Operation(summary = "清空操作日志记录")
     @RequiresPermissions("system:operlog:remove")
     @Log(title = "操作日志", businessType = BusinessType.CLEAN)
     @DeleteMapping("/clean")
@@ -84,7 +84,7 @@ public class SysLogOperController extends BaseController
         return success();
     }
 
-    @ApiOperation("新增操作日志记录")
+    @Operation(summary = "新增操作日志记录")
     @InnerAuth
     @PostMapping
     public AjaxResult add(@RequestBody SysLogOper operLog)

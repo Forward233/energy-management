@@ -1,7 +1,7 @@
 package com.yunpower.system.domain;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.yunpower.common.core.annotation.Excel;
@@ -16,177 +16,177 @@ import java.util.List;
  * @author JUNFU.WANG
  * @date 2023-10-11
  */
-@ApiModel("公司对象")
+@Schema(description = "公司对象")
 public class SysCompany extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
     /** 编号ID */
-    @ApiModelProperty("编号ID")
+    @Schema(description = "编号ID")
     private Long id;
 
     /** 企业ID */
-    @ApiModelProperty("企业ID")
+    @Schema(description = "企业ID")
     @Excel(name = "企业ID")
     private Long entId;
 
     /** 部门ID */
-    @ApiModelProperty("部门ID")
+    @Schema(description = "部门ID")
     @Excel(name = "部门ID")
     private Long deptId;
 
     /** 上级ID */
-    @ApiModelProperty("上级ID")
+    @Schema(description = "上级ID")
     @Excel(name = "上级ID")
     private Long parentId;
 
     /** 公司名称 */
-    @ApiModelProperty("公司名称")
+    @Schema(description = "公司名称")
     @Excel(name = "公司名称")
     private String companyName;
 
     /** 公司英文名称 */
-    @ApiModelProperty("公司英文名称")
+    @Schema(description = "公司英文名称")
     @Excel(name = "公司英文名称")
     private String companyNameEn;
 
     /** 逻辑代码 */
-    @ApiModelProperty("逻辑代码")
+    @Schema(description = "逻辑代码")
     @Excel(name = "逻辑代码")
     private String logicCode;
 
     /** 公司分组 */
-    @ApiModelProperty("公司分组")
+    @Schema(description = "公司分组")
     @Excel(name = "公司分组")
     private Integer groupId;
 
     /** 公司类型（1公司 2部门） */
-    @ApiModelProperty("公司类型（1公司 2部门）")
+    @Schema(description = "公司类型（1公司 2部门）")
     @Excel(name = "公司类型", readConverterExp = "1=公司,2=部门")
     private Integer companyType;
 
     /** 所属行业 */
-    @ApiModelProperty("所属行业")
+    @Schema(description = "所属行业")
     @Excel(name = "所属行业")
     private Long industryGroupId;
 
     /** 公司Logo */
-    @ApiModelProperty("公司Logo")
+    @Schema(description = "公司Logo")
     @Excel(name = "公司Logo")
     private String logoUrl;
 
     /** 公司评级ABCD */
-    @ApiModelProperty("公司评级ABCD")
+    @Schema(description = "公司评级ABCD")
     @Excel(name = "公司评级ABCD")
     private String companyGrade;
 
     /** 公司规模 */
-    @ApiModelProperty("公司规模")
+    @Schema(description = "公司规模")
     @Excel(name = "公司规模")
     private String companyScale;
 
     /** 地址省 */
-    @ApiModelProperty("地址省")
+    @Schema(description = "地址省")
     @Excel(name = "地址省")
     private Integer province;
 
     /** 地址市 */
-    @ApiModelProperty("地址市")
+    @Schema(description = "地址市")
     @Excel(name = "地址市")
     private Integer city;
 
     /** 地址县 */
-    @ApiModelProperty("地址县")
+    @Schema(description = "地址县")
     @Excel(name = "地址县")
     private Integer county;
 
     /** 街道地址 */
-    @ApiModelProperty("街道地址")
+    @Schema(description = "街道地址")
     @Excel(name = "街道地址")
     private String address;
 
     /** 邮政编码 */
-    @ApiModelProperty("邮政编码")
+    @Schema(description = "邮政编码")
     @Excel(name = "邮政编码")
     private String postCode;
 
     /** 联系人员 */
-    @ApiModelProperty("联系人员")
+    @Schema(description = "联系人员")
     @Excel(name = "联系人员")
     private String linkName;
 
     /** 联系电话 */
-    @ApiModelProperty("联系电话")
+    @Schema(description = "联系电话")
     @Excel(name = "联系电话")
     private String linkMobile;
 
     /** 固定电话 */
-    @ApiModelProperty("固定电话")
+    @Schema(description = "固定电话")
     @Excel(name = "固定电话")
     private String linkPhone;
 
     /** 传真号码 */
-    @ApiModelProperty("传真号码")
+    @Schema(description = "传真号码")
     @Excel(name = "传真号码")
     private String linkFax;
 
     /** 邮箱Email */
-    @ApiModelProperty("邮箱Email")
+    @Schema(description = "邮箱Email")
     @Excel(name = "邮箱Email")
     private String email;
 
     /** 发票名称 */
-    @ApiModelProperty("发票名称")
+    @Schema(description = "发票名称")
     @Excel(name = "发票名称")
     private String invoiceTitle;
 
     /** 发票税号 */
-    @ApiModelProperty("发票税号")
+    @Schema(description = "发票税号")
     @Excel(name = "发票税号")
     private String invoiceTax;
 
     /** 发票地址 */
-    @ApiModelProperty("发票地址")
+    @Schema(description = "发票地址")
     @Excel(name = "发票地址")
     private String invoiceAddress;
 
     /** 发票电话 */
-    @ApiModelProperty("发票电话")
+    @Schema(description = "发票电话")
     @Excel(name = "发票电话")
     private String invoicePhone;
 
     /** 开户行 */
-    @ApiModelProperty("开户行")
+    @Schema(description = "开户行")
     @Excel(name = "开户行")
     private String invoiceBack;
 
     /** 银行帐号 */
-    @ApiModelProperty("银行帐号")
+    @Schema(description = "银行帐号")
     @Excel(name = "银行帐号")
     private String invoiceAccount;
 
     /** 公司简介 */
-    @ApiModelProperty("公司简介")
+    @Schema(description = "公司简介")
     @Excel(name = "公司简介")
     private String description;
 
     /** 公司网址 */
-    @ApiModelProperty("公司网址")
+    @Schema(description = "公司网址")
     @Excel(name = "公司网址")
     private String homePage;
 
     /** 是否停用（0正常 1停用） */
-    @ApiModelProperty("是否停用（0正常 1停用）")
+    @Schema(description = "是否停用（0正常 1停用）")
     @Excel(name = "是否停用", readConverterExp = "0=正常,1=停用")
     private Integer stopFlag;
 
     /** 是否删除（0正常 1删除） */
-    @ApiModelProperty("是否删除（0正常 1删除）")
+    @Schema(description = "是否删除（0正常 1删除）")
     @Excel(name = "是否删除", readConverterExp = "0=正常,1=删除")
     private Integer deleteFlag;
 
     /** 行业名称 */
-    @ApiModelProperty("行业名称")
+    @Schema(description = "行业名称")
     @Excel(name = "行业名称")
     private String industryGroupName;
 

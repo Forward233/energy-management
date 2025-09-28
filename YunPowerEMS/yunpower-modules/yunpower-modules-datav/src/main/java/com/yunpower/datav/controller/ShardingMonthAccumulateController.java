@@ -10,8 +10,8 @@ import com.yunpower.common.log.annotation.Log;
 import com.yunpower.common.log.enums.BusinessType;
 import com.yunpower.common.security.annotation.InnerAuth;
 import com.yunpower.common.security.annotation.RequiresPermissions;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +25,7 @@ import java.util.Map;
  * @author JUNFU.WANG
  * @date 2023-11-02
  */
-@Api(tags = "C 变量累积数据月存储表")
+@Tag(name = "C 变量累积数据月存储表", description = "C 变量累积数据月存储表")
 @RestController
 @RequestMapping("/sharding-month-accumulate")
 public class ShardingMonthAccumulateController extends BaseController {
@@ -35,7 +35,7 @@ public class ShardingMonthAccumulateController extends BaseController {
     /**
      * 查询变量累积数据月存储列表
      */
-    @ApiOperation("查询变量累积数据月存储列表")
+    @Operation(summary = "查询变量累积数据月存储列表")
     @RequiresPermissions("system:sharding-month-accumulate:list")
     @GetMapping("/list")
     public TableDataInfo list(ShardingMonthAccumulate shardingMonthAccumulate) {
@@ -47,7 +47,7 @@ public class ShardingMonthAccumulateController extends BaseController {
     /**
      * 导出变量累积数据月存储列表
      */
-    @ApiOperation("导出变量累积数据月存储列表")
+    @Operation(summary = "导出变量累积数据月存储列表")
     @RequiresPermissions("system:sharding-month-accumulate:export")
     @Log(title = "变量累积数据月存储", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
@@ -60,7 +60,7 @@ public class ShardingMonthAccumulateController extends BaseController {
     /**
      * 获取变量累积数据月存储详细信息
      */
-    @ApiOperation("获取变量累积数据月存储详细信息")
+    @Operation(summary = "获取变量累积数据月存储详细信息")
     @RequiresPermissions("system:sharding-month-accumulate:query")
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") Long id) {
@@ -70,7 +70,7 @@ public class ShardingMonthAccumulateController extends BaseController {
     /**
      * 新增变量累积数据月存储
      */
-    @ApiOperation("新增变量累积数据月存储")
+    @Operation(summary = "新增变量累积数据月存储")
     @RequiresPermissions("system:sharding-month-accumulate:add")
     @Log(title = "变量累积数据月存储", businessType = BusinessType.INSERT)
     @PostMapping
@@ -81,7 +81,7 @@ public class ShardingMonthAccumulateController extends BaseController {
     /**
      * 修改变量累积数据月存储
      */
-    @ApiOperation("修改变量累积数据月存储")
+    @Operation(summary = "修改变量累积数据月存储")
     @RequiresPermissions("system:sharding-month-accumulate:edit")
     @Log(title = "变量累积数据月存储", businessType = BusinessType.UPDATE)
     @PutMapping
@@ -92,7 +92,7 @@ public class ShardingMonthAccumulateController extends BaseController {
     /**
      * 删除变量累积数据月存储
      */
-    @ApiOperation("删除变量累积数据月存储")
+    @Operation(summary = "删除变量累积数据月存储")
     @RequiresPermissions("system:sharding-month-accumulate:remove")
     @Log(title = "变量累积数据月存储", businessType = BusinessType.DELETE)
     @DeleteMapping("/{ids}")

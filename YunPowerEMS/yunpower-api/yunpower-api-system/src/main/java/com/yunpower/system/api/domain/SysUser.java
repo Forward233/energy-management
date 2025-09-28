@@ -7,8 +7,8 @@ import com.yunpower.common.core.annotation.Excel.Type;
 import com.yunpower.common.core.annotation.Excels;
 import com.yunpower.common.core.web.domain.BaseEntity;
 import com.yunpower.common.core.xss.Xss;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.springframework.data.annotation.Transient;
@@ -23,111 +23,111 @@ import java.util.List;
  * @author wangjunfu
  * @date 2023-09-12
  */
-@ApiModel("用户对象")
+@Schema(description = "用户对象")
 public class SysUser extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     /**
      * 编号ID
      */
-    @ApiModelProperty("编号ID")
+    @Schema(description = "编号ID")
     @Excel(name = "用户序号", type = Type.EXPORT, cellType = ColumnType.NUMERIC, prompt = "用户编号")
     private Long id;
 
     /**
      * 企业ID
      */
-    @ApiModelProperty("企业ID")
+    @Schema(description = "企业ID")
     @Excel(name = "企业ID")
     private Long entId;
 
     /**
      * 部门ID
      */
-    @ApiModelProperty("部门ID")
+    @Schema(description = "部门ID")
     @Excel(name = "部门编号", type = Type.IMPORT)
     private Long deptId;
 
     /**
      * 逻辑代码
      */
-    @ApiModelProperty("逻辑代码")
+    @Schema(description = "逻辑代码")
     private String logicCode;
 
     /**
      * 登录帐号
      */
-    @ApiModelProperty("登录帐号")
+    @Schema(description = "登录帐号")
     @Excel(name = "登录帐号")
     private String logonName;
 
     /**
      * 登录密码
      */
-    @ApiModelProperty("登录密码")
+    @Schema(description = "登录密码")
     @Excel(name = "登录密码")
     private String logonPwd;
 
     /**
      * 用户昵称
      */
-    @ApiModelProperty("用户昵称")
+    @Schema(description = "用户昵称")
     @Excel(name = "用户昵称")
     private String nickName;
 
     /**
      * 用户手机
      */
-    @ApiModelProperty("用户手机")
+    @Schema(description = "用户手机")
     @Excel(name = "用户手机", cellType = ColumnType.TEXT)
     private String mobile;
 
     /**
      * 用户邮箱
      */
-    @ApiModelProperty("用户邮箱")
+    @Schema(description = "用户邮箱")
     @Excel(name = "用户邮箱")
     private String email;
 
     /**
      * 用户岗位
      */
-    @ApiModelProperty("用户岗位")
+    @Schema(description = "用户岗位")
     @Excel(name = "用户岗位")
     private Integer postId;
 
     /**
      * 是否超管
      */
-    @ApiModelProperty("是否超管")
+    @Schema(description = "是否超管")
     @Excel(name = "是否超管")
     private Integer isSupper;
 
     /**
      * 用户级别（1注册会员 2银卡会员 3金卡会员 4钻石会员 5Plus会员 10商户）
      */
-    @ApiModelProperty("用户级别")
+    @Schema(description = "用户级别")
     @Excel(name = "用户级别", readConverterExp = "1=注册会员,2=银卡会员,3=金卡会员,4=钻石会员,5=Plus会员,10=商户")
     private Integer userLevel;
 
     /**
      * 用户性别（0女 1男 2未知）
      */
-    @ApiModelProperty("用户性别（0女 1男 2未知）")
+    @Schema(description = "用户性别（0女 1男 2未知）")
     @Excel(name = "用户性别", readConverterExp = "0=女,1=男,2=未知")
     private Integer sex;
 
     /**
      * 婚姻状态（0未婚 1已婚 2未知）
      */
-    @ApiModelProperty("婚姻状态（0未婚 1已婚 2未知）")
+    @Schema(description = "婚姻状态（0未婚 1已婚 2未知）")
     @Excel(name = "婚姻状态", readConverterExp = "0=未婚,1=已婚,2=未知")
     private Integer marry;
 
     /**
      * 出生日期
      */
-    @ApiModelProperty("出生日期")
+    @Schema(description = "出生日期")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Excel(name = "出生日期", width = 30, dateFormat = "yyyy-MM-dd")
     private Date birthday;
@@ -135,134 +135,134 @@ public class SysUser extends BaseEntity {
     /**
      * 用户年龄
      */
-    @ApiModelProperty("用户年龄")
+    @Schema(description = "用户年龄")
     @Excel(name = "用户年龄")
     private Integer age;
 
     /**
      * 真实姓名
      */
-    @ApiModelProperty("真实姓名")
+    @Schema(description = "真实姓名")
     @Excel(name = "真实姓名")
     private String trueName;
 
     /**
      * 证件类型
      */
-    @ApiModelProperty("证件类型")
+    @Schema(description = "证件类型")
     @Excel(name = "证件类型")
     private Integer cardType;
 
     /**
      * 证件号码
      */
-    @ApiModelProperty("证件号码")
+    @Schema(description = "证件号码")
     @Excel(name = "证件号码")
     private String cardNumber;
 
     /**
      * 身份证正
      */
-    @ApiModelProperty("身份证正")
+    @Schema(description = "身份证正")
     @Excel(name = "身份证正")
     private String cardPicFront;
 
     /**
      * 身份证反
      */
-    @ApiModelProperty("身份证反")
+    @Schema(description = "身份证反")
     @Excel(name = "身份证反")
     private String cardPicBack;
 
     /**
      * 是否认证
      */
-    @ApiModelProperty("是否认证")
+    @Schema(description = "是否认证")
     private Integer isAuth;
 
     /**
      * 国家
      */
-    @ApiModelProperty("国家")
+    @Schema(description = "国家")
     @Excel(name = "国家")
     private String country;
 
     /**
      * 省
      */
-    @ApiModelProperty("省")
+    @Schema(description = "省")
     private Integer province;
 
     /**
      * 市
      */
-    @ApiModelProperty("市")
+    @Schema(description = "市")
     private Integer city;
 
     /**
      * 县（区）
      */
-    @ApiModelProperty("县（区）")
+    @Schema(description = "县（区）")
     private Integer county;
 
     /**
      * 镇（街道）
      */
-    @ApiModelProperty("镇（街道）")
+    @Schema(description = "镇（街道）")
     private Integer town;
 
     /**
      * 村
      */
-    @ApiModelProperty("村")
+    @Schema(description = "村")
     private Integer village;
 
     /**
      * 详细地址
      */
-    @ApiModelProperty("详细地址")
+    @Schema(description = "详细地址")
     @Excel(name = "详细地址")
     private String detailAddress;
 
     /**
      * 邮政编码
      */
-    @ApiModelProperty("邮政编码")
+    @Schema(description = "邮政编码")
     @Excel(name = "邮政编码")
     private String postCode;
 
     /**
      * 固定电话
      */
-    @ApiModelProperty("固定电话")
+    @Schema(description = "固定电话")
     @Excel(name = "固定电话")
     private String phone;
 
     /**
      * 传真号码
      */
-    @ApiModelProperty("传真号码")
+    @Schema(description = "传真号码")
     @Excel(name = "传真号码")
     private String fax;
 
     /**
      * 头像地址
      */
-    @ApiModelProperty("头像地址")
+    @Schema(description = "头像地址")
     @Excel(name = "头像地址")
     private String headPic;
 
     /**
      * 个人简介
      */
-    @ApiModelProperty("个人简介")
+    @Schema(description = "个人简介")
     @Excel(name = "个人简介")
     private String personDes;
 
     /**
      * 注册时间
      */
-    @ApiModelProperty("注册时间")
+    @Schema(description = "注册时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Excel(name = "注册时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
     private Date regTime;
@@ -270,14 +270,14 @@ public class SysUser extends BaseEntity {
     /**
      * 注册IP
      */
-    @ApiModelProperty("注册IP")
+    @Schema(description = "注册IP")
     @Excel(name = "注册IP")
     private String regIp;
 
     /**
      * 最后登录时间
      */
-    @ApiModelProperty("最后登录时间")
+    @Schema(description = "最后登录时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Excel(name = "最后登录时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
     private Date lastLoginTime;
@@ -285,33 +285,33 @@ public class SysUser extends BaseEntity {
     /**
      * 最后登录IP
      */
-    @ApiModelProperty("最后登录IP")
+    @Schema(description = "最后登录IP")
     @Excel(name = "最后登录IP")
     private String lastLoginIp;
 
     /**
      * 登录次数
      */
-    @ApiModelProperty("登录次数")
+    @Schema(description = "登录次数")
     private Integer loginTimes = 0;
     /**
      * 密码最后更新时间
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty("密码最后更新时间")
+    @Schema(description = "密码最后更新时间")
     private Date pwdUpdateDate;
 
     /**
      * 是否停用（0正常 1停用）
      */
-    @ApiModelProperty("是否停用（0正常 1停用）")
+    @Schema(description = "是否停用（0正常 1停用）")
     @Excel(name = "是否停用", readConverterExp = "0=正常,1=停用")
     private Integer stopFlag;
 
     /**
      * 是否删除（0正常1删除）
      */
-    @ApiModelProperty("是否删除（0正常 1删除）")
+    @Schema(description = "是否删除（0正常 1删除）")
     private Integer deleteFlag;
 
     /** 扩展 */

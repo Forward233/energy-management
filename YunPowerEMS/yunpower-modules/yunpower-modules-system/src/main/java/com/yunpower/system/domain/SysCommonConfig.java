@@ -1,7 +1,7 @@
 package com.yunpower.system.domain;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.yunpower.common.core.annotation.Excel;
@@ -16,52 +16,52 @@ import jakarta.validation.constraints.Size;
  * @author yunpower
  * @date 2023-09-14
  */
-@ApiModel("参数配置对象")
+@Schema(description = "参数配置对象")
 public class SysCommonConfig extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
     /** 编号ID */
-    @ApiModelProperty("编号ID")
+    @Schema(description = "编号ID")
     private Long id;
 
     /** 企业ID */
-    @ApiModelProperty("企业ID")
+    @Schema(description = "企业ID")
     @Excel(name = "企业ID")
     private Long entId;
 
     /** 部门ID */
-    @ApiModelProperty("部门ID")
+    @Schema(description = "部门ID")
     @Excel(name = "部门ID")
     private Long deptId;
 
     /** 参数Key */
-    @ApiModelProperty("参数Key")
+    @Schema(description = "参数Key")
     @Excel(name = "参数Key")
     private String paramKey;
 
     /** 参数值 */
-    @ApiModelProperty("参数值")
+    @Schema(description = "参数值")
     @Excel(name = "参数值")
     private String paramValue;
 
     /** 系统内置（0否 1是） */
-    @ApiModelProperty("系统内置（0否 1是）")
+    @Schema(description = "系统内置（0否 1是）")
     @Excel(name = "系统内置", readConverterExp = "0=否,1=是")
     private Integer isSystem;
 
     /** 参数说明 */
-    @ApiModelProperty("参数说明")
+    @Schema(description = "参数说明")
     @Excel(name = "参数说明")
     private String paramInfo;
 
     /** 是否停用（0正常 1停用） */
-    @ApiModelProperty("是否停用（0正常 1停用）")
+    @Schema(description = "是否停用（0正常 1停用）")
     @Excel(name = "是否停用", readConverterExp = "0=正常,1=停用")
     private Integer stopFlag;
 
     /** 是否删除（0正常 1删除） */
-    @ApiModelProperty("是否删除（0正常 1删除）")
+    @Schema(description = "是否删除（0正常 1删除）")
     private Integer deleteFlag;
 
     public void setId(Long id)

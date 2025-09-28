@@ -9,8 +9,8 @@ import com.yunpower.common.log.enums.BusinessType;
 import com.yunpower.common.security.annotation.RequiresPermissions;
 import com.yunpower.common.security.utils.SecurityUtils;
 import com.yunpower.common.log.annotation.Log;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,7 +29,7 @@ import com.yunpower.system.service.ISysNoticeService;
  *
  * @author yunpower
  */
-@Api(tags = "T 通知公告表")
+@Tag(name = "T 通知公告表", description = "T 通知公告表")
 @RestController
 @RequestMapping("/notice")
 public class SysNoticeController extends BaseController {
@@ -39,7 +39,7 @@ public class SysNoticeController extends BaseController {
     /**
      * 获取通知公告列表
      */
-    @ApiOperation("获取通知公告列表")
+    @Operation(summary = "获取通知公告列表")
     @RequiresPermissions("system:notice:list")
     @GetMapping("/list")
     public TableDataInfo list(SysNotice notice) {
@@ -51,7 +51,7 @@ public class SysNoticeController extends BaseController {
     /**
      * 根据通知公告编号获取详细信息
      */
-    @ApiOperation("根据编号获取详细信息")
+    @Operation(summary = "根据编号获取详细信息")
     @RequiresPermissions("system:notice:query")
     @GetMapping(value = "/{noticeId}")
     public AjaxResult getInfo(@PathVariable Long noticeId) {
@@ -61,7 +61,7 @@ public class SysNoticeController extends BaseController {
     /**
      * 新增通知公告
      */
-    @ApiOperation("新增通知公告")
+    @Operation(summary = "新增通知公告")
     @RequiresPermissions("system:notice:add")
     @Log(title = "通知公告", businessType = BusinessType.INSERT)
     @PostMapping
@@ -73,7 +73,7 @@ public class SysNoticeController extends BaseController {
     /**
      * 修改通知公告
      */
-    @ApiOperation("修改通知公告")
+    @Operation(summary = "修改通知公告")
     @RequiresPermissions("system:notice:edit")
     @Log(title = "通知公告", businessType = BusinessType.UPDATE)
     @PutMapping
@@ -85,7 +85,7 @@ public class SysNoticeController extends BaseController {
     /**
      * 修改通知公告状态
      */
-    @ApiOperation("修改通知公告状态")
+    @Operation(summary = "修改通知公告状态")
     @RequiresPermissions("system:notice:state")
     @Log(title = "通知公告", businessType = BusinessType.UPDATE)
     @PutMapping("/changeStatus/{id}/{state}")
@@ -96,7 +96,7 @@ public class SysNoticeController extends BaseController {
     /**
      * 删除通知公告
      */
-    @ApiOperation("删除通知公告")
+    @Operation(summary = "删除通知公告")
     @RequiresPermissions("system:notice:remove")
     @Log(title = "通知公告", businessType = BusinessType.DELETE)
     @DeleteMapping("/{noticeIds}")

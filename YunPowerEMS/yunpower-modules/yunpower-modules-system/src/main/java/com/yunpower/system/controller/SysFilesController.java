@@ -3,8 +3,8 @@ package com.yunpower.system.controller;
 import java.util.List;
 import jakarta.servlet.http.HttpServletResponse;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,7 +30,7 @@ import com.yunpower.common.core.web.page.TableDataInfo;
  * @author JUNFU.WANG
  * @date 2023-10-07
  */
-@Api(tags = "W 上传文件管理表")
+@Tag(name = "W 上传文件管理表", description = "W 上传文件管理表")
 @RestController
 @RequestMapping("/files")
 public class SysFilesController extends BaseController {
@@ -40,7 +40,7 @@ public class SysFilesController extends BaseController {
     /**
      * 查询上传文件管理列表
      */
-    @ApiOperation("查询上传文件管理列表")
+    @Operation(summary = "查询上传文件管理列表")
     @RequiresPermissions("system:files:list")
     @GetMapping("/list")
     public TableDataInfo list(SysFiles sysFiles) {
@@ -52,7 +52,7 @@ public class SysFilesController extends BaseController {
     /**
      * 导出上传文件管理列表
      */
-    @ApiOperation("导出上传文件管理列表")
+    @Operation(summary = "导出上传文件管理列表")
     @RequiresPermissions("system:files:export")
     @Log(title = "上传文件管理", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
@@ -65,7 +65,7 @@ public class SysFilesController extends BaseController {
     /**
      * 获取上传文件管理详细信息
      */
-    @ApiOperation("获取上传文件管理详细信息")
+    @Operation(summary = "获取上传文件管理详细信息")
     @RequiresPermissions("system:files:query")
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") Long id) {
@@ -75,7 +75,7 @@ public class SysFilesController extends BaseController {
     /**
      * 新增上传文件管理
      */
-    @ApiOperation("新增上传文件管理")
+    @Operation(summary = "新增上传文件管理")
     @RequiresPermissions("system:files:add")
     @Log(title = "上传文件管理", businessType = BusinessType.INSERT)
     @PostMapping
@@ -86,7 +86,7 @@ public class SysFilesController extends BaseController {
     /**
      * 修改上传文件管理
      */
-    @ApiOperation("修改上传文件管理")
+    @Operation(summary = "修改上传文件管理")
     @RequiresPermissions("system:files:edit")
     @Log(title = "上传文件管理", businessType = BusinessType.UPDATE)
     @PutMapping
@@ -97,7 +97,7 @@ public class SysFilesController extends BaseController {
     /**
      * 修改上传文件管理状态
      */
-    @ApiOperation("修改上传文件管理状态")
+    @Operation(summary = "修改上传文件管理状态")
     @RequiresPermissions("system:files:state")
     @Log(title = "上传文件管理", businessType = BusinessType.UPDATE)
     @PutMapping("/changeStatus/{id}/{state}")
@@ -108,7 +108,7 @@ public class SysFilesController extends BaseController {
     /**
      * 删除上传文件管理
      */
-    @ApiOperation("删除上传文件管理")
+    @Operation(summary = "删除上传文件管理")
     @RequiresPermissions("system:files:remove")
     @Log(title = "上传文件管理", businessType = BusinessType.DELETE)
     @DeleteMapping("/{ids}")

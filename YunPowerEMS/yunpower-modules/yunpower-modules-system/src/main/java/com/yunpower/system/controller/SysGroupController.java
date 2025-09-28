@@ -11,8 +11,8 @@ import com.yunpower.common.security.annotation.InnerAuth;
 import com.yunpower.common.security.annotation.RequiresPermissions;
 import com.yunpower.system.api.domain.SysGroup;
 import com.yunpower.system.service.ISysGroupService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +26,7 @@ import java.util.List;
  * @author JUNFU.WANG
  * @date 2023-10-07
  */
-@Api(tags = "F 分组通用表")
+@Tag(name = "F 分组通用表", description = "F 分组通用表")
 @RestController
 @RequestMapping("/group")
 public class SysGroupController extends BaseController {
@@ -36,7 +36,7 @@ public class SysGroupController extends BaseController {
     /**
      * 查询常用分组列表
      */
-    @ApiOperation("查询常用分组列表")
+    @Operation(summary = "查询常用分组列表")
     @RequiresPermissions("system:group:list")
     @GetMapping("/list")
     public TableDataInfo list(SysGroup sysGroup) {
@@ -52,7 +52,7 @@ public class SysGroupController extends BaseController {
     /**
      * 查询常用分组列表（不分页，树形结构）
      */
-    @ApiOperation("查询常用分组列表（不分页，树形结构）")
+    @Operation(summary = "查询常用分组列表（不分页，树形结构）")
     @RequiresPermissions("system:group:list")
     @GetMapping("/listAll")
     public AjaxResult listAll(SysGroup sysGroup) {
@@ -68,7 +68,7 @@ public class SysGroupController extends BaseController {
     /**
      * 查询常用分组【下拉】列表（不分页，树形结构）
      */
-    @ApiOperation("查询常用分组【下拉】列表（不分页，树形结构）")
+    @Operation(summary = "查询常用分组【下拉】列表（不分页，树形结构）")
     @GetMapping("/listSelect")
     public AjaxResult listSelect(SysGroup sysGroup) {
         if (sysGroup.getMapId() == null) {
@@ -82,7 +82,7 @@ public class SysGroupController extends BaseController {
     /**
      * 导出常用分组列表
      */
-    @ApiOperation("导出常用分组列表")
+    @Operation(summary = "导出常用分组列表")
     @RequiresPermissions("system:group:export")
     @Log(title = "常用分组", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
@@ -95,7 +95,7 @@ public class SysGroupController extends BaseController {
     /**
      * 获取常用分组详细信息
      */
-    @ApiOperation("获取常用分组详细信息")
+    @Operation(summary = "获取常用分组详细信息")
     @RequiresPermissions("system:group:query")
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") Long id) {
@@ -105,7 +105,7 @@ public class SysGroupController extends BaseController {
     /**
      * 新增常用分组
      */
-    @ApiOperation("新增常用分组")
+    @Operation(summary = "新增常用分组")
     @RequiresPermissions("system:group:add")
     @Log(title = "常用分组", businessType = BusinessType.INSERT)
     @PostMapping
@@ -134,7 +134,7 @@ public class SysGroupController extends BaseController {
     /**
      * 修改常用分组
      */
-    @ApiOperation("修改常用分组")
+    @Operation(summary = "修改常用分组")
     @RequiresPermissions("system:group:edit")
     @Log(title = "常用分组", businessType = BusinessType.UPDATE)
     @PutMapping
@@ -145,7 +145,7 @@ public class SysGroupController extends BaseController {
     /**
      * 修改常用分组状态
      */
-    @ApiOperation("修改常用分组状态")
+    @Operation(summary = "修改常用分组状态")
     @RequiresPermissions("system:group:state")
     @Log(title = "常用分组", businessType = BusinessType.UPDATE)
     @PutMapping("/changeStatus/{id}/{state}")
@@ -156,7 +156,7 @@ public class SysGroupController extends BaseController {
     /**
      * 删除常用分组
      */
-    @ApiOperation("删除常用分组")
+    @Operation(summary = "删除常用分组")
     @RequiresPermissions("system:group:remove")
     @Log(title = "常用分组", businessType = BusinessType.DELETE)
     @DeleteMapping("/{ids}")

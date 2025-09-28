@@ -17,8 +17,8 @@ import com.yunpower.system.service.ICommunicationChannelService;
 import com.yunpower.system.service.ICommunicationDeviceService;
 import com.yunpower.system.service.ISysDeptService;
 import com.yunpower.common.log.annotation.Log;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,7 +32,7 @@ import java.util.List;
  * @author JUNFU.WANG
  * @date 2023-10-07
  */
-@Api(tags = "T 通讯设备表")
+@Tag(name = "T 通讯设备表", description = "T 通讯设备表")
 @RestController
 @RequestMapping("/channel-device")
 public class CommunicationDeviceController extends BaseController {
@@ -48,7 +48,7 @@ public class CommunicationDeviceController extends BaseController {
     /**
      * 查询通讯设备列表（不分页）
      */
-    @ApiOperation("查询通讯设备列表（不分页）")
+    @Operation(summary = "查询通讯设备列表（不分页）")
     @RequiresPermissions("system:channel-device:list")
     @GetMapping("/listAll")
     public AjaxResult listAll(CommunicationDevice communicationDevice) {
@@ -59,7 +59,7 @@ public class CommunicationDeviceController extends BaseController {
     /**
      * 获取通讯设备详细信息
      */
-    @ApiOperation("获取通讯设备详细信息")
+    @Operation(summary = "获取通讯设备详细信息")
     @RequiresPermissions("system:channel-device:query")
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") Long id) {
@@ -74,7 +74,7 @@ public class CommunicationDeviceController extends BaseController {
     /**
      * 通过通讯设备ID获取数据区域列表
      */
-    @ApiOperation("通过通讯设备ID获取数据区域列表")
+    @Operation(summary = "通过通讯设备ID获取数据区域列表")
     @RequiresPermissions("system:channel-device:list")
     @GetMapping("/getDataArealist")
     public AjaxResult getDataArealist(Long id) {

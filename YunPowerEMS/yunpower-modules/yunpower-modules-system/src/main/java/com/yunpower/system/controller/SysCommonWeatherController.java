@@ -3,8 +3,8 @@ package com.yunpower.system.controller;
 import java.util.List;
 import jakarta.servlet.http.HttpServletResponse;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,7 +27,7 @@ import com.yunpower.common.core.web.page.TableDataInfo;
  * @author JUNFU.WANG
  * @date 2023-10-07
  */
-@Api(tags = "T 天气数据表")
+@Tag(name = "T 天气数据表", description = "T 天气数据表")
 @RestController
 @RequestMapping("/weather")
 public class SysCommonWeatherController extends BaseController
@@ -38,7 +38,7 @@ public class SysCommonWeatherController extends BaseController
     /**
      * 查询通用天气数据列表
      */
-    @ApiOperation("查询通用天气数据列表")
+    @Operation(summary = "查询通用天气数据列表")
     @RequiresPermissions("system:weather:list")
     @GetMapping("/list")
     public TableDataInfo list(SysCommonWeather sysCommonWeather)
@@ -51,7 +51,7 @@ public class SysCommonWeatherController extends BaseController
     /**
      * 导出通用天气数据列表
      */
-    @ApiOperation("导出通用天气数据列表")
+    @Operation(summary = "导出通用天气数据列表")
     @RequiresPermissions("system:weather:export")
     @Log(title = "通用天气数据", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
@@ -65,7 +65,7 @@ public class SysCommonWeatherController extends BaseController
     /**
      * 获取通用天气数据详细信息
      */
-    @ApiOperation("获取通用天气数据详细信息")
+    @Operation(summary = "获取通用天气数据详细信息")
     @RequiresPermissions("system:weather:query")
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") Long id)

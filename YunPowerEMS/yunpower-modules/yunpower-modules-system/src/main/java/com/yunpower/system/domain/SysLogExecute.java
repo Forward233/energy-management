@@ -2,8 +2,8 @@ package com.yunpower.system.domain;
 
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.yunpower.common.core.annotation.Excel;
@@ -15,63 +15,63 @@ import com.yunpower.common.core.web.domain.BaseEntity;
  * @author JUNFU.WANG
  * @date 2024-01-18
  */
-@ApiModel("执行日志对象")
+@Schema(description = "执行日志对象")
 public class SysLogExecute extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
     /** 编号ID */
-    @ApiModelProperty("编号ID")
+    @Schema(description = "编号ID")
     private Long id;
 
     /** 企业ID */
-    @ApiModelProperty("企业ID")
+    @Schema(description = "企业ID")
     @Excel(name = "企业ID")
     private Long entId;
 
     /** 部门ID */
-    @ApiModelProperty("部门ID")
+    @Schema(description = "部门ID")
     @Excel(name = "部门ID")
     private Long deptId;
 
     /** 任务标题 */
-    @ApiModelProperty("任务标题")
+    @Schema(description = "任务标题")
     @Excel(name = "任务标题")
     private String title;
 
     /** 执行方法 */
-    @ApiModelProperty("执行方法")
+    @Schema(description = "执行方法")
     @Excel(name = "执行方法")
     private String method;
 
     /** 操作类别（0其它 1后台用户 2手机端用户） */
-    @ApiModelProperty("操作类别（0其它 1后台用户 2手机端用户）")
+    @Schema(description = "操作类别（0其它 1后台用户 2手机端用户）")
     @Excel(name = "操作类别", readConverterExp = "0=其它,1=后台用户,2=手机端用户")
     private Integer operateType;
 
     /** 执行人员 */
-    @ApiModelProperty("执行人员")
+    @Schema(description = "执行人员")
     @Excel(name = "执行人员")
     private String operateBy;
 
     /** 执行结果 */
-    @ApiModelProperty("执行结果")
+    @Schema(description = "执行结果")
     @Excel(name = "执行结果")
     private String operateResult;
 
     /** 操作状态（0正常 1异常） */
-    @ApiModelProperty("操作状态（0正常 1异常）")
+    @Schema(description = "操作状态（0正常 1异常）")
     @Excel(name = "操作状态", readConverterExp = "0=正常,1=异常")
     private Integer status;
 
     /** 执行时间 */
-    @ApiModelProperty("执行时间")
+    @Schema(description = "执行时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Excel(name = "执行时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
     private Date executeTime;
 
     /** 消耗时间（秒） */
-    @ApiModelProperty("消耗时间（秒）")
+    @Schema(description = "消耗时间（秒）")
     @Excel(name = "消耗时间", readConverterExp = "秒")
     private Integer costTime;
 

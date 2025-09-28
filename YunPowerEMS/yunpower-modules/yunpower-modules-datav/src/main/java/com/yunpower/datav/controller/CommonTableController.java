@@ -11,8 +11,8 @@ import com.yunpower.datav.domain.vo.ReportQueryVo;
 import com.yunpower.datav.service.CommonReportService;
 import com.yunpower.system.api.RemoteReportTemplateService;
 import com.yunpower.system.api.domain.ReportTemplates;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author JUNFU.WANG
  * @date: 2024-06-19 10:00
  */
-@Api(tags = ">>> 通用表格接口 <<<")
+@Tag(name = ">>> 通用表格接口 <<<", description = ">>> 通用表格接口 <<<")
 @RestController
 @RequestMapping("/common/table")
 public class CommonTableController extends BaseController {
@@ -50,7 +50,7 @@ public class CommonTableController extends BaseController {
      * @param reportQueryVo 参数
      * @return 结果
      */
-    @ApiOperation("获取>>通用表格数据")
+    @Operation(summary = "获取>>通用表格数据")
     @GetMapping("/getBasicTable")
     public AjaxResult getBasicTableData(@Validated ReportQueryVo reportQueryVo) {
         ReportTemplates reportTemplate = remoteReportTemplateService.getInfo(reportQueryVo.getTemplateId(), SecurityConstants.INNER);

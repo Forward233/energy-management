@@ -1,7 +1,7 @@
 package com.yunpower.system.domain;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.yunpower.common.core.annotation.Excel;
@@ -13,57 +13,57 @@ import com.yunpower.common.core.web.domain.BaseEntity;
  * @author JUNFU.WANG
  * @date 2023-10-07
  */
-@ApiModel("通讯设备数据区域对象")
+@Schema(description = "通讯设备数据区域对象")
 public class CommunicationDeviceArea extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
     /** 编号ID */
-    @ApiModelProperty("编号ID")
+    @Schema(description = "编号ID")
     private Long id;
 
     /** 设备ID */
-    @ApiModelProperty("设备ID")
+    @Schema(description = "设备ID")
     @Excel(name = "设备ID")
     private Long deviceId;
 
     /** 设备编码 */
-    @ApiModelProperty("设备编码")
+    @Schema(description = "设备编码")
     @Excel(name = "设备编码")
     private String deviceSn;
 
     /** 区域名称 */
-    @ApiModelProperty("区域名称")
+    @Schema(description = "区域名称")
     @Excel(name = "区域名称")
     private String areaName;
 
     /** 起始地址 */
-    @ApiModelProperty("起始地址")
+    @Schema(description = "起始地址")
     @Excel(name = "起始地址")
     private Integer addStart;
 
     /** 长度 */
-    @ApiModelProperty("长度")
+    @Schema(description = "长度")
     @Excel(name = "长度")
     private Integer addLength;
 
     /** 寄存器 */
-    @ApiModelProperty("寄存器")
+    @Schema(description = "寄存器")
     @Excel(name = "寄存器")
     private String area;
 
     /** 读写（1只读 2只写 3读写） */
-    @ApiModelProperty("读写（1只读 2只写 3读写）")
+    @Schema(description = "读写（1只读 2只写 3读写）")
     @Excel(name = "读写", readConverterExp = "1=只读,2=只写,3=读写")
     private Integer rw;
 
     /** 是否停用（0正常 1停用） */
-    @ApiModelProperty("是否停用（0正常 1停用）")
+    @Schema(description = "是否停用（0正常 1停用）")
     @Excel(name = "是否停用", readConverterExp = "0=正常,1=停用")
     private Integer stopFlag;
 
     /** 是否删除（0正常 1删除） */
-    @ApiModelProperty("是否删除（0正常 1删除）")
+    @Schema(description = "是否删除（0正常 1删除）")
     @Excel(name = "是否删除", readConverterExp = "0=正常,1=删除")
     private Integer deleteFlag;
 

@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.yunpower.common.core.annotation.Excel;
 import com.yunpower.common.core.web.domain.BaseEntity;
 import com.yunpower.common.core.xss.Xss;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -21,189 +21,189 @@ import java.util.List;
  * @author JUNFU.WANG
  * @date 2023-09-27
  */
-@ApiModel("电站对象")
+@Schema(description = "电站对象")
 public class SysStation extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
     /** 编号ID */
-    @ApiModelProperty("编号ID")
+    @Schema(description = "编号ID")
     private Long id;
 
     /** 企业ID */
-    @ApiModelProperty("企业ID")
+    @Schema(description = "企业ID")
     @Excel(name = "企业ID")
     private Long entId;
 
     /** 部门ID */
-    @ApiModelProperty("部门ID")
+    @Schema(description = "部门ID")
     @Excel(name = "部门ID")
     private Long deptId;
 
     /** 上级ID */
-    @ApiModelProperty("上级ID")
+    @Schema(description = "上级ID")
     @Excel(name = "上级ID")
     private Long parentId;
 
     /** 分组ID */
-    @ApiModelProperty("分组ID")
+    @Schema(description = "分组ID")
     @Excel(name = "分组ID")
     private Long groupId;
 
     /** 电站名称 */
-    @ApiModelProperty("电站名称")
+    @Schema(description = "电站名称")
     @Excel(name = "电站名称")
     private String stationName;
 
     /** 电站编号 */
-    @ApiModelProperty("电站编号")
+    @Schema(description = "电站编号")
     @Excel(name = "电站编号")
     private String stationSn;
 
     /** 记录类型（1分组 2站点） */
-    @ApiModelProperty("记录类型（1分组 2站点）")
+    @Schema(description = "记录类型（1分组 2站点）")
     @Excel(name = "记录类型", readConverterExp = "1=分组,2=站点")
     private Integer groupOrStation;
 
     /** 电站类型（1配电 2光伏） */
-    @ApiModelProperty("电站类型（1配电 2光伏）")
+    @Schema(description = "电站类型（1配电 2光伏）")
     @Excel(name = "电站类型", readConverterExp = "1=配电,2=光伏")
     private Integer stationType;
 
     /** 光伏类型 */
-    @ApiModelProperty("光伏类型")
+    @Schema(description = "光伏类型")
     @Excel(name = "光伏类型")
     private Integer pvType;
 
     /** 逻辑代码（企业+站点） */
-    @ApiModelProperty("逻辑代码（企业+站点）")
+    @Schema(description = "逻辑代码（企业+站点）")
     @Excel(name = "逻辑代码")
     private String logicCode;
 
     /** 建站时间 */
-    @ApiModelProperty("建站时间")
+    @Schema(description = "建站时间")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Excel(name = "建站时间", width = 30, dateFormat = "yyyy-MM-dd")
     private Date buildSiteTime;
 
     /** 电压等级 */
-    @ApiModelProperty("电压等级")
+    @Schema(description = "电压等级")
     @Excel(name = "电压等级")
     private String voltageLevel;
 
     /** 最大容量 */
-    @ApiModelProperty("最大容量")
+    @Schema(description = "最大容量")
     @Excel(name = "最大容量")
     private Integer capacityKva;
 
     /** 设备上限 */
-    @ApiModelProperty("设备上限")
+    @Schema(description = "设备上限")
     @Excel(name = "设备上限")
     private Integer deviceLimit;
 
     /** 测点上限 */
-    @ApiModelProperty("测点上限")
+    @Schema(description = "测点上限")
     @Excel(name = "测点上限")
     private Integer varLimit;
 
     /** 装机容量 */
-    @ApiModelProperty("装机容量")
+    @Schema(description = "装机容量")
     @Excel(name = "装机容量")
     private Integer sationVolume;
 
     /** 方位角 */
-    @ApiModelProperty("方位角度")
+    @Schema(description = "方位角度")
     @Excel(name = "方位角度")
     private Double azimuth;
 
     /** 组件倾角 */
-    @ApiModelProperty("组件倾角")
+    @Schema(description = "组件倾角")
     @Excel(name = "组件倾角")
     private Double dipAngle;
 
     /** 投运时间 */
-    @ApiModelProperty("投运时间")
+    @Schema(description = "投运时间")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Excel(name = "投运时间", width = 30, dateFormat = "yyyy-MM-dd")
     private Date useSiteTime;
 
     /** 电站坐标 */
-    @ApiModelProperty("电站坐标")
+    @Schema(description = "电站坐标")
     @Excel(name = "电站坐标")
     private String coordinate;
 
     /**
      * 国家
      */
-    @ApiModelProperty("国家")
+    @Schema(description = "国家")
     @Excel(name = "国家")
     private String country;
 
     /**
      * 省
      */
-    @ApiModelProperty("省")
+    @Schema(description = "省")
     private Long province;
 
     /**
      * 市
      */
-    @ApiModelProperty("市")
+    @Schema(description = "市")
     private Long city;
 
     /**
      * 县（区）
      */
-    @ApiModelProperty("县（区）")
+    @Schema(description = "县（区）")
     private Long county;
 
     /** 电站地址 */
-    @ApiModelProperty("电站地址")
+    @Schema(description = "电站地址")
     @Excel(name = "电站地址")
     private String stationAddress;
 
     /** 电站照片 */
-    @ApiModelProperty("电站照片")
+    @Schema(description = "电站照片")
     @Excel(name = "电站照片")
     private String picUrl;
 
     /** 电站简介 */
-    @ApiModelProperty("电站简介")
+    @Schema(description = "电站简介")
     @Excel(name = "电站简介")
     private String description;
 
     /** 联系人员 */
-    @ApiModelProperty("联系人员")
+    @Schema(description = "联系人员")
     @Excel(name = "联系人员")
     private String linkName;
 
     /** 联系电话 */
-    @ApiModelProperty("联系电话")
+    @Schema(description = "联系电话")
     @Excel(name = "联系电话")
     private String linkPhone;
 
     /** 报警开关 */
-    @ApiModelProperty("报警开关")
+    @Schema(description = "报警开关")
     @Excel(name = "报警开关")
     private Integer openAlarm;
 
     /** 电价标准 */
-    @ApiModelProperty("电价标准")
+    @Schema(description = "电价标准")
     @Excel(name = "电价标准")
     private Long schemeId;
 
     /** 显示顺序 */
-    @ApiModelProperty("显示顺序")
+    @Schema(description = "显示顺序")
     @Excel(name = "显示顺序")
     private Integer orderNum;
 
     /** 是否停用（0正常 1停用） */
-    @ApiModelProperty("是否停用（0正常 1停用）")
+    @Schema(description = "是否停用（0正常 1停用）")
     @Excel(name = "是否停用", readConverterExp = "0=正常,1=停用")
     private Integer stopFlag;
 
     /** 是否删除（0正常1删除） */
-    @ApiModelProperty("是否删除（0正常1删除）")
+    @Schema(description = "是否删除（0正常1删除）")
     private Integer deleteFlag;
 
     /** 父部门名称 */

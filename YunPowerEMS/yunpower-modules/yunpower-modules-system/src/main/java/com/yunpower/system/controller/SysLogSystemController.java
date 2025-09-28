@@ -10,8 +10,8 @@ import com.yunpower.common.core.web.page.TableDataInfo;
 import com.yunpower.common.log.enums.BusinessType;
 import com.yunpower.common.security.annotation.RequiresPermissions;
 import com.yunpower.common.log.annotation.Log;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,7 +30,7 @@ import com.yunpower.system.service.ISysLogSystemService;
  * @author JUNFU.WANG
  * @date 2024-01-18
  */
-@Api(tags = "R 系统日志表")
+@Tag(name = "R 系统日志表", description = "R 系统日志表")
 @RestController
 @RequestMapping("/systemlog")
 public class SysLogSystemController extends BaseController
@@ -41,7 +41,7 @@ public class SysLogSystemController extends BaseController
     /**
      * 查询系统日志列表
      */
-    @ApiOperation("查询系统日志列表")
+    @Operation(summary = "查询系统日志列表")
     @RequiresPermissions("system:system:list")
     @GetMapping("/list")
     public TableDataInfo list(SysLogSystem sysLogSystem)
@@ -54,7 +54,7 @@ public class SysLogSystemController extends BaseController
     /**
      * 导出系统日志列表
      */
-    @ApiOperation("导出系统日志列表")
+    @Operation(summary = "导出系统日志列表")
     @RequiresPermissions("system:system:export")
     @Log(title = "系统日志", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
@@ -68,7 +68,7 @@ public class SysLogSystemController extends BaseController
     /**
      * 获取系统日志详细信息
      */
-    @ApiOperation("获取系统日志详细信息")
+    @Operation(summary = "获取系统日志详细信息")
     @RequiresPermissions("system:system:query")
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") Long id)
@@ -79,7 +79,7 @@ public class SysLogSystemController extends BaseController
     /**
      * 新增系统日志
      */
-    @ApiOperation("新增系统日志")
+    @Operation(summary = "新增系统日志")
     @RequiresPermissions("system:system:add")
     @Log(title = "系统日志", businessType = BusinessType.INSERT)
     @PostMapping
@@ -91,7 +91,7 @@ public class SysLogSystemController extends BaseController
     /**
      * 修改系统日志
      */
-    @ApiOperation("修改系统日志")
+    @Operation(summary = "修改系统日志")
     @RequiresPermissions("system:system:edit")
     @Log(title = "系统日志", businessType = BusinessType.UPDATE)
     @PutMapping
@@ -103,7 +103,7 @@ public class SysLogSystemController extends BaseController
     /**
      * 删除系统日志
      */
-    @ApiOperation("删除系统日志")
+    @Operation(summary = "删除系统日志")
     @RequiresPermissions("system:system:remove")
     @Log(title = "系统日志", businessType = BusinessType.DELETE)
 	@DeleteMapping("/{ids}")

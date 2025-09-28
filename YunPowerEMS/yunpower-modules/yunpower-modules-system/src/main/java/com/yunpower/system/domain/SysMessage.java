@@ -2,8 +2,8 @@ package com.yunpower.system.domain;
 
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.yunpower.common.core.annotation.Excel;
@@ -15,98 +15,98 @@ import com.yunpower.common.core.web.domain.BaseEntity;
  * @author JUNFU.WANG
  * @date 2023-10-07
  */
-@ApiModel("消息对象")
+@Schema(description = "消息对象")
 public class SysMessage extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
     /** 编号ID */
-    @ApiModelProperty("编号ID")
+    @Schema(description = "编号ID")
     private Long id;
 
     /** 企业ID */
-    @ApiModelProperty("企业ID")
+    @Schema(description = "企业ID")
     @Excel(name = "企业ID")
     private Long entId;
 
     /** 部门ID */
-    @ApiModelProperty("部门ID")
+    @Schema(description = "部门ID")
     @Excel(name = "部门ID")
     private Long deptId;
 
     /** 用户姓名 */
-    @ApiModelProperty("用户姓名")
+    @Schema(description = "用户姓名")
     @Excel(name = "用户姓名")
     private String userName;
 
     /** 手机号码 */
-    @ApiModelProperty("手机号码")
+    @Schema(description = "手机号码")
     @Excel(name = "手机号码")
     private String mobile;
 
     /** 消息类型（1短信 2微信 3小程序） */
-    @ApiModelProperty("消息类型（1短信 2微信 3小程序）")
+    @Schema(description = "消息类型（1短信 2微信 3小程序）")
     @Excel(name = "消息类型", readConverterExp = "1=短信,2=微信,3=小程序")
     private Integer templateType;
 
     /** 消息主题 */
-    @ApiModelProperty("消息主题")
+    @Schema(description = "消息主题")
     @Excel(name = "消息主题")
     private String topic;
 
     /** 验证码 */
-    @ApiModelProperty("验证码")
+    @Schema(description = "验证码")
     @Excel(name = "验证码")
     private String code;
 
     /** 有效期 */
-    @ApiModelProperty("有效期")
+    @Schema(description = "有效期")
     @Excel(name = "有效期")
     private Integer effectMinute;
 
     /** 提交信息 */
-    @ApiModelProperty("提交信息")
+    @Schema(description = "提交信息")
     @Excel(name = "提交信息")
     private String returnResult;
 
     /** 短信渠道（1腾讯云 2阿里云） */
-    @ApiModelProperty("短信渠道（1腾讯云 2阿里云）")
+    @Schema(description = "短信渠道（1腾讯云 2阿里云）")
     @Excel(name = "短信渠道", readConverterExp = "1=腾讯云,2=阿里云")
     private Integer smsChannel;
 
     /** 模板ID */
-    @ApiModelProperty("模板ID")
+    @Schema(description = "模板ID")
     @Excel(name = "模板ID")
     private Long templateId;
 
     /** 发送人员 */
-    @ApiModelProperty("发送人员")
+    @Schema(description = "发送人员")
     @Excel(name = "发送人员")
     private String sendBy;
 
     /** 发送时间 */
-    @ApiModelProperty("发送时间")
+    @Schema(description = "发送时间")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Excel(name = "发送时间", width = 30, dateFormat = "yyyy-MM-dd")
     private Date sendTime;
 
     /** 发送状态（-10已使用 0发送成功 1发送失败） */
-    @ApiModelProperty("发送状态（-10已使用 0发送成功 1发送失败）")
+    @Schema(description = "发送状态（-10已使用 0发送成功 1发送失败）")
     @Excel(name = "发送状态", readConverterExp = "-=10已使用,0=发送成功,1=发送失败")
     private Integer sendStatus;
 
     /** 发送内容 */
-    @ApiModelProperty("发送内容")
+    @Schema(description = "发送内容")
     @Excel(name = "发送内容")
     private String sendContent;
 
     /** 是否停用（0正常 1停用） */
-    @ApiModelProperty("是否停用（0正常 1停用）")
+    @Schema(description = "是否停用（0正常 1停用）")
     @Excel(name = "是否停用", readConverterExp = "0=正常,1=停用")
     private Integer stopFlag;
 
     /** 是否删除（0正常 1删除） */
-    @ApiModelProperty("是否删除（0正常 1删除）")
+    @Schema(description = "是否删除（0正常 1删除）")
     @Excel(name = "是否删除", readConverterExp = "0=正常,1=删除")
     private Integer deleteFlag;
 

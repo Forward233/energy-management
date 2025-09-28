@@ -7,8 +7,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.yunpower.system.domain.handler.DevicesDataAreaTypeHandler;
 import com.yunpower.system.domain.jsonvo.DevicesDataAreaVo;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.yunpower.common.core.annotation.Excel;
@@ -21,212 +21,212 @@ import org.springframework.data.annotation.Transient;
  * @author JUNFU.WANG
  * @date 2023-10-07
  */
-@ApiModel("通讯设备对象")
+@Schema(description = "通讯设备对象")
 public class CommunicationDevice extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
     /** 编号ID */
-    @ApiModelProperty("编号ID")
+    @Schema(description = "编号ID")
     private Long id;
 
     /** 企业ID */
-    @ApiModelProperty("企业ID")
+    @Schema(description = "企业ID")
     @Excel(name = "企业ID")
     private Long entId;
 
     /** 部门ID */
-    @ApiModelProperty("部门ID")
+    @Schema(description = "部门ID")
     @Excel(name = "部门ID")
     private Long deptId;
 
     /** 电站类型（1配电 2光伏） */
-    @ApiModelProperty("电站类型（1配电 2光伏）")
+    @Schema(description = "电站类型（1配电 2光伏）")
     @Excel(name = "电站类型", readConverterExp = "1=配电,2=光伏")
     private Integer stationType;
 
     /** 设备名称 */
-    @ApiModelProperty("设备名称")
+    @Schema(description = "设备名称")
     @Excel(name = "设备名称")
     private String deviceName;
 
     /** 设备编码 */
-    @ApiModelProperty("设备编码")
+    @Schema(description = "设备编码")
     @Excel(name = "设备编码")
     private String deviceSn;
 
     /** 所属通道ID */
-    @ApiModelProperty("所属通道ID")
+    @Schema(description = "所属通道ID")
     @Excel(name = "所属通道ID")
     private Long channelId;
 
     /** 所属通道编码 */
-    @ApiModelProperty("所属通道编码")
+    @Schema(description = "所属通道编码")
     @Excel(name = "所属通道编码")
     private String channelSn;
 
     /** 连接协议（1104 2ModbusRTU 3ModbusTCP 4DLT645） */
-    @ApiModelProperty("连接协议（1104 2ModbusRTU 3ModbusTCP 4DLT645）")
+    @Schema(description = "连接协议（1104 2ModbusRTU 3ModbusTCP 4DLT645）")
     @Excel(name = "连接协议", readConverterExp = "1=104,2=ModbusRTU,3=ModbusTCP,4=DLT645")
     private String connectModel;
 
     /** 连接超时（s） */
-    @ApiModelProperty("连接超时（s）")
+    @Schema(description = "连接超时（s）")
     @Excel(name = "连接超时", readConverterExp = "s")
     private Integer timeout;
 
     /** 上线时间 */
-    @ApiModelProperty("上线时间")
+    @Schema(description = "上线时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Excel(name = "上线时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
     private Date onlineTime;
 
     /** 下线时间 */
-    @ApiModelProperty("下线时间")
+    @Schema(description = "下线时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Excel(name = "下线时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
     private Date offlineTime;
 
     /** 是否激活 */
-    @ApiModelProperty("是否激活")
+    @Schema(description = "是否激活")
     @Excel(name = "是否激活")
     private Integer isActive;
 
     /** 激活时间 */
-    @ApiModelProperty("激活时间")
+    @Schema(description = "激活时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Excel(name = "激活时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
     private Date activeUpdateTime;
 
     /** 通道连接报警 */
-    @ApiModelProperty("通道连接报警")
+    @Schema(description = "通道连接报警")
     @Excel(name = "通道连接报警")
     private Integer connectAlarm;
 
     /** 设备地址（Modbus） */
-    @ApiModelProperty("设备地址（Modbus）")
+    @Schema(description = "设备地址（Modbus）")
     @Excel(name = "设备地址", readConverterExp = "M=odbus")
     private Integer sbdz;
 
     /** 传送原因长度 */
-    @ApiModelProperty("传送原因长度")
+    @Schema(description = "传送原因长度")
     @Excel(name = "传送原因长度")
     private Integer csyyLength;
 
     /** 公共地址（104） */
-    @ApiModelProperty("公共地址（104）")
+    @Schema(description = "公共地址（104）")
     @Excel(name = "公共地址", readConverterExp = "1=04")
     private Integer ggdz;
 
     /** 公共地址长度 */
-    @ApiModelProperty("公共地址长度")
+    @Schema(description = "公共地址长度")
     @Excel(name = "公共地址长度")
     private Integer ggdzLength;
 
     /** 信息体地址长度 */
-    @ApiModelProperty("信息体地址长度")
+    @Schema(description = "信息体地址长度")
     @Excel(name = "信息体地址长度")
     private Integer infoLength;
 
     /** 超时T0（s） */
-    @ApiModelProperty("超时T0（s）")
+    @Schema(description = "超时T0（s）")
     @Excel(name = "超时T0", readConverterExp = "s=")
     private Integer timeoutT0;
 
     /** 超时T1（s） */
-    @ApiModelProperty("超时T1（s）")
+    @Schema(description = "超时T1（s）")
     @Excel(name = "超时T1", readConverterExp = "s=")
     private Integer timeoutT1;
 
     /** 超时T2（s） */
-    @ApiModelProperty("超时T2（s）")
+    @Schema(description = "超时T2（s）")
     @Excel(name = "超时T2", readConverterExp = "s=")
     private Integer timeoutT2;
 
     /** 超时T3（s） */
-    @ApiModelProperty("超时T3（s）")
+    @Schema(description = "超时T3（s）")
     @Excel(name = "超时T3", readConverterExp = "s=")
     private Integer timeoutT3;
 
     /** 总召采集周期 */
-    @ApiModelProperty("总召采集周期")
+    @Schema(description = "总召采集周期")
     @Excel(name = "总召采集周期")
     private Integer assCallCycle;
 
     /** 电度总召周期 */
-    @ApiModelProperty("电度总召周期")
+    @Schema(description = "电度总召周期")
     @Excel(name = "电度总召周期")
     private Integer elcCallCycle;
 
     /** 数据区域 */
-    @ApiModelProperty("数据区域（JSON格式）")
+    @Schema(description = "数据区域（JSON格式）")
     @Excel(name = "数据区域")
     @TableField(typeHandler = DevicesDataAreaTypeHandler.class)
     private List<DevicesDataAreaVo> dataArea;
 
     /** 产品类型（1通讯管理机 2DTU） */
-    @ApiModelProperty("产品类型（1通讯管理机 2DTU）")
+    @Schema(description = "产品类型（1通讯管理机 2DTU）")
     @Excel(name = "产品类型", readConverterExp = "1=通讯管理机,2=DTU")
     private Integer proType;
 
     /** 生产厂家 */
-    @ApiModelProperty("生产厂家")
+    @Schema(description = "生产厂家")
     @Excel(name = "生产厂家")
     private Integer proFactory;
 
     /** 产品版本 */
-    @ApiModelProperty("产品版本")
+    @Schema(description = "产品版本")
     @Excel(name = "产品版本")
     private String proVer;
 
     /** 产品SN号 */
-    @ApiModelProperty("产品SN号")
+    @Schema(description = "产品SN号")
     @Excel(name = "产品SN号")
     private String proSn;
 
     /** 产品型号 */
-    @ApiModelProperty("产品型号")
+    @Schema(description = "产品型号")
     @Excel(name = "产品型号")
     private String proModel;
 
     /** 运营商 */
-    @ApiModelProperty("运营商")
+    @Schema(description = "运营商")
     @Excel(name = "运营商")
     private Integer cardOperator;
 
     /** 物联卡号 */
-    @ApiModelProperty("物联卡号")
+    @Schema(description = "物联卡号")
     @Excel(name = "物联卡号")
     private String cardNo;
 
     /** IP地址 */
-    @ApiModelProperty("IP地址")
+    @Schema(description = "IP地址")
     @Excel(name = "IP地址")
     private String cardIp;
 
     /** 流量标准 */
-    @ApiModelProperty("流量标准")
+    @Schema(description = "流量标准")
     @Excel(name = "流量标准")
     private Integer cardFlow;
 
     /** 资费标准 */
-    @ApiModelProperty("资费标准")
+    @Schema(description = "资费标准")
     @Excel(name = "资费标准")
     private Float cardPostage;
 
     /** 资费到期 */
-    @ApiModelProperty("资费到期")
+    @Schema(description = "资费到期")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Excel(name = "资费到期", width = 30, dateFormat = "yyyy-MM-dd")
     private Date cardExpireDate;
 
     /** 是否停用（0正常 1停用） */
-    @ApiModelProperty("是否停用（0正常 1停用）")
+    @Schema(description = "是否停用（0正常 1停用）")
     @Excel(name = "是否停用", readConverterExp = "0=正常,1=停用")
     private Integer stopFlag;
 
     /** 是否删除（0正常 1删除） */
-    @ApiModelProperty("是否删除（0正常 1删除）")
+    @Schema(description = "是否删除（0正常 1删除）")
     @Excel(name = "是否删除", readConverterExp = "0=正常,1=删除")
     private Integer deleteFlag;
 

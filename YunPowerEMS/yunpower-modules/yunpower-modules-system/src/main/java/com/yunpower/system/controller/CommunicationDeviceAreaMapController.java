@@ -3,8 +3,8 @@ package com.yunpower.system.controller;
 import java.util.List;
 import jakarta.servlet.http.HttpServletResponse;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,7 +27,7 @@ import com.yunpower.common.core.web.page.TableDataInfo;
  * @author JUNFU.WANG
  * @date 2023-10-07
  */
-@Api(tags = "T 通讯设备数据区域类型（公共）表")
+@Tag(name = "T 通讯设备数据区域类型（公共）表", description = "T 通讯设备数据区域类型（公共）表")
 @RestController
 @RequestMapping("/area-map")
 public class CommunicationDeviceAreaMapController extends BaseController
@@ -38,7 +38,7 @@ public class CommunicationDeviceAreaMapController extends BaseController
     /**
      * 查询通讯设备数据区域类型（公共）列表
      */
-    @ApiOperation("查询通讯设备数据区域类型（公共）列表")
+    @Operation(summary = "查询通讯设备数据区域类型（公共）列表")
     @RequiresPermissions("system:area-map:list")
     @GetMapping("/list")
     public TableDataInfo list(CommunicationDeviceAreaMap communicationDeviceAreaMap)
@@ -51,7 +51,7 @@ public class CommunicationDeviceAreaMapController extends BaseController
     /**
      * 查询通讯设备数据区域类型（公共）列表（不分页）
      */
-    @ApiOperation("查询通讯设备数据区域类型（公共）列表（不分页）")
+    @Operation(summary = "查询通讯设备数据区域类型（公共）列表（不分页）")
     @RequiresPermissions("system:area-map:list")
     @GetMapping("/listAll")
     public AjaxResult listAll(CommunicationDeviceAreaMap communicationDeviceAreaMap) {
@@ -62,7 +62,7 @@ public class CommunicationDeviceAreaMapController extends BaseController
     /**
      * 导出通讯设备数据区域类型（公共）列表
      */
-    @ApiOperation("导出通讯设备数据区域类型（公共）列表")
+    @Operation(summary = "导出通讯设备数据区域类型（公共）列表")
     @RequiresPermissions("system:area-map:export")
     @Log(title = "通讯设备数据区域类型（公共）", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
@@ -76,7 +76,7 @@ public class CommunicationDeviceAreaMapController extends BaseController
     /**
      * 获取通讯设备数据区域类型（公共）详细信息
      */
-    @ApiOperation("获取通讯设备数据区域类型（公共）详细信息")
+    @Operation(summary = "获取通讯设备数据区域类型（公共）详细信息")
     @RequiresPermissions("system:area-map:query")
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") Long id)

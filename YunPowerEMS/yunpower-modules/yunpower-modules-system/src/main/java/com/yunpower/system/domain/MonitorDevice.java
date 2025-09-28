@@ -8,8 +8,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.yunpower.system.domain.handler.AssociatedDevicesTypeHandler;
 import com.yunpower.system.domain.jsonvo.AssociatedDevicesVo;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.yunpower.common.core.annotation.Excel;
@@ -22,249 +22,249 @@ import org.springframework.data.annotation.Transient;
  * @author JUNFU.WANG
  * @date 2023-10-07
  */
-@ApiModel("能源监控设备对象")
+@Schema(description = "能源监控设备对象")
 public class MonitorDevice extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
     /** 编号ID */
-    @ApiModelProperty("编号ID")
+    @Schema(description = "编号ID")
     private Long id;
 
     /** 企业ID */
-    @ApiModelProperty("企业ID")
+    @Schema(description = "企业ID")
     private Long entId;
 
     /** 部门ID */
-    @ApiModelProperty("部门ID")
+    @Schema(description = "部门ID")
     private Long deptId;
 
     /** 电站类型（1配电 2光伏 3储能 5用水 6流量 7计碳） */
-    @ApiModelProperty("电站类型（1配电 2光伏 3储能 5用水 6流量 7计碳）")
+    @Schema(description = "电站类型（1配电 2光伏 3储能 5用水 6流量 7计碳）")
     @Excel(name = "电站类型", readConverterExp = "1=配电,2=光伏,3=储能,6=流量,7计碳")
     private Integer stationType;
 
     /** 电能类型（1用电 2发电 3并网 4购电） */
-    @ApiModelProperty("电能类型（1用电 2发电 3并网 4购电）")
+    @Schema(description = "电能类型（1用电 2发电 3并网 4购电）")
     @Excel(name = "电能类型", readConverterExp = "1=用电,2=发电,3=并网,4=购电")
     private Integer electricType;
 
     /** 所属通道ID */
-    @ApiModelProperty("所属通道ID")
+    @Schema(description = "所属通道ID")
     private Long channelId;
 
     /** 所属通道编码 */
-    @ApiModelProperty("所属通道编码")
+    @Schema(description = "所属通道编码")
     @Excel(name = "通道编码")
     private String channelSn;
 
     /** 所属通信设备ID */
-    @ApiModelProperty("所属通信设备ID")
+    @Schema(description = "所属通信设备ID")
     private Long comDeviceId;
 
     /** 所属通信设备编码 */
-    @ApiModelProperty("所属通信设备编码")
+    @Schema(description = "所属通信设备编码")
     @Excel(name = "通信设备编码")
     private String comDeviceSn;
 
     /** 设备名称 */
-    @ApiModelProperty("设备名称")
+    @Schema(description = "设备名称")
     @Excel(name = "设备名称")
     private String deviceName;
 
     /** 设备编号 */
-    @ApiModelProperty("设备编码")
+    @Schema(description = "设备编码")
     @Excel(name = "设备编码，自动生成")
     private String deviceSn;
 
     /** 设备地址 */
-    @ApiModelProperty("设备地址")
+    @Schema(description = "设备地址")
     @Excel(name = "设备地址")
     private Integer sbdz;
 
     /** 电表表号 */
-    @ApiModelProperty("电表表号")
+    @Schema(description = "电表表号")
     @Excel(name = "电表表号")
     private String meterNumber;
 
     /** 设备分组 */
-    @ApiModelProperty("设备分组")
+    @Schema(description = "设备分组")
     @Excel(name = "分组编号")
     private Long groupId;
 
     /** 是否关口表 */
-    @ApiModelProperty("是否关口表")
+    @Schema(description = "是否关口表")
     private Integer isPass;
 
     /** 生产厂家 */
-    @ApiModelProperty("生产厂家")
+    @Schema(description = "生产厂家")
     @Excel(name = "生产厂家编号")
     private Long proFactory;
 
     /** 设备类型 */
-    @ApiModelProperty("设备类型")
+    @Schema(description = "设备类型")
     @Excel(name = "设备类型编号")
     private Long proType;
 
     /** 产品版本 */
-    @ApiModelProperty("产品版本")
+    @Schema(description = "产品版本")
     @Excel(name = "产品版本")
     private String proVer;
 
     /** 购买价格 */
-    @ApiModelProperty("购买价格")
+    @Schema(description = "购买价格")
     @Excel(name = "购买价格")
     private Float buyPrice;
 
     /** 产品SN号 */
-    @ApiModelProperty("产品SN号")
+    @Schema(description = "产品SN号")
     @Excel(name = "产品SN码")
     private String proSn;
 
     /** 产品型号 */
-    @ApiModelProperty("产品型号")
+    @Schema(description = "产品型号")
     @Excel(name = "产品型号")
     private String proModel;
 
     /** 安规国家 */
-    @ApiModelProperty("安规国家")
+    @Schema(description = "安规国家")
     @Excel(name = "安规国家")
     private String agStandard;
 
     /** 额定电压 */
-    @ApiModelProperty("额定电压")
+    @Schema(description = "额定电压")
     @Excel(name = "额定电压")
     private Float ratedVol;
 
     /** 额定电流 */
-    @ApiModelProperty("额定电流")
+    @Schema(description = "额定电流")
     @Excel(name = "额定电流")
     private Float ratedEle;
 
     /** 额定功率 */
-    @ApiModelProperty("额定功率")
+    @Schema(description = "额定功率")
     @Excel(name = "额定功率")
     private Float ratedPower;
 
     /** 电流负载率 */
-    @ApiModelProperty("电流负载率")
+    @Schema(description = "电流负载率")
     @Excel(name = "电流负载率")
     private Float eleLoadRate;
 
     /** 电能质量分析 */
-    @ApiModelProperty("电能质量分析")
+    @Schema(description = "电能质量分析")
     private Integer isAnalysisEnergy;
 
     /** 关联监控 */
-    @ApiModelProperty("关联监控")
+    @Schema(description = "关联监控")
     private Integer monitorId;
 
     /** 发电属性 */
-    @ApiModelProperty("发电属性")
+    @Schema(description = "发电属性")
     private String electricAttribute;
 
     /** 温度属性 */
-    @ApiModelProperty("温度属性")
+    @Schema(description = "温度属性")
     private String temperatureAttribute;
 
     /** 其它属性 */
-    @ApiModelProperty("其它属性")
+    @Schema(description = "其它属性")
     private String ortherAttribute;
 
     /** 组件容量 */
-    @ApiModelProperty("组件容量")
+    @Schema(description = "组件容量")
     @Excel(name = "组件容量")
     private Float ratedVolume;
 
     /** 方位角度 */
-    @ApiModelProperty("方位角")
+    @Schema(description = "方位角")
     @Excel(name = "方位角")
     private Float azimuth;
 
     /** 倾角角度 */
-    @ApiModelProperty("倾角")
+    @Schema(description = "倾角")
     @Excel(name = "倾角")
     private Float dipAngle;
 
     /** 生产日期 */
-    @ApiModelProperty("生产日期")
+    @Schema(description = "生产日期")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Excel(name = "生产日期", width = 30, dateFormat = "yyyy-MM-dd")
     private Date manufactureDate;
 
     /** 使用年限 */
-    @ApiModelProperty("使用年限")
+    @Schema(description = "使用年限")
     @Excel(name = "使用年限")
     private Integer useLife;
 
     /** 性能衰减 */
-    @ApiModelProperty("性能衰减")
+    @Schema(description = "性能衰减")
     @Excel(name = "性能衰减")
     private Float attenuationRate;
 
     /** 是否抄表 */
-    @ApiModelProperty("是否抄表")
+    @Schema(description = "是否抄表")
     private Integer isReading;
 
     /** 抄表变量 */
-    @ApiModelProperty("抄表变量")
+    @Schema(description = "抄表变量")
     private Integer readingVar;
 
     /** DTU端口 */
-    @ApiModelProperty("DTU端口")
+    @Schema(description = "DTU端口")
     private Integer dtuCmd;
 
     /** 绑定用户 */
-    @ApiModelProperty("绑定用户")
+    @Schema(description = "绑定用户")
     private Integer bindUserId;
 
     /** 付费模式 */
-    @ApiModelProperty("付费模式")
+    @Schema(description = "付费模式")
     private Integer chargingType;
 
     /** 付费规则 */
-    @ApiModelProperty("付费规则")
+    @Schema(description = "付费规则")
     private Integer ruleId;
 
     /** 付费周期 */
-    @ApiModelProperty("付费周期")
+    @Schema(description = "付费周期")
     private Integer checkoutType;
 
     /** 关联设备（JSON格式） */
-    @ApiModelProperty("关联设备（JSON格式）")
+    @Schema(description = "关联设备（JSON格式）")
     @TableField(typeHandler = AssociatedDevicesTypeHandler.class)
     private List<AssociatedDevicesVo> associatedDevices;
 
     /** 连接超时（s） */
-    @ApiModelProperty("连接超时")
+    @Schema(description = "连接超时")
     @Excel(name = "连接超时")
     private Integer timeout;
 
     /** 上线时间 */
-    @ApiModelProperty("上线时间")
+    @Schema(description = "上线时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date onlineTime;
 
     /** 下线时间 */
-    @ApiModelProperty("下线时间")
+    @Schema(description = "下线时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date offlineTime;
 
     /** 是否激活 */
-    @ApiModelProperty("是否激活")
+    @Schema(description = "是否激活")
     private Integer isActive;
 
     /** 激活时间 */
-    @ApiModelProperty("激活时间")
+    @Schema(description = "激活时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date activeUpdateTime;
 
     /** 是否停用（0正常 1停用） */
-    @ApiModelProperty("是否停用（0正常 1停用）")
+    @Schema(description = "是否停用（0正常 1停用）")
     private Integer stopFlag;
 
     /** 是否删除（0正常 1删除） */
-    @ApiModelProperty("是否删除（0正常 1删除）")
+    @Schema(description = "是否删除（0正常 1删除）")
     private Integer deleteFlag;
 
     /** 是否分组 */

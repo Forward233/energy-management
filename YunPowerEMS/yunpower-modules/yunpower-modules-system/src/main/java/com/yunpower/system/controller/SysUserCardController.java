@@ -3,8 +3,8 @@ package com.yunpower.system.controller;
 import java.util.List;
 import jakarta.servlet.http.HttpServletResponse;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,7 +30,7 @@ import com.yunpower.common.core.web.page.TableDataInfo;
  * @author JUNFU.WANG
  * @date 2023-10-07
  */
-@Api(tags = "Y 用户充值卡表")
+@Tag(name = "Y 用户充值卡表", description = "Y 用户充值卡表")
 @RestController
 @RequestMapping("/user-card")
 public class SysUserCardController extends BaseController {
@@ -40,7 +40,7 @@ public class SysUserCardController extends BaseController {
     /**
      * 查询用户充值卡列表
      */
-    @ApiOperation("查询用户充值卡列表")
+    @Operation(summary = "查询用户充值卡列表")
     @RequiresPermissions("system:user-card:list")
     @GetMapping("/list")
     public TableDataInfo list(SysUserCard sysUserCard) {
@@ -52,7 +52,7 @@ public class SysUserCardController extends BaseController {
     /**
      * 导出用户充值卡列表
      */
-    @ApiOperation("导出用户充值卡列表")
+    @Operation(summary = "导出用户充值卡列表")
     @RequiresPermissions("system:user-card:export")
     @Log(title = "用户充值卡", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
@@ -65,7 +65,7 @@ public class SysUserCardController extends BaseController {
     /**
      * 获取用户充值卡详细信息
      */
-    @ApiOperation("获取用户充值卡详细信息")
+    @Operation(summary = "获取用户充值卡详细信息")
     @RequiresPermissions("system:user-card:query")
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") Long id) {
@@ -75,7 +75,7 @@ public class SysUserCardController extends BaseController {
     /**
      * 新增用户充值卡
      */
-    @ApiOperation("新增用户充值卡")
+    @Operation(summary = "新增用户充值卡")
     @RequiresPermissions("system:user-card:add")
     @Log(title = "用户充值卡", businessType = BusinessType.INSERT)
     @PostMapping
@@ -86,7 +86,7 @@ public class SysUserCardController extends BaseController {
     /**
      * 修改用户充值卡
      */
-    @ApiOperation("修改用户充值卡")
+    @Operation(summary = "修改用户充值卡")
     @RequiresPermissions("system:user-card:edit")
     @Log(title = "用户充值卡", businessType = BusinessType.UPDATE)
     @PutMapping
@@ -97,7 +97,7 @@ public class SysUserCardController extends BaseController {
     /**
      * 修改用户充值卡状态
      */
-    @ApiOperation("修改用户充值卡状态")
+    @Operation(summary = "修改用户充值卡状态")
     @RequiresPermissions("system:user-card:state")
     @Log(title = "用户充值卡", businessType = BusinessType.UPDATE)
     @PutMapping("/changeStatus/{id}/{state}")
@@ -108,7 +108,7 @@ public class SysUserCardController extends BaseController {
     /**
      * 删除用户充值卡
      */
-    @ApiOperation("删除用户充值卡")
+    @Operation(summary = "删除用户充值卡")
     @RequiresPermissions("system:user-card:remove")
     @Log(title = "用户充值卡", businessType = BusinessType.DELETE)
     @DeleteMapping("/{ids}")

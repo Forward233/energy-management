@@ -15,8 +15,8 @@ import com.yunpower.system.service.IAutoGenSyncService;
 import com.yunpower.system.service.IPublicService;
 import com.yunpower.system.service.ISysDeptService;
 import com.yunpower.system.service.ISysStationService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +29,7 @@ import java.util.List;
  * @author JUNFU.WANG
  * @date 2023-09-28
  */
-@Api(tags = "Z 站点管理表")
+@Tag(name = "Z 站点管理表", description = "Z 站点管理表")
 @RestController
 @RequestMapping("/station")
 public class SysStationController extends BaseController {
@@ -48,7 +48,7 @@ public class SysStationController extends BaseController {
     /**
      * 查询电站列表（不分页，树结构）
      */
-    @ApiOperation("查询电站列表（不分页，树结构）")
+    @Operation(summary = "查询电站列表（不分页，树结构）")
     @RequiresPermissions("system:station:list")
     @GetMapping("/list")
     public AjaxResult list(SysStation sysStation) {
@@ -60,7 +60,7 @@ public class SysStationController extends BaseController {
     /**
      * 查询电站列表（不分页）
      */
-    @ApiOperation("查询电站列表（不分页）")
+    @Operation(summary = "查询电站列表（不分页）")
     @RequiresPermissions("system:station:list")
     @GetMapping("/listAll")
     public AjaxResult listAll(SysStation sysStation) {
@@ -71,7 +71,7 @@ public class SysStationController extends BaseController {
     /**
      * 导出电站列表
      */
-    @ApiOperation("导出电站列表")
+    @Operation(summary = "导出电站列表")
     @RequiresPermissions("system:station:export")
     @Log(title = "电站", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
@@ -84,7 +84,7 @@ public class SysStationController extends BaseController {
     /**
      * 获取电站详细信息
      */
-    @ApiOperation("获取电站详细信息")
+    @Operation(summary = "获取电站详细信息")
     @RequiresPermissions("system:station:query")
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") Long id) {
@@ -94,7 +94,7 @@ public class SysStationController extends BaseController {
     /**
      * 新增电站
      */
-    @ApiOperation("新增电站")
+    @Operation(summary = "新增电站")
     @RequiresPermissions("system:station:add")
     @Log(title = "电站", businessType = BusinessType.INSERT)
     @PostMapping
@@ -147,7 +147,7 @@ public class SysStationController extends BaseController {
     /**
      * 修改电站
      */
-    @ApiOperation("修改电站")
+    @Operation(summary = "修改电站")
     @RequiresPermissions("system:station:edit")
     @Log(title = "电站", businessType = BusinessType.UPDATE)
     @PutMapping
@@ -173,7 +173,7 @@ public class SysStationController extends BaseController {
     /**
      * 修改电站状态
      */
-    @ApiOperation("修改电站状态")
+    @Operation(summary = "修改电站状态")
     @RequiresPermissions("system:station:state")
     @Log(title = "电站", businessType = BusinessType.UPDATE)
     @PutMapping("/changeStatus/{id}/{state}")
@@ -189,7 +189,7 @@ public class SysStationController extends BaseController {
     /**
      * 删除电站
      */
-    @ApiOperation("删除电站")
+    @Operation(summary = "删除电站")
     @RequiresPermissions("system:station:remove")
     @Log(title = "电站", businessType = BusinessType.DELETE)
     @DeleteMapping("/{id}")
@@ -215,7 +215,7 @@ public class SysStationController extends BaseController {
     /**
      * 获取电站报警开关
      */
-    @ApiOperation("获取电站报警开关")
+    @Operation(summary = "获取电站报警开关")
     @GetMapping(value = "/getAlarmStatus")
     public AjaxResult getAlarmStatus() {
         Long deptId = publicService.getCurrentStation();
@@ -226,7 +226,7 @@ public class SysStationController extends BaseController {
     /**
      * 修改电站报警状态
      */
-    @ApiOperation("修改电站报警状态")
+    @Operation(summary = "修改电站报警状态")
     @RequiresPermissions("system:station:state")
     @Log(title = "电站", businessType = BusinessType.UPDATE)
     @PutMapping("/changeAlarmStatus/{state}")

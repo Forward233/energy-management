@@ -10,8 +10,8 @@ import com.yunpower.common.core.web.page.TableDataInfo;
 import com.yunpower.common.log.annotation.Log;
 import com.yunpower.common.log.enums.BusinessType;
 import com.yunpower.common.security.annotation.RequiresPermissions;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +24,7 @@ import java.util.List;
  * @author JUNFU.WANG
  * @date 2023-10-18
  */
-@Api(tags = "C 月统计数据存储表")
+@Tag(name = "C 月统计数据存储表", description = "C 月统计数据存储表")
 @RestController
 @RequestMapping("/sharding-month")
 public class ShardingMonthController extends BaseController {
@@ -34,7 +34,7 @@ public class ShardingMonthController extends BaseController {
     /**
      * 查询月统计数据存储列表
      */
-    @ApiOperation("查询月统计数据存储列表")
+    @Operation(summary = "查询月统计数据存储列表")
     @RequiresPermissions("system:month:list")
     @GetMapping("/list")
     public TableDataInfo list(ShardingMonth shardingMonth) {
@@ -48,7 +48,7 @@ public class ShardingMonthController extends BaseController {
     /**
      * 导出月统计数据存储列表
      */
-    @ApiOperation("导出月统计数据存储列表")
+    @Operation(summary = "导出月统计数据存储列表")
     @RequiresPermissions("system:month:export")
     @Log(title = "月统计数据存储", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
@@ -61,7 +61,7 @@ public class ShardingMonthController extends BaseController {
     /**
      * 获取月统计数据存储详细信息
      */
-    @ApiOperation("获取月统计数据存储详细信息")
+    @Operation(summary = "获取月统计数据存储详细信息")
     @RequiresPermissions("system:month:query")
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") Long id) {
@@ -71,7 +71,7 @@ public class ShardingMonthController extends BaseController {
     /**
      * 查询：最大值
      */
-    @ApiOperation("查询：最大值")
+    @Operation(summary = "查询：最大值")
     @RequiresPermissions("system:month:query")
     @GetMapping(value = "/getDataMax")
     public AjaxResult getDataMax(ShardingMonth shardingMonth) {
@@ -83,7 +83,7 @@ public class ShardingMonthController extends BaseController {
     /**
      * 查询：月统计数据
      */
-    @ApiOperation("查询：月统计数据")
+    @Operation(summary = "查询：月统计数据")
     @RequiresPermissions("system:month:query")
     @GetMapping(value = "/getStatisticForMonth")
     public AjaxResult getStatisticForMonth(ShardingMonth shardingMonth) {
@@ -95,7 +95,7 @@ public class ShardingMonthController extends BaseController {
     /**
      * 查询：年统计数据
      */
-    @ApiOperation("查询：年统计数据")
+    @Operation(summary = "查询：年统计数据")
     @RequiresPermissions("system:month:query")
     @GetMapping(value = "/getStatisticForYear")
     public AjaxResult getStatisticForYear(ShardingMonth shardingMonth) {

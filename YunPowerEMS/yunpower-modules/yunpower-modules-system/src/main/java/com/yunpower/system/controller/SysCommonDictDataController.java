@@ -13,8 +13,8 @@ import com.yunpower.system.api.domain.SysCommonDictData;
 import com.yunpower.system.service.ISysCommonDictDataService;
 import com.yunpower.system.service.ISysCommonDictService;
 import com.yunpower.common.log.annotation.Log;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +28,7 @@ import java.util.List;
  *
  * @author yunpower
  */
-@Api(tags = "S 数据字典信息表")
+@Tag(name = "S 数据字典信息表", description = "S 数据字典信息表")
 @RestController
 @RequestMapping("/dict/data")
 public class SysCommonDictDataController extends BaseController {
@@ -38,7 +38,7 @@ public class SysCommonDictDataController extends BaseController {
     @Autowired
     private ISysCommonDictService dictTypeService;
 
-    @ApiOperation("获取字典信息列表")
+    @Operation(summary = "获取字典信息列表")
     @RequiresPermissions("system:dict:list")
     @GetMapping("/list")
     public TableDataInfo list(SysCommonDictData dictData) {
@@ -47,7 +47,7 @@ public class SysCommonDictDataController extends BaseController {
         return getDataTable(list);
     }
 
-    @ApiOperation("导出字典信息")
+    @Operation(summary = "导出字典信息")
     @Log(title = "字典数据", businessType = BusinessType.EXPORT)
     @RequiresPermissions("system:dict:export")
     @PostMapping("/export")
@@ -60,7 +60,7 @@ public class SysCommonDictDataController extends BaseController {
     /**
      * 查询字典数据详细
      */
-    @ApiOperation("根据字典编码获取详细信息")
+    @Operation(summary = "根据字典编码获取详细信息")
     @RequiresPermissions("system:dict:query")
     @GetMapping(value = "/{dictDataId}")
     public AjaxResult getInfo(@PathVariable Long dictDataId) {
@@ -70,7 +70,7 @@ public class SysCommonDictDataController extends BaseController {
     /**
      * 根据字典类型查询字典数据信息
      */
-    @ApiOperation("根据字典类型查询字典数据信息")
+    @Operation(summary = "根据字典类型查询字典数据信息")
     @GetMapping(value = "/type/{dictType}")
     public AjaxResult dictType(@PathVariable String dictType) {
         List<SysCommonDictData> data = dictTypeService.selectDictDataByType(dictType);
@@ -87,7 +87,7 @@ public class SysCommonDictDataController extends BaseController {
      * @param dictValue 字典键值
      * @return 结果
      */
-    @ApiOperation("根据字典类型、字典值查询多级信息")
+    @Operation(summary = "根据字典类型、字典值查询多级信息")
     @GetMapping(value = "/dictDataMultiLevel")
     public AjaxResult dictDataBy(String dictType, String dictValue) {
         SysCommonDictData dictData = dictDataService.selectDictDataBy(dictType, dictValue);
@@ -97,7 +97,7 @@ public class SysCommonDictDataController extends BaseController {
     /**
      * 新增字典类型
      */
-    @ApiOperation("新增字典类型")
+    @Operation(summary = "新增字典类型")
     @RequiresPermissions("system:dict:add")
     @Log(title = "字典数据", businessType = BusinessType.INSERT)
     @PostMapping
@@ -109,7 +109,7 @@ public class SysCommonDictDataController extends BaseController {
     /**
      * 修改保存字典类型
      */
-    @ApiOperation("修改字典类型")
+    @Operation(summary = "修改字典类型")
     @RequiresPermissions("system:dict:edit")
     @Log(title = "字典数据", businessType = BusinessType.UPDATE)
     @PutMapping
@@ -121,7 +121,7 @@ public class SysCommonDictDataController extends BaseController {
     /**
      * 修改通用字典-数据状态
      */
-    @ApiOperation("修改通用字典-数据状态")
+    @Operation(summary = "修改通用字典-数据状态")
     @RequiresPermissions("system:data:state")
     @Log(title = "通用字典-数据", businessType = BusinessType.UPDATE)
     @PutMapping("/changeStatus/{id}/{state}")
@@ -132,7 +132,7 @@ public class SysCommonDictDataController extends BaseController {
     /**
      * 删除字典类型
      */
-    @ApiOperation("删除字典类型")
+    @Operation(summary = "删除字典类型")
     @RequiresPermissions("system:dict:remove")
     @Log(title = "字典类型", businessType = BusinessType.DELETE)
     @DeleteMapping("/{dictCodes}")

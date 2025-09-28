@@ -15,8 +15,8 @@ import com.yunpower.common.core.web.controller.BaseController;
 import com.yunpower.common.core.web.domain.AjaxResult;
 import com.yunpower.system.api.RemoteDashboardConfigCardService;
 import com.yunpower.system.api.domain.DashboardConfigCard;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author XIAOTONG.CAO
  * @date: 2024-06-12 10:00
  */
-@Api(tags = ">>> 通用图表接口 <<<")
+@Tag(name = ">>> 通用图表接口 <<<", description = ">>> 通用图表接口 <<<")
 @RestController
 @RequestMapping("/common/chart")
 public class CommonChartController extends BaseController {
@@ -43,7 +43,7 @@ public class CommonChartController extends BaseController {
      * 获取>> 通用图表数据
      * @param vo 查询参数
      * */
-    @ApiOperation("获取>>通用图表数据")
+    @Operation(summary = "获取>>通用图表数据")
     @GetMapping("/getChart")
     public AjaxResult getChartData(@Validated ChartQueryVo vo) {
         //获取配置数据

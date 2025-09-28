@@ -2,8 +2,8 @@ package com.yunpower.system.domain;
 
 import com.yunpower.common.core.annotation.Excel;
 import com.yunpower.common.core.web.domain.BaseEntity;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.springframework.data.annotation.Transient;
@@ -17,41 +17,41 @@ import jakarta.validation.constraints.NotNull;
  * @author yunpower
  * @date 2024-05-30
  */
-@ApiModel("仪表盘配置对象")
+@Schema(description = "仪表盘配置对象")
 public class DashboardConfig extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     /**
      * 编号ID
      */
-    @ApiModelProperty("编号ID")
+    @Schema(description = "编号ID")
     private Long id;
 
     /**
      * 企业ID
      */
-    @ApiModelProperty("企业ID")
+    @Schema(description = "企业ID")
     @Excel(name = "企业ID")
     private Long entId;
 
     /**
      * 部门ID
      */
-    @ApiModelProperty("部门ID")
+    @Schema(description = "部门ID")
     @Excel(name = "部门ID")
     private Long deptId;
 
     /**
      * 设备名称
      */
-    @ApiModelProperty("设备名称")
+    @Schema(description = "设备名称")
     @Excel(name = "设备名称")
     private String pageName;
 
     /**
      * 页面key 唯一
      */
-    @ApiModelProperty("页面key 唯一")
+    @Schema(description = "页面key 唯一")
     @Excel(name = "页面key 唯一")
     @NotEmpty(message = "payKey不能为空")
     private String pageKey;
@@ -59,7 +59,7 @@ public class DashboardConfig extends BaseEntity {
     /**
      * 页面类型 1:大屏页面 2:普通图表
      */
-    @ApiModelProperty("页面类型 1:大屏页面 2:普通图表")
+    @Schema(description = "页面类型 1:大屏页面 2:普通图表")
     @Excel(name = "页面类型 1:大屏页面 2:普通图表")
     @NotNull(message = "pageType不能为空")
     private Long pageType;
@@ -67,28 +67,28 @@ public class DashboardConfig extends BaseEntity {
     /**
      * 页面配置json
      */
-    @ApiModelProperty("页面配置json")
+    @Schema(description = "页面配置json")
     @Excel(name = "页面配置json")
     private String pageConfig;
 
     /**
      * 页面配置json 用于预览页面
      */
-    @ApiModelProperty("页面配置json 用于预览页面")
+    @Schema(description = "页面配置json 用于预览页面")
     @Excel(name = "页面配置json 用于预览页面")
     private String pageConfigPre;
 
     /**
      * 是否停用（0正常 1停用）
      */
-    @ApiModelProperty("是否停用（0正常 1停用）")
+    @Schema(description = "是否停用（0正常 1停用）")
     @Excel(name = "是否停用", readConverterExp = "0=正常,1=停用")
     private Integer stopFlag;
 
     /**
      * 是否删除（0正常 1删除）
      */
-    @ApiModelProperty("是否删除（0正常 1删除）")
+    @Schema(description = "是否删除（0正常 1删除）")
     @Excel(name = "是否删除", readConverterExp = "0=正常,1=删除")
     private Integer deleteFlag;
 

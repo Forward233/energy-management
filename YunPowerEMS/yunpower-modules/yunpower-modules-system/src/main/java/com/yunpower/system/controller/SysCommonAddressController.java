@@ -9,8 +9,8 @@ import com.yunpower.common.log.enums.BusinessType;
 import com.yunpower.common.security.annotation.RequiresPermissions;
 import com.yunpower.system.domain.SysCommonAddress;
 import com.yunpower.system.service.ISysCommonAddressService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +24,7 @@ import java.util.List;
  * @author JUNFU.WANG
  * @date 2023-10-07
  */
-@Api(tags = "G 全国四级行政区表")
+@Tag(name = "G 全国四级行政区表", description = "G 全国四级行政区表")
 @RestController
 @RequestMapping("/address")
 public class SysCommonAddressController extends BaseController {
@@ -34,7 +34,7 @@ public class SysCommonAddressController extends BaseController {
     /**
      * 查询全国四级行政区列表
      */
-    @ApiOperation("查询全国四级行政区列表")
+    @Operation(summary = "查询全国四级行政区列表")
     @GetMapping("/list")
     public TableDataInfo list(SysCommonAddress sysCommonAddress) {
         startPage();
@@ -45,7 +45,7 @@ public class SysCommonAddressController extends BaseController {
     /**
      * 查询全国四级行政区列表（不分页）
      */
-    @ApiOperation("查询全国四级行政区列表（不分页）")
+    @Operation(summary = "查询全国四级行政区列表（不分页）")
     @GetMapping("/listAll")
     public AjaxResult listAll(SysCommonAddress sysCommonAddress) {
         if (sysCommonAddress.getParentId() == null) {
@@ -59,7 +59,7 @@ public class SysCommonAddressController extends BaseController {
     /**
      * 导出全国四级行政区列表
      */
-    @ApiOperation("导出全国四级行政区列表")
+    @Operation(summary = "导出全国四级行政区列表")
     @RequiresPermissions("system:address:export")
     @Log(title = "全国四级行政区", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
@@ -72,7 +72,7 @@ public class SysCommonAddressController extends BaseController {
     /**
      * 获取全国四级行政区详细信息
      */
-    @ApiOperation("获取全国四级行政区详细信息")
+    @Operation(summary = "获取全国四级行政区详细信息")
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") Long id) {
         return success(sysCommonAddressService.selectSysCommonAddressById(id));
@@ -81,7 +81,7 @@ public class SysCommonAddressController extends BaseController {
     /**
      * 获取全国四级行政区名称（批量）
      */
-    @ApiOperation("获取全国四级行政区名称（批量）")
+    @Operation(summary = "获取全国四级行政区名称（批量）")
     @GetMapping(value = "/getNames/{ids}")
     public AjaxResult getNames(@PathVariable("ids") Long[] ids) {
         List<String> builder = new ArrayList<>();
@@ -97,7 +97,7 @@ public class SysCommonAddressController extends BaseController {
     /**
      * 新增全国四级行政区
      */
-    @ApiOperation("新增全国四级行政区")
+    @Operation(summary = "新增全国四级行政区")
     @RequiresPermissions("system:address:add")
     @Log(title = "全国四级行政区", businessType = BusinessType.INSERT)
     @PostMapping
@@ -108,7 +108,7 @@ public class SysCommonAddressController extends BaseController {
     /**
      * 修改全国四级行政区
      */
-    @ApiOperation("修改全国四级行政区")
+    @Operation(summary = "修改全国四级行政区")
     @RequiresPermissions("system:address:edit")
     @Log(title = "全国四级行政区", businessType = BusinessType.UPDATE)
     @PutMapping
@@ -119,7 +119,7 @@ public class SysCommonAddressController extends BaseController {
     /**
      * 删除全国四级行政区
      */
-    @ApiOperation("删除全国四级行政区")
+    @Operation(summary = "删除全国四级行政区")
     @RequiresPermissions("system:address:remove")
     @Log(title = "全国四级行政区", businessType = BusinessType.DELETE)
     @DeleteMapping("/{ids}")

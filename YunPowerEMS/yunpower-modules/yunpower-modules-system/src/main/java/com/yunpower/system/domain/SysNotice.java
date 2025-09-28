@@ -1,8 +1,8 @@
 package com.yunpower.system.domain;
 
 import com.yunpower.common.core.xss.Xss;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.yunpower.common.core.annotation.Excel;
@@ -17,52 +17,52 @@ import jakarta.validation.constraints.Size;
  * @author yunpower
  * @date 2023-09-14
  */
-@ApiModel("通知公告对象")
+@Schema(description = "通知公告对象")
 public class SysNotice extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
     /** 编号ID */
-    @ApiModelProperty("编号ID")
+    @Schema(description = "编号ID")
     private Long id;
 
     /** 企业ID */
-    @ApiModelProperty("企业ID")
+    @Schema(description = "企业ID")
     @Excel(name = "企业ID")
     private Long entId;
 
     /** 部门ID */
-    @ApiModelProperty("部门ID")
+    @Schema(description = "部门ID")
     @Excel(name = "部门ID")
     private Long deptId;
 
     /** 公告标题 */
-    @ApiModelProperty("公告标题")
+    @Schema(description = "公告标题")
     @Excel(name = "公告标题")
     private String noticeTitle;
 
     /** 公告类型（1通知 2公告） */
-    @ApiModelProperty("公告类型（1通知 2公告）")
+    @Schema(description = "公告类型（1通知 2公告）")
     @Excel(name = "公告类型", readConverterExp = "1=通知,2=公告")
     private Integer noticeType;
 
     /** 公告分组 */
-    @ApiModelProperty("公告分组")
+    @Schema(description = "公告分组")
     @Excel(name = "公告分组")
     private Integer groupId;
 
     /** 公告内容 */
-    @ApiModelProperty("公告内容")
+    @Schema(description = "公告内容")
     @Excel(name = "公告内容")
     private String noticeContent;
 
     /** 是否停用（0正常 1停用） */
-    @ApiModelProperty("是否停用（0正常 1停用）")
+    @Schema(description = "是否停用（0正常 1停用）")
     @Excel(name = "是否停用", readConverterExp = "0=正常,1=停用")
     private Integer stopFlag;
 
     /** 是否删除（0正常 1删除） */
-    @ApiModelProperty("是否删除（0正常 1删除）")
+    @Schema(description = "是否删除（0正常 1删除）")
     private Integer deleteFlag;
 
     public void setId(Long id)

@@ -17,8 +17,8 @@ import com.yunpower.system.service.IElectricPriceSchemeConfigService;
 import com.yunpower.system.service.IElectricPriceSchemeService;
 import com.yunpower.system.service.IPublicService;
 import com.yunpower.common.log.annotation.Log;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,7 +32,7 @@ import java.util.Map;
  * @author JUNFU.WANG
  * @date 2023-11-02
  */
-@Api(tags = "D 电度电价配置表")
+@Tag(name = "D 电度电价配置表", description = "D 电度电价配置表")
 @RestController
 @RequestMapping("/price-scheme-config")
 public class ElectricPriceSchemeConfigController extends BaseController {
@@ -48,7 +48,7 @@ public class ElectricPriceSchemeConfigController extends BaseController {
     /**
      * 获取电度电价配置详细信息
      */
-    @ApiOperation("获取电度电价配置详细信息")
+    @Operation(summary = "获取电度电价配置详细信息")
     @RequiresPermissions("system:price-scheme-config:query")
     @GetMapping(value = "/{schemeId}")
     public TableDataInfo getInfo(@PathVariable("schemeId") Long schemeId) {
@@ -60,7 +60,7 @@ public class ElectricPriceSchemeConfigController extends BaseController {
 
     /**
      * 新增电度电价配置（直接调用修改接口，不需要新增接口）
-     @ApiOperation("新增电度电价配置")
+     @Operation(summary = "新增电度电价配置")
      @RequiresPermissions("system:price-scheme-config:add")
      @Log(title = "电度电价配置", businessType = BusinessType.INSERT)
      @PostMapping public AjaxResult add(@RequestBody List<ElectricPriceSchemeConfig> electricPriceSchemeConfigList) {
@@ -75,7 +75,7 @@ public class ElectricPriceSchemeConfigController extends BaseController {
     /**
      * 修改电度电价配置
      */
-    @ApiOperation("修改电度电价配置")
+    @Operation(summary = "修改电度电价配置")
     @RequiresPermissions("system:price-scheme-config:edit")
     @Log(title = "电度电价配置", businessType = BusinessType.UPDATE)
     @PutMapping
@@ -123,7 +123,7 @@ public class ElectricPriceSchemeConfigController extends BaseController {
     // * 重新计算分时电价
     // * 更新当前站点下的（变量）数据
     // */
-    //@ApiOperation("重新计算分时电价")
+    //@Operation(summary = "重新计算分时电价")
     //@RequiresPermissions("system:price-scheme-config:edit")
     //@Log(title = "电度电价配置", businessType = BusinessType.UPDATE)
     //@GetMapping(value = "/recalculateSeasonalPrice/{id}")
@@ -135,7 +135,7 @@ public class ElectricPriceSchemeConfigController extends BaseController {
      * 重新计算所有的分时电价（通过电价标准ID）
      * 更新当前站点下的（变量）数据
      */
-    @ApiOperation("重新计算所有的分时电价（通过电价标准ID）")
+    @Operation(summary = "重新计算所有的分时电价（通过电价标准ID）")
     @RequiresPermissions("system:price-scheme-config:edit")
     @Log(title = "电度电价配置", businessType = BusinessType.UPDATE)
     @GetMapping(value = "/recalculateSeasonalPriceBySchemeId/{schemeId}")
@@ -157,7 +157,7 @@ public class ElectricPriceSchemeConfigController extends BaseController {
      * @param schemeId 电价标准ID
      * @return 结果
      */
-    @ApiOperation("通过电价标准ID获取尖峰平谷时间段")
+    @Operation(summary = "通过电价标准ID获取尖峰平谷时间段")
     @GetMapping("/getSeasonalRangeList/{schemeId}")
     public AjaxResult getSeasonalRangeList(@PathVariable("schemeId") Long schemeId) {
         return success(electricPriceSchemeConfigService.selectSeasonalRangeList(schemeId));
@@ -169,7 +169,7 @@ public class ElectricPriceSchemeConfigController extends BaseController {
      *
      * @return 结果
      */
-    @ApiOperation("获取站点配置的尖峰平谷时间段")
+    @Operation(summary = "获取站点配置的尖峰平谷时间段")
     @GetMapping("/getSeasonalRangeList")
     public AjaxResult getSeasonalRangeList() {
         // 获取当前站点信息
@@ -189,7 +189,7 @@ public class ElectricPriceSchemeConfigController extends BaseController {
      * @return 结果
      */
     @InnerAuth
-    @ApiOperation("获取站点配置的尖峰平谷时间段-内部调用")
+    @Operation(summary = "获取站点配置的尖峰平谷时间段-内部调用")
     @GetMapping("/getSeasonalRangeList/innerAuth")
     public Map<String, List<SeasonalRangeChartVo>> getSeasonalRangeListInner(@RequestParam("schemeId") Long schemeId)  {
         return electricPriceSchemeConfigService.selectSeasonalRangeList(getDefaultSchemeId(schemeId
@@ -218,7 +218,7 @@ public class ElectricPriceSchemeConfigController extends BaseController {
      * @return 结果
      */
     @InnerAuth
-    @ApiOperation("获取站点配置的尖峰平谷价格-内部调用")
+    @Operation(summary = "获取站点配置的尖峰平谷价格-内部调用")
     @GetMapping("/getSeasonalRangeListForDayStack/innerAuth")
     public List<Map<String, Object>> getSeasonalRangeListForDayStack()  {
         return electricPriceSchemeConfigService.selectSeasonalRangeListForDayStack(getDefaultSchemeId(null));

@@ -8,8 +8,8 @@ import com.yunpower.system.api.domain.SysDept;
 import com.yunpower.system.api.domain.SysUser;
 import com.yunpower.system.service.ISysDeptService;
 import com.yunpower.system.service.ISysUserService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,7 +36,7 @@ import com.yunpower.system.service.ISysLogLoginService;
  *
  * @author yunpower
  */
-@Api(tags = "R 系统访问记录表")
+@Tag(name = "R 系统访问记录表", description = "R 系统访问记录表")
 @RestController
 @RequestMapping("/logininfor")
 public class SysLogLoginController extends BaseController {
@@ -52,7 +52,7 @@ public class SysLogLoginController extends BaseController {
     @Autowired
     private RedisService redisService;
 
-    @ApiOperation("获取系统访问记录列表")
+    @Operation(summary = "获取系统访问记录列表")
     @RequiresPermissions("system:logininfor:list")
     @GetMapping("/list")
     public TableDataInfo list(SysLogLogin logininfor) {
@@ -61,7 +61,7 @@ public class SysLogLoginController extends BaseController {
         return getDataTable(list);
     }
 
-    @ApiOperation("导出系统访问记录")
+    @Operation(summary = "导出系统访问记录")
     @Log(title = "登录日志", businessType = BusinessType.EXPORT)
     @RequiresPermissions("system:logininfor:export")
     @PostMapping("/export")
@@ -71,7 +71,7 @@ public class SysLogLoginController extends BaseController {
         util.exportExcel(response, list, "登录日志");
     }
 
-    @ApiOperation("删除系统访问记录")
+    @Operation(summary = "删除系统访问记录")
     @RequiresPermissions("system:logininfor:remove")
     @Log(title = "登录日志", businessType = BusinessType.DELETE)
     @DeleteMapping("/{infoIds}")
@@ -79,7 +79,7 @@ public class SysLogLoginController extends BaseController {
         return toAjax(logininforService.deleteLogininforByIds(infoIds));
     }
 
-    @ApiOperation("清空系统访问记录")
+    @Operation(summary = "清空系统访问记录")
     @RequiresPermissions("system:logininfor:remove")
     @Log(title = "登录日志", businessType = BusinessType.DELETE)
     @DeleteMapping("/clean")
@@ -88,7 +88,7 @@ public class SysLogLoginController extends BaseController {
         return success();
     }
 
-    @ApiOperation("账户解锁")
+    @Operation(summary = "账户解锁")
     @RequiresPermissions("system:logininfor:unlock")
     @Log(title = "账户解锁", businessType = BusinessType.OTHER)
     @GetMapping("/unlock/{userName}")
@@ -97,7 +97,7 @@ public class SysLogLoginController extends BaseController {
         return success();
     }
 
-    @ApiOperation("新增系统访问记录")
+    @Operation(summary = "新增系统访问记录")
     @InnerAuth
     @PostMapping
     public AjaxResult add(@RequestBody SysLogLogin logininfor) {

@@ -3,8 +3,8 @@ package com.yunpower.system.domain;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.yunpower.common.core.annotation.Excel;
@@ -17,41 +17,41 @@ import org.springframework.data.annotation.Transient;
  * @author JUNFU.WANG
  * @date 2023-10-18
  */
-@ApiModel("月统计数据存储对象")
+@Schema(description = "月统计数据存储对象")
 public class ShardingMonth extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     /**
      * 编号ID
      */
-    @ApiModelProperty("编号ID")
+    @Schema(description = "编号ID")
     private Long id;
 
     /**
      * 变量名称
      */
-    @ApiModelProperty("变量名称")
+    @Schema(description = "变量名称")
     @Excel(name = "变量名称")
     private String variableName;
 
     /**
      * 日期天
      */
-    @ApiModelProperty("日期天")
+    @Schema(description = "日期天")
     @Excel(name = "日期天")
     private Integer daySign;
 
     /**
      * 最小值
      */
-    @ApiModelProperty("最小值")
+    @Schema(description = "最小值")
     @Excel(name = "最小值")
     private Float minValue;
 
     /**
      * 最小值发生时间
      */
-    @ApiModelProperty("最小值发生时间")
+    @Schema(description = "最小值发生时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Excel(name = "最小值发生时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
     private Date minTime;
@@ -59,14 +59,14 @@ public class ShardingMonth extends BaseEntity {
     /**
      * 最大值
      */
-    @ApiModelProperty("最大值")
+    @Schema(description = "最大值")
     @Excel(name = "最大值")
     private Float maxValue;
 
     /**
      * 最大值发生时间
      */
-    @ApiModelProperty("最大值发生时间")
+    @Schema(description = "最大值发生时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Excel(name = "最大值发生时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
     private Date maxTime;
@@ -74,35 +74,35 @@ public class ShardingMonth extends BaseEntity {
     /**
      * 平均值
      */
-    @ApiModelProperty("平均值")
+    @Schema(description = "平均值")
     @Excel(name = "平均值")
     private Float avgValue;
 
     /**
      * 累积标记：1时累积 2天累积
      */
-    @ApiModelProperty("累积标记：1时累积 2天累积")
+    @Schema(description = "累积标记：1时累积 2天累积")
     @Excel(name = "累积标记：1时累积 2天累积")
     private Integer accuSign;
 
     /**
      * 累积值
      */
-    @ApiModelProperty("累积值")
+    @Schema(description = "累积值")
     @Excel(name = "累积值")
     private Float accuValue;
 
     /**
      * 总记录数
      */
-    @ApiModelProperty("总记录数")
+    @Schema(description = "总记录数")
     @Excel(name = "总记录数")
     private Integer totalCount;
 
     /**
      * 统计时间
      */
-    @ApiModelProperty("统计时间")
+    @Schema(description = "统计时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Excel(name = "统计时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
     private Date saveTime;

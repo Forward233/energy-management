@@ -10,8 +10,8 @@ import com.yunpower.common.core.web.page.TableDataInfo;
 import com.yunpower.common.log.enums.BusinessType;
 import com.yunpower.common.security.annotation.RequiresPermissions;
 import com.yunpower.common.log.annotation.Log;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,7 +30,7 @@ import com.yunpower.system.service.ICommunicationDeviceAreaService;
  * @author JUNFU.WANG
  * @date 2023-10-07
  */
-@Api(tags = "T 通讯设备数据区域表")
+@Tag(name = "T 通讯设备数据区域表", description = "T 通讯设备数据区域表")
 @RestController
 @RequestMapping("/channel-device-area")
 public class CommunicationDeviceAreaController extends BaseController
@@ -41,7 +41,7 @@ public class CommunicationDeviceAreaController extends BaseController
     /**
      * 查询通讯设备数据区域列表
      */
-    @ApiOperation("查询通讯设备数据区域列表")
+    @Operation(summary = "查询通讯设备数据区域列表")
     @RequiresPermissions("system:channel-device-area:list")
     @GetMapping("/list")
     public TableDataInfo list(CommunicationDeviceArea communicationDeviceArea)
@@ -54,7 +54,7 @@ public class CommunicationDeviceAreaController extends BaseController
     /**
      * 查询通讯设备数据区域列表（不分页）
      */
-    @ApiOperation("查询通讯设备数据区域列表（不分页）")
+    @Operation(summary = "查询通讯设备数据区域列表（不分页）")
     @RequiresPermissions("system:channel-device-area:list")
     @GetMapping("/listAll")
     public AjaxResult listAll(CommunicationDeviceArea communicationDeviceArea) {
@@ -65,7 +65,7 @@ public class CommunicationDeviceAreaController extends BaseController
     /**
      * 导出通讯设备数据区域列表
      */
-    @ApiOperation("导出通讯设备数据区域列表")
+    @Operation(summary = "导出通讯设备数据区域列表")
     @RequiresPermissions("system:channel-device-area:export")
     @Log(title = "通讯设备数据区域", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
@@ -79,7 +79,7 @@ public class CommunicationDeviceAreaController extends BaseController
     /**
      * 获取通讯设备数据区域详细信息
      */
-    @ApiOperation("获取通讯设备数据区域详细信息")
+    @Operation(summary = "获取通讯设备数据区域详细信息")
     @RequiresPermissions("system:channel-device-area:query")
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") Long id)
@@ -90,7 +90,7 @@ public class CommunicationDeviceAreaController extends BaseController
     /**
      * 新增通讯设备数据区域
      */
-    @ApiOperation("新增通讯设备数据区域")
+    @Operation(summary = "新增通讯设备数据区域")
     @RequiresPermissions("system:channel-device-area:add")
     @Log(title = "通讯设备数据区域", businessType = BusinessType.INSERT)
     @PostMapping
@@ -102,7 +102,7 @@ public class CommunicationDeviceAreaController extends BaseController
     /**
      * 修改通讯设备数据区域
      */
-    @ApiOperation("修改通讯设备数据区域")
+    @Operation(summary = "修改通讯设备数据区域")
     @RequiresPermissions("system:channel-device-area:edit")
     @Log(title = "通讯设备数据区域", businessType = BusinessType.UPDATE)
     @PutMapping
@@ -114,7 +114,7 @@ public class CommunicationDeviceAreaController extends BaseController
     /**
      * 修改通讯设备数据区域状态
      */
-    @ApiOperation("修改通讯设备数据区域状态")
+    @Operation(summary = "修改通讯设备数据区域状态")
     @RequiresPermissions("system:channel-device-area:state")
     @Log(title = "通讯设备数据区域", businessType = BusinessType.UPDATE)
     @PutMapping("/changeStatus/{id}/{state}")
@@ -125,7 +125,7 @@ public class CommunicationDeviceAreaController extends BaseController
     /**
      * 删除通讯设备数据区域
      */
-    @ApiOperation("删除通讯设备数据区域")
+    @Operation(summary = "删除通讯设备数据区域")
     @RequiresPermissions("system:channel-device-area:remove")
     @Log(title = "通讯设备数据区域", businessType = BusinessType.DELETE)
 	@DeleteMapping("/{ids}")

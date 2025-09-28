@@ -3,8 +3,8 @@ package com.yunpower.system.controller;
 import java.util.List;
 import jakarta.servlet.http.HttpServletResponse;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -31,7 +31,7 @@ import com.yunpower.system.service.ISysCommonConfigService;
  * 
  * @author yunpower
  */
-@Api(tags = "C 参数配置表")
+@Tag(name = "C 参数配置表", description = "C 参数配置表")
 @RestController
 @RequestMapping("/config")
 public class SysCommonConfigController extends BaseController
@@ -42,7 +42,7 @@ public class SysCommonConfigController extends BaseController
     /**
      * 获取参数配置列表
      */
-    @ApiOperation("获取参数配置列表")
+    @Operation(summary = "获取参数配置列表")
     @RequiresPermissions("system:config:list")
     @GetMapping("/list")
     public TableDataInfo list(SysCommonConfig config)
@@ -52,7 +52,7 @@ public class SysCommonConfigController extends BaseController
         return getDataTable(list);
     }
 
-    @ApiOperation("导出参数配置")
+    @Operation(summary = "导出参数配置")
     @Log(title = "参数管理", businessType = BusinessType.EXPORT)
     @RequiresPermissions("system:config:export")
     @PostMapping("/export")
@@ -66,7 +66,7 @@ public class SysCommonConfigController extends BaseController
     /**
      * 根据参数编号获取详细信息
      */
-    @ApiOperation("根据参数编号获取详细信息")
+    @Operation(summary = "根据参数编号获取详细信息")
     @GetMapping(value = "/{configId}")
     public AjaxResult getInfo(@PathVariable Long configId)
     {
@@ -76,7 +76,7 @@ public class SysCommonConfigController extends BaseController
     /**
      * 根据参数键名查询参数值
      */
-    @ApiOperation("根据参数键名查询参数值")
+    @Operation(summary = "根据参数键名查询参数值")
     @GetMapping(value = "/configKey/{configKey}")
     public AjaxResult getConfigKey(@PathVariable String configKey)
     {
@@ -86,7 +86,7 @@ public class SysCommonConfigController extends BaseController
     /**
      * 新增参数配置
      */
-    @ApiOperation("新增参数配置")
+    @Operation(summary = "新增参数配置")
     @RequiresPermissions("system:config:add")
     @Log(title = "参数管理", businessType = BusinessType.INSERT)
     @PostMapping
@@ -103,7 +103,7 @@ public class SysCommonConfigController extends BaseController
     /**
      * 修改参数配置
      */
-    @ApiOperation("修改参数配置")
+    @Operation(summary = "修改参数配置")
     @RequiresPermissions("system:config:edit")
     @Log(title = "参数管理", businessType = BusinessType.UPDATE)
     @PutMapping
@@ -120,7 +120,7 @@ public class SysCommonConfigController extends BaseController
     /**
      * 删除参数配置
      */
-    @ApiOperation("删除参数配置")
+    @Operation(summary = "删除参数配置")
     @RequiresPermissions("system:config:remove")
     @Log(title = "参数管理", businessType = BusinessType.DELETE)
     @DeleteMapping("/{configIds}")
@@ -133,7 +133,7 @@ public class SysCommonConfigController extends BaseController
     /**
      * 刷新参数缓存
      */
-    @ApiOperation("刷新参数缓存")
+    @Operation(summary = "刷新参数缓存")
     @RequiresPermissions("system:config:remove")
     @Log(title = "参数管理", businessType = BusinessType.CLEAN)
     @DeleteMapping("/refreshCache")

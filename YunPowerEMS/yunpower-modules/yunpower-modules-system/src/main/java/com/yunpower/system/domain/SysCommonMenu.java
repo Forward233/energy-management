@@ -1,7 +1,7 @@
 package com.yunpower.system.domain;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.yunpower.common.core.annotation.Excel;
@@ -19,27 +19,27 @@ import java.util.List;
  * @author yunpower
  * @date 2023-09-14
  */
-@ApiModel("主菜单对象")
+@Schema(description = "主菜单对象")
 public class SysCommonMenu extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
     /** 编号ID */
-    @ApiModelProperty("编号ID")
+    @Schema(description = "编号ID")
     private Long id;
 
     /** 菜单一级分类标识 */
-    @ApiModelProperty("菜单一级分类标识")
+    @Schema(description = "菜单一级分类标识")
     @Excel(name = "菜单一级分类标识")
     private Integer menuModel;
 
     /** 菜单名称 */
-    @ApiModelProperty("菜单名称")
+    @Schema(description = "菜单名称")
     @Excel(name = "菜单名称")
     private String menuName;
 
     /** 上级ID */
-    @ApiModelProperty("上级ID")
+    @Schema(description = "上级ID")
     @Excel(name = "上级ID")
     private Long parentId;
 
@@ -47,66 +47,66 @@ public class SysCommonMenu extends BaseEntity
     private String parentName;
 
     /** 菜单类型（M目录 C菜单 F按钮） */
-    @ApiModelProperty("菜单类型（M目录 C菜单 F按钮）")
+    @Schema(description = "菜单类型（M目录 C菜单 F按钮）")
     @Excel(name = "菜单类型", readConverterExp = "M=目录,C=菜单,F=按钮")
     private String menuType;
 
     /** 路由地址 */
-    @ApiModelProperty("路由地址")
+    @Schema(description = "路由地址")
     @Excel(name = "路由地址")
     private String path;
 
     /** 请求路径 */
-    @ApiModelProperty("请求路径")
+    @Schema(description = "请求路径")
     @Excel(name = "请求路径")
     private String requestUrl;
 
     /** 请求参数 */
-    @ApiModelProperty("请求参数")
+    @Schema(description = "请求参数")
     @Excel(name = "请求参数")
     private String requestQuery;
 
     /** 权限标识 */
-    @ApiModelProperty("权限标识")
+    @Schema(description = "权限标识")
     @Excel(name = "权限标识")
     private String permissionSign;
 
     /** 打开方式（0外链 1页签） */
-    @ApiModelProperty("打开方式（0外链 1页签）")
+    @Schema(description = "打开方式（0外链 1页签）")
     @Excel(name = "打开方式", readConverterExp = "0=外链,1=页签")
     private Integer openType;
 
     /** 是否缓存（0缓存 1不缓存） */
-    @ApiModelProperty("是否缓存（0缓存 1不缓存）")
+    @Schema(description = "是否缓存（0缓存 1不缓存）")
     private String isCache;
 
     /** 菜单图标 */
-    @ApiModelProperty("菜单图标")
+    @Schema(description = "菜单图标")
     @Excel(name = "菜单图标")
     private String icon;
 
     /** 菜单显示（0显示 1隐藏） */
-    @ApiModelProperty("菜单显示（0显示 1隐藏）")
+    @Schema(description = "菜单显示（0显示 1隐藏）")
     @Excel(name = "菜单显示", readConverterExp = "0=显示,1=隐藏")
     private Integer visible;
 
     /** 显示顺序 */
-    @ApiModelProperty("显示顺序")
+    @Schema(description = "显示顺序")
     @Excel(name = "显示顺序")
     private Integer orderNum;
 
     /** 是否拥有admin权限才可访问 */
-    @ApiModelProperty("是否拥有admin权限才可访问")
+    @Schema(description = "是否拥有admin权限才可访问")
     @Excel(name = "是否拥有admin权限才可访问")
     private Integer isAdminVisit;
 
     /** 是否停用（0正常 1停用） */
-    @ApiModelProperty("是否停用（0正常 1停用）")
+    @Schema(description = "是否停用（0正常 1停用）")
     @Excel(name = "是否停用", readConverterExp = "0=正常,1=停用")
     private Integer stopFlag;
 
     /** 是否删除（0正常 1删除） */
-    @ApiModelProperty("是否删除（0正常 1删除）")
+    @Schema(description = "是否删除（0正常 1删除）")
     private Integer deleteFlag;
 
     /** 子菜单 */

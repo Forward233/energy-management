@@ -3,8 +3,8 @@ package com.yunpower.system.domain;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.yunpower.system.domain.handler.JsonCommonTypeHandler;
 import com.yunpower.system.domain.jsonvo.JsonCommonVo;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.yunpower.common.core.annotation.Excel;
@@ -19,100 +19,100 @@ import java.util.List;
  * @author JUNFU.WANG
  * @date 2023-10-07
  */
-@ApiModel("报警配置对象")
+@Schema(description = "报警配置对象")
 public class AlarmTriggerConfig extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
     /** 编号ID */
-    @ApiModelProperty("编号ID")
+    @Schema(description = "编号ID")
     private Long id;
 
     /** 企业ID */
-    @ApiModelProperty("企业ID")
+    @Schema(description = "企业ID")
     @Excel(name = "企业ID")
     private Long entId;
 
     /** 部门ID */
-    @ApiModelProperty("部门ID")
+    @Schema(description = "部门ID")
     @Excel(name = "部门ID")
     private Long deptId;
 
     /**
      * 电站类型
      */
-    @ApiModelProperty("电站类型")
+    @Schema(description = "电站类型")
     @Excel(name = "电站类型")
     private Integer stationType;
 
     /** 设备ID */
-    @ApiModelProperty("设备ID")
+    @Schema(description = "设备ID")
     @Excel(name = "设备ID")
     private Long deviceId;
 
     /** 设备编码 */
-    @ApiModelProperty("设备编码")
+    @Schema(description = "设备编码")
     @Excel(name = "设备编码")
     private String deviceSn;
 
     /** 变量ID */
-    @ApiModelProperty("变量ID")
+    @Schema(description = "变量ID")
     @Excel(name = "变量ID")
     private Long varId;
 
     /** 变量编码 */
-    @ApiModelProperty("变量编码")
+    @Schema(description = "变量编码")
     @Excel(name = "变量编码")
     private String varSn;
 
     /** 变量类型（1模拟量 2状态量） */
-    @ApiModelProperty("变量类型（1模拟量 2状态量）")
+    @Schema(description = "变量类型（1模拟量 2状态量）")
     @Excel(name = "变量类型", readConverterExp = "1=模拟量,2=状态量")
     private Integer varType;
 
     /** 报警类型 */
-    @ApiModelProperty("报警类型")
+    @Schema(description = "报警类型")
     @Excel(name = "报警类型")
     private Long categoryId;
 
     /** 阈值 */
-    @ApiModelProperty("阈值")
+    @Schema(description = "阈值")
     @Excel(name = "阈值")
     private Float threshold;
 
     /** 是否发送短信（0否 1是） */
-    @ApiModelProperty("是否发送短信（0否 1是）")
+    @Schema(description = "是否发送短信（0否 1是）")
     @Excel(name = "是否发送短信", readConverterExp = "0=否,1=是")
     private Integer isSendSms;
 
     /** 接收人员类型（1按岗位发送 1指定具体人员） */
-    @ApiModelProperty("接收人员类型（1按岗位发送 1指定具体人员）")
+    @Schema(description = "接收人员类型（1按岗位发送 1指定具体人员）")
     @Excel(name = "接收人员类型", readConverterExp = "1=按岗位发送,1=指定具体人员")
     private Integer receiveType;
 
     /** 具体岗位或人员（JSON格式） */
-    @ApiModelProperty("具体岗位或人员（JSON格式）")
+    @Schema(description = "具体岗位或人员（JSON格式）")
     @Excel(name = "具体岗位或人员", readConverterExp = "JSON格式")
     @TableField(typeHandler = JsonCommonTypeHandler.class)
     private List<JsonCommonVo> receiveConcrete;
 
     /** 报警开始时间 */
-    @ApiModelProperty("报警开始时间")
+    @Schema(description = "报警开始时间")
     @Excel(name = "报警开始时间")
     private String startTime;
 
     /** 报警结束时间 */
-    @ApiModelProperty("报警结束时间")
+    @Schema(description = "报警结束时间")
     @Excel(name = "报警结束时间")
     private String endTime;
 
     /** 是否停用（0正常 1停用） */
-    @ApiModelProperty("是否停用（0正常 1停用）")
+    @Schema(description = "是否停用（0正常 1停用）")
     @Excel(name = "是否停用", readConverterExp = "0=正常,1=停用")
     private Integer stopFlag;
 
     /** 是否删除（0正常 1删除） */
-    @ApiModelProperty("是否删除（0正常 1删除）")
+    @Schema(description = "是否删除（0正常 1删除）")
     @Excel(name = "是否删除", readConverterExp = "0=正常,1=删除")
     private Integer deleteFlag;
 

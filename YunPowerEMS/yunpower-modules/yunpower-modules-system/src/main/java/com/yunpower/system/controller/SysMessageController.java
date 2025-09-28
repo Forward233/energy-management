@@ -10,8 +10,8 @@ import com.yunpower.common.core.web.page.TableDataInfo;
 import com.yunpower.common.log.enums.BusinessType;
 import com.yunpower.common.security.annotation.RequiresPermissions;
 import com.yunpower.common.log.annotation.Log;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,7 +28,7 @@ import com.yunpower.system.service.ISysMessageService;
  * @author JUNFU.WANG
  * @date 2023-10-07
  */
-@Api(tags = "X 消息表")
+@Tag(name = "X 消息表", description = "X 消息表")
 @RestController
 @RequestMapping("/message")
 public class SysMessageController extends BaseController {
@@ -38,7 +38,7 @@ public class SysMessageController extends BaseController {
     /**
      * 查询消息列表
      */
-    @ApiOperation("查询消息列表")
+    @Operation(summary = "查询消息列表")
     @RequiresPermissions("system:message:list")
     @GetMapping("/list")
     public TableDataInfo list(SysMessage sysMessage) {
@@ -50,7 +50,7 @@ public class SysMessageController extends BaseController {
     /**
      * 导出消息列表
      */
-    @ApiOperation("导出消息列表")
+    @Operation(summary = "导出消息列表")
     @RequiresPermissions("system:message:export")
     @Log(title = "消息", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
@@ -63,7 +63,7 @@ public class SysMessageController extends BaseController {
     /**
      * 获取消息详细信息
      */
-    @ApiOperation("获取消息详细信息")
+    @Operation(summary = "获取消息详细信息")
     @RequiresPermissions("system:message:query")
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") Long id) {
@@ -73,7 +73,7 @@ public class SysMessageController extends BaseController {
     /**
      * 删除消息
      */
-    @ApiOperation("删除消息")
+    @Operation(summary = "删除消息")
     @RequiresPermissions("system:message:remove")
     @Log(title = "消息", businessType = BusinessType.DELETE)
     @DeleteMapping("/{ids}")
@@ -81,7 +81,7 @@ public class SysMessageController extends BaseController {
         return toAjax(sysMessageService.deleteSysMessageByIds(new SysMessage(), ids));
     }
 
-    @ApiOperation("清空消息")
+    @Operation(summary = "清空消息")
     @RequiresPermissions("system:message:remove")
     @Log(title = "登录日志", businessType = BusinessType.DELETE)
     @DeleteMapping("/clean")

@@ -15,8 +15,8 @@ import com.yunpower.system.api.RemotePageConfigService;
 import com.yunpower.system.api.RemotePublicService;
 import com.yunpower.system.api.domain.FeignSysPageConfig;
 import com.yunpower.system.api.domain.SysStation;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,7 +33,7 @@ import java.util.Map;
  * @date: 2023-11-29 11:14
  * @description:
  */
-@Api(tags = ">>> 电站概览（光伏）<<<")
+@Tag(name = ">>> 电站概览（光伏）<<<", description = ">>> 电站概览（光伏）<<<")
 @RestController
 @RequestMapping("/pv/chart")
 public class PvChartController  extends BaseController {
@@ -58,7 +58,7 @@ public class PvChartController  extends BaseController {
     /**
      * 获取>>电站概览【电站】基础数据
      */
-    @ApiOperation("获取>>电站概览【电站】基础数据")
+    @Operation(summary = "获取>>电站概览【电站】基础数据")
     @GetMapping("/getStationInfo")
     public AjaxResult getCurrentStationInfo() {
         Map<String, Object> map = new HashMap<>();
@@ -82,7 +82,7 @@ public class PvChartController  extends BaseController {
     /**
      * 获取>>电站概览【发电实时】数据
      */
-    @ApiOperation("获取>>电站概览【发电实时】数据")
+    @Operation(summary = "获取>>电站概览【发电实时】数据")
     @GetMapping("/getRuntimeInfo")
     public AjaxResult getRuntimeInfo() {
         //有三个数据：发电功率、装机容量和功率归一化
@@ -136,7 +136,7 @@ public class PvChartController  extends BaseController {
     /**
      * 获取>>电站概览【发电历史】头部数据
      */
-    @ApiOperation("获取>>电站概览【发电历史】头部数据")
+    @Operation(summary = "获取>>电站概览【发电历史】头部数据")
     @GetMapping("/getHistoryHeadInfo/{electric}")
     public AjaxResult getHistoryHeadInfo(@PathVariable("electric") float electric) {
         //有三个数据：当日发电量、当日幅照量、满发电小时
@@ -188,7 +188,7 @@ public class PvChartController  extends BaseController {
     /**
      * 获取>>电站概览【发电历史】右侧数据
      */
-    @ApiOperation("获取>>电站概览【发电历史】右侧数据")
+    @Operation(summary = "获取>>电站概览【发电历史】右侧数据")
     @GetMapping("/getHistoryRightInfo/{electric}")
     public AjaxResult getHistoryRightInfo(@PathVariable("electric") float electric) {
         Map<String, Object> map = new HashMap<>();

@@ -2,8 +2,8 @@ package com.yunpower.system.domain;
 
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.yunpower.common.core.annotation.Excel;
@@ -16,24 +16,24 @@ import org.springframework.data.annotation.Transient;
  * @author JUNFU.WANG
  * @date 2023-10-18
  */
-@ApiModel("日数据存储对象")
+@Schema(description = "日数据存储对象")
 public class ShardingDay extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
     /** 变量名称 */
-    @ApiModelProperty("变量名称")
+    @Schema(description = "变量名称")
     @Excel(name = "变量名称")
     private String variableName;
 
     /** 存盘时间 */
-    @ApiModelProperty("存盘时间")
+    @Schema(description = "存盘时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Excel(name = "存盘时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
     private Date saveTime;
 
     /** 数据 */
-    @ApiModelProperty("数据")
+    @Schema(description = "数据")
     @Excel(name = "数据")
     private Float dataValue;
 

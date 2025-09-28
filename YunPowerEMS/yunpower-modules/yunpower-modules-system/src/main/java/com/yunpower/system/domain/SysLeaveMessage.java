@@ -7,8 +7,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.yunpower.system.domain.handler.JsonCommonTypeHandler;
 import com.yunpower.system.domain.jsonvo.JsonCommonVo;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.yunpower.common.core.annotation.Excel;
@@ -20,69 +20,69 @@ import com.yunpower.common.core.web.domain.BaseEntity;
  * @author JUNFU.WANG
  * @date 2023-10-07
  */
-@ApiModel("留言回复管理对象")
+@Schema(description = "留言回复管理对象")
 public class SysLeaveMessage extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
     /** 编号ID */
-    @ApiModelProperty("编号ID")
+    @Schema(description = "编号ID")
     private Long id;
 
     /** 企业ID */
-    @ApiModelProperty("企业ID")
+    @Schema(description = "企业ID")
     @Excel(name = "企业ID")
     private Long entId;
 
     /** 部门ID */
-    @ApiModelProperty("部门ID")
+    @Schema(description = "部门ID")
     @Excel(name = "部门ID")
     private Long deptId;
 
     /** 数据表名 */
-    @ApiModelProperty("数据表名")
+    @Schema(description = "数据表名")
     @Excel(name = "数据表名")
     private String tableName;
 
     /** 记录ID */
-    @ApiModelProperty("记录ID")
+    @Schema(description = "记录ID")
     @Excel(name = "记录ID")
     private Long recordId;
 
     /** 留言人ID */
-    @ApiModelProperty("留言人ID")
+    @Schema(description = "留言人ID")
     @Excel(name = "留言人ID")
     private Long userId;
 
     /** 留言人 */
-    @ApiModelProperty("留言人")
+    @Schema(description = "留言人")
     @Excel(name = "留言人")
     private String userName;
 
     /** 留言内容 */
-    @ApiModelProperty("留言内容")
+    @Schema(description = "留言内容")
     @Excel(name = "留言内容")
     private String replyContent;
 
     /** 留言日期 */
-    @ApiModelProperty("留言日期")
+    @Schema(description = "留言日期")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Excel(name = "留言日期", width = 30, dateFormat = "yyyy-MM-dd")
     private Date replyTime;
 
     /** 附件合集（JSON格式） */
-    @ApiModelProperty("附件合集（JSON格式）")
+    @Schema(description = "附件合集（JSON格式）")
     @Excel(name = "附件合集", readConverterExp = "JSON格式")
     @TableField(typeHandler = JsonCommonTypeHandler.class)
     private List<JsonCommonVo> replyFiles;
 
     /** 是否停用（0正常 1停用） */
-    @ApiModelProperty("是否停用（0正常 1停用）")
+    @Schema(description = "是否停用（0正常 1停用）")
     @Excel(name = "是否停用", readConverterExp = "0=正常,1=停用")
     private Integer stopFlag;
 
     /** 是否删除（0正常 1删除） */
-    @ApiModelProperty("是否删除（0正常 1删除）")
+    @Schema(description = "是否删除（0正常 1删除）")
     @Excel(name = "是否删除", readConverterExp = "0=正常,1=删除")
     private Integer deleteFlag;
 

@@ -5,8 +5,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import com.yunpower.system.api.domain.SysGroup;
 import com.yunpower.system.service.ISysGroupService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,7 +32,7 @@ import com.yunpower.common.core.web.page.TableDataInfo;
  * @author JUNFU.WANG
  * @date 2023-10-07
  */
-@Api(tags = "G 公司管理表")
+@Tag(name = "G 公司管理表", description = "G 公司管理表")
 @RestController
 @RequestMapping("/company")
 public class SysCompanyController extends BaseController {
@@ -45,7 +45,7 @@ public class SysCompanyController extends BaseController {
     /**
      * 查询公司列表（分页，树结构）
      */
-    @ApiOperation("查询公司列表（分页，树结构）")
+    @Operation(summary = "查询公司列表（分页，树结构）")
     @RequiresPermissions("system:company:list")
     @GetMapping("/list")
     public TableDataInfo list(SysCompany sysCompany) {
@@ -68,7 +68,7 @@ public class SysCompanyController extends BaseController {
     /**
      * 查询公司列表（不分页，树结构）
      */
-    @ApiOperation("查询公司列表（不分页，树结构）")
+    @Operation(summary = "查询公司列表（不分页，树结构）")
     @RequiresPermissions("system:company:list")
     @GetMapping("/listAll")
     public AjaxResult listAll(SysCompany sysCompany) {
@@ -81,7 +81,7 @@ public class SysCompanyController extends BaseController {
     /**
      * 导出公司列表
      */
-    @ApiOperation("导出公司列表")
+    @Operation(summary = "导出公司列表")
     @RequiresPermissions("system:company:export")
     @Log(title = "公司", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
@@ -94,7 +94,7 @@ public class SysCompanyController extends BaseController {
     /**
      * 获取公司详细信息
      */
-    @ApiOperation("获取公司详细信息")
+    @Operation(summary = "获取公司详细信息")
     @RequiresPermissions("system:company:query")
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") Long id) {
@@ -104,7 +104,7 @@ public class SysCompanyController extends BaseController {
     /**
      * 新增公司
      */
-    @ApiOperation("新增公司")
+    @Operation(summary = "新增公司")
     @RequiresPermissions("system:company:add")
     @Log(title = "公司", businessType = BusinessType.INSERT)
     @PostMapping
@@ -120,7 +120,7 @@ public class SysCompanyController extends BaseController {
     /**
      * 修改公司
      */
-    @ApiOperation("修改公司")
+    @Operation(summary = "修改公司")
     @RequiresPermissions("system:company:edit")
     @Log(title = "公司", businessType = BusinessType.UPDATE)
     @PutMapping
@@ -136,7 +136,7 @@ public class SysCompanyController extends BaseController {
     /**
      * 修改公司状态
      */
-    @ApiOperation("修改公司状态")
+    @Operation(summary = "修改公司状态")
     @RequiresPermissions("system:company:state")
     @Log(title = "公司", businessType = BusinessType.UPDATE)
     @PutMapping("/changeStatus/{id}/{state}")
@@ -147,7 +147,7 @@ public class SysCompanyController extends BaseController {
     /**
      * 删除公司
      */
-    @ApiOperation("删除公司")
+    @Operation(summary = "删除公司")
     @RequiresPermissions("system:company:remove")
     @Log(title = "公司", businessType = BusinessType.DELETE)
     @DeleteMapping("/{ids}")

@@ -11,8 +11,8 @@ import com.yunpower.common.log.enums.BusinessType;
 import com.yunpower.common.log.annotation.Log;
 import com.yunpower.common.security.annotation.RequiresPermissions;
 import com.yunpower.common.security.utils.SecurityUtils;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -31,7 +31,7 @@ import com.yunpower.system.service.ISysPostService;
  * 
  * @author yunpower
  */
-@Api(tags = "G 岗位信息表")
+@Tag(name = "G 岗位信息表", description = "G 岗位信息表")
 @RestController
 @RequestMapping("/post")
 public class SysPostController extends BaseController
@@ -42,7 +42,7 @@ public class SysPostController extends BaseController
     /**
      * 获取岗位列表
      */
-    @ApiOperation("获取岗位信息列表")
+    @Operation(summary = "获取岗位信息列表")
     @RequiresPermissions("system:post:list")
     @GetMapping("/list")
     public TableDataInfo list(SysPost post)
@@ -55,7 +55,7 @@ public class SysPostController extends BaseController
     /**
      * 获取岗位列表（不分页）
      */
-    @ApiOperation("获取岗位列表（不分页）")
+    @Operation(summary = "获取岗位列表（不分页）")
     @RequiresPermissions("system:post:list")
     @GetMapping("/listAll")
     public AjaxResult listAll(SysPost post) {
@@ -63,7 +63,7 @@ public class SysPostController extends BaseController
         return success(list);
     }
 
-    @ApiOperation("导出岗位信息")
+    @Operation(summary = "导出岗位信息")
     @Log(title = "岗位管理", businessType = BusinessType.EXPORT)
     @RequiresPermissions("system:post:export")
     @PostMapping("/export")
@@ -77,7 +77,7 @@ public class SysPostController extends BaseController
     /**
      * 根据岗位编号获取详细信息
      */
-    @ApiOperation("根据编号获取详细信息")
+    @Operation(summary = "根据编号获取详细信息")
     @RequiresPermissions("system:post:query")
     @GetMapping(value = "/{postId}")
     public AjaxResult getInfo(@PathVariable Long postId)
@@ -88,7 +88,7 @@ public class SysPostController extends BaseController
     /**
      * 新增岗位
      */
-    @ApiOperation("新增岗位")
+    @Operation(summary = "新增岗位")
     @RequiresPermissions("system:post:add")
     @Log(title = "岗位管理", businessType = BusinessType.INSERT)
     @PostMapping
@@ -109,7 +109,7 @@ public class SysPostController extends BaseController
     /**
      * 修改岗位
      */
-    @ApiOperation("修改岗位")
+    @Operation(summary = "修改岗位")
     @RequiresPermissions("system:post:edit")
     @Log(title = "岗位管理", businessType = BusinessType.UPDATE)
     @PutMapping
@@ -130,7 +130,7 @@ public class SysPostController extends BaseController
     /**
      * 修改岗位状态
      */
-    @ApiOperation("修改岗位状态")
+    @Operation(summary = "修改岗位状态")
     @RequiresPermissions("system:post:state")
     @Log(title = "岗位管理", businessType = BusinessType.UPDATE)
     @PutMapping("/changeStatus/{id}/{state}")
@@ -141,7 +141,7 @@ public class SysPostController extends BaseController
     /**
      * 删除岗位
      */
-    @ApiOperation("删除岗位")
+    @Operation(summary = "删除岗位")
     @RequiresPermissions("system:post:remove")
     @Log(title = "岗位管理", businessType = BusinessType.DELETE)
     @DeleteMapping("/{postId}")
@@ -153,7 +153,7 @@ public class SysPostController extends BaseController
     /**
      * 获取岗位选择框列表
      */
-    @ApiOperation("获取岗位选择框列表")
+    @Operation(summary = "获取岗位选择框列表")
     @GetMapping("/optionselect")
     public AjaxResult optionselect()
     {

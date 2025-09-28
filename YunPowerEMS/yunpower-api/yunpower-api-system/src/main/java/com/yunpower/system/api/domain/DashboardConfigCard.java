@@ -2,8 +2,7 @@ package com.yunpower.system.api.domain;
 
 import com.yunpower.common.core.annotation.Excel;
 import com.yunpower.common.core.web.domain.BaseEntity;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.hibernate.validator.constraints.Length;
@@ -18,34 +17,34 @@ import jakarta.validation.constraints.NotNull;
  * @author yunpower
  * @date 2024-06-05
  */
-@ApiModel("仪表盘卡片配置对象")
+@Schema(description = "仪表盘卡片配置对象")
 public class DashboardConfigCard extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     /**
      * 主键ID
      */
-    @ApiModelProperty("主键ID")
+    @Schema(description = "主键ID")
     private Long id;
 
     /**
      * 企业ID
      */
-    @ApiModelProperty("企业ID")
+    @Schema(description = "企业ID")
     @Excel(name = "企业ID")
     private Long entId;
 
     /**
      * 部门ID
      */
-    @ApiModelProperty("部门ID")
+    @Schema(description = "部门ID")
     @Excel(name = "部门ID")
     private Long deptId;
 
     /**
      * 配置ID
      */
-    @ApiModelProperty("配置ID")
+    @Schema(description = "配置ID")
     @Excel(name = "配置ID")
     @NotNull(message = "dashboardConfigId 不能为空")
     @Min(value = 1, message = "配置页面Id错误")
@@ -54,7 +53,7 @@ public class DashboardConfigCard extends BaseEntity {
     /**
      * 卡片名称
      */
-    @ApiModelProperty("卡片名称")
+    @Schema(description = "卡片名称")
     @Excel(name = "卡片名称")
     @NotEmpty(message = "卡片名称 不能为空")
     @Length(max = 20, message = "卡片名称最大20位")
@@ -63,7 +62,7 @@ public class DashboardConfigCard extends BaseEntity {
     /**
      * 卡片key
      */
-    @ApiModelProperty("卡片key")
+    @Schema(description = "卡片key")
     @Excel(name = "卡片key")
     @NotEmpty(message = "卡片key 不能为空")
     private String cardKey;
@@ -71,7 +70,7 @@ public class DashboardConfigCard extends BaseEntity {
     /**
      * 日期维度（5、10、15、30分钟、时、日、月、年）取字典sys_config_page_x值
      */
-    @ApiModelProperty("日期维度（日、月、年）取字典sys_config_page_x值")
+    @Schema(description = "日期维度（日、月、年）取字典sys_config_page_x值")
     @Excel(name = "日期维度")
 //    @NotNull(message = "日期维度 不能为空")
     private Integer dateDim;
@@ -79,7 +78,7 @@ public class DashboardConfigCard extends BaseEntity {
     /**
      * 二级日期维度（5、10、15、30分钟、1时）取字典sys_config_page_x值
      */
-    @ApiModelProperty("二级维度（5、10、15、30分钟、1时）取字典sys_config_page_x值")
+    @Schema(description = "二级维度（5、10、15、30分钟、1时）取字典sys_config_page_x值")
     @Excel(name = "二级日期维度")
 //    @NotNull(message = "二级日期维度 不能为空")
     private Integer secondDateDim;
@@ -87,14 +86,14 @@ public class DashboardConfigCard extends BaseEntity {
     /**
      * 是否全日期（发电时用到）（0否 1是）
      */
-    @ApiModelProperty("是否全日期（发电时用到）（0否 1是）")
+    @Schema(description = "是否全日期（发电时用到）（0否 1是）")
     @Excel(name = "是否全日期", readConverterExp = "0=否,1=是")
     private Integer isFullDate;
 
     /**
      * 指标度量（1指定变量  2通用变量）
      */
-    @ApiModelProperty("指标度量（1指定变量  2通用变量）")
+    @Schema(description = "指标度量（1指定变量  2通用变量）")
     @Excel(name = "指标度量", readConverterExp = "1=指定变量,2=通用变量")
 //    @NotNull(message = "指标度量 不能为空")
     private Integer indicator;
@@ -102,35 +101,35 @@ public class DashboardConfigCard extends BaseEntity {
     /**
      * 图表类型
      */
-    @ApiModelProperty("图表类型")
+    @Schema(description = "图表类型")
     @Excel(name = "图表类型")
     private Integer chartType;
 
     /**
      * 卡片配置json
      */
-    @ApiModelProperty("卡片配置json")
+    @Schema(description = "卡片配置json")
     @Excel(name = "卡片配置json")
     private String cardConfig;
 
     /**
      * 卡片配置json 用于预览查看
      */
-    @ApiModelProperty("卡片配置json 用于预览查看")
+    @Schema(description = "卡片配置json 用于预览查看")
     @Excel(name = "卡片配置json 用于预览查看")
     private String cardConfigPre;
 
     /**
      * 是否停用（0正常 1停用）
      */
-    @ApiModelProperty("是否停用（0正常 1停用）")
+    @Schema(description = "是否停用（0正常 1停用）")
     @Excel(name = "是否停用", readConverterExp = "0=正常,1=停用")
     private Integer stopFlag;
 
     /**
      * 是否删除（0正常 1删除）
      */
-    @ApiModelProperty("是否删除（0正常 1删除）")
+    @Schema(description = "是否删除（0正常 1删除）")
     @Excel(name = "是否删除", readConverterExp = "0=正常,1=删除")
     private Integer deleteFlag;
 

@@ -2,8 +2,8 @@ package com.yunpower.system.domain;
 
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.yunpower.common.core.annotation.Excel;
@@ -15,73 +15,73 @@ import com.yunpower.common.core.web.domain.BaseEntity;
  * @author JUNFU.WANG
  * @date 2023-11-02
  */
-@ApiModel("变量累积数据月存储对象")
+@Schema(description = "变量累积数据月存储对象")
 public class ShardingMonthAccumulate extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
     /** 编号ID */
-    @ApiModelProperty("编号ID")
+    @Schema(description = "编号ID")
     private Long id;
 
     /** 变量名称 */
-    @ApiModelProperty("变量名称")
+    @Schema(description = "变量名称")
     @Excel(name = "变量名称")
     private String variableName;
 
     /** 存盘时间 */
-    @ApiModelProperty("存盘时间")
+    @Schema(description = "存盘时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Excel(name = "存盘时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
     private Date saveTime;
 
     /** 数据 */
-    @ApiModelProperty("数据")
+    @Schema(description = "数据")
     @Excel(name = "数据")
     private Float dataValue;
 
     /** 年 */
-    @ApiModelProperty("年")
+    @Schema(description = "年")
     @Excel(name = "年")
     private Integer recordYear;
 
     /** 月 */
-    @ApiModelProperty("月")
+    @Schema(description = "月")
     @Excel(name = "月")
     private Integer recordMonth;
 
     /** 日 */
-    @ApiModelProperty("日")
+    @Schema(description = "日")
     @Excel(name = "日")
     private Integer recordDay;
 
     /** 周 */
-    @ApiModelProperty("周")
+    @Schema(description = "周")
     @Excel(name = "周")
     private Integer recordWeek;
 
     /** 时 */
-    @ApiModelProperty("时")
+    @Schema(description = "时")
     @Excel(name = "时")
     private Integer recordHour;
 
     /** 累积数据 */
-    @ApiModelProperty("累积数据")
+    @Schema(description = "累积数据")
     @Excel(name = "累积数据")
     private Float accuData;
 
     /** 峰谷名称 */
-    @ApiModelProperty("峰谷名称")
+    @Schema(description = "峰谷名称")
     @Excel(name = "峰谷名称")
     private String seasonalTypeName;
 
     /** 计费电价 */
-    @ApiModelProperty("计费电价")
+    @Schema(description = "计费电价")
     @Excel(name = "计费电价")
     private Float chargePrice;
 
     /** 完成标记 */
-    @ApiModelProperty("完成标记")
+    @Schema(description = "完成标记")
     @Excel(name = "完成标记")
     private Integer isComplete;
 

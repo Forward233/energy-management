@@ -11,8 +11,8 @@ import com.yunpower.common.security.annotation.RequiresPermissions;
 import com.yunpower.system.api.domain.SysDept;
 import com.yunpower.system.domain.*;
 import com.yunpower.system.service.*;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +25,7 @@ import java.util.List;
  * @author JUNFU.WANG
  * @date 2023-10-07
  */
-@Api(tags = "G 工单管理表")
+@Tag(name = "G 工单管理表", description = "G 工单管理表")
 @RestController
 @RequestMapping("/order")
 public class DevopsOrderController extends BaseController {
@@ -44,7 +44,7 @@ public class DevopsOrderController extends BaseController {
 	/**
 	 * 查询工单管理列表
 	 */
-	@ApiOperation("查询工单管理列表")
+	@Operation(summary = "查询工单管理列表")
 	@RequiresPermissions("system:order:list")
 	@GetMapping("/list")
 	public TableDataInfo list(DevopsOrder devopsOrder) {
@@ -83,7 +83,7 @@ public class DevopsOrderController extends BaseController {
 	/**
 	 * 导出工单管理列表
 	 */
-	@ApiOperation("导出工单管理列表")
+	@Operation(summary = "导出工单管理列表")
 	@RequiresPermissions("system:order:export")
 	@Log(title = "工单管理", businessType = BusinessType.EXPORT)
 	@PostMapping("/export")
@@ -96,7 +96,7 @@ public class DevopsOrderController extends BaseController {
 	/**
 	 * 获取工单管理详细信息
 	 */
-	@ApiOperation("获取工单管理详细信息")
+	@Operation(summary = "获取工单管理详细信息")
 	@RequiresPermissions("system:order:query")
 	@GetMapping(value = "/{id}")
 	public AjaxResult getInfo(@PathVariable("id") Long id) {
@@ -108,7 +108,7 @@ public class DevopsOrderController extends BaseController {
 	/**
 	 * 新增工单管理
 	 */
-	@ApiOperation("新增工单管理")
+	@Operation(summary = "新增工单管理")
 	@RequiresPermissions("system:order:add")
 	@Log(title = "工单管理", businessType = BusinessType.INSERT)
 	@PostMapping
@@ -131,7 +131,7 @@ public class DevopsOrderController extends BaseController {
 	/**
 	 * 修改工单管理
 	 */
-	@ApiOperation("修改工单管理")
+	@Operation(summary = "修改工单管理")
 	@RequiresPermissions("system:order:edit")
 	@Log(title = "工单管理", businessType = BusinessType.UPDATE)
 	@PutMapping
@@ -148,7 +148,7 @@ public class DevopsOrderController extends BaseController {
 	/**
 	 * 修改工单管理状态
 	 */
-	@ApiOperation("修改工单管理状态")
+	@Operation(summary = "修改工单管理状态")
 	@RequiresPermissions("system:order:state")
 	@Log(title = "工单管理", businessType = BusinessType.UPDATE)
 	@PutMapping("/changeStatus/{id}/{state}")
@@ -159,7 +159,7 @@ public class DevopsOrderController extends BaseController {
 	/**
 	 * 删除工单管理
 	 */
-	@ApiOperation("删除工单管理")
+	@Operation(summary = "删除工单管理")
 	@RequiresPermissions("system:order:remove")
 	@Log(title = "工单管理", businessType = BusinessType.DELETE)
 	@DeleteMapping("/{ids}")

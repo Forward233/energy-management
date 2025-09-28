@@ -7,8 +7,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.yunpower.system.domain.handler.JsonCommonTypeHandler;
 import com.yunpower.system.domain.jsonvo.JsonCommonVo;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.yunpower.common.core.annotation.Excel;
@@ -21,76 +21,76 @@ import org.springframework.data.annotation.Transient;
  * @author JUNFU.WANG
  * @date 2023-10-07
  */
-@ApiModel("维保记录对象")
+@Schema(description = "维保记录对象")
 public class DevopsMaintenance extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
     /** 编号ID */
-    @ApiModelProperty("编号ID")
+    @Schema(description = "编号ID")
     private Long id;
 
     /** 企业ID */
-    @ApiModelProperty("企业ID")
+    @Schema(description = "企业ID")
     @Excel(name = "企业ID")
     private Long entId;
 
     /** 部门ID */
-    @ApiModelProperty("部门ID")
+    @Schema(description = "部门ID")
     @Excel(name = "部门ID")
     private Long deptId;
 
     /** 维保名称 */
-    @ApiModelProperty("维保名称")
+    @Schema(description = "维保名称")
     @Excel(name = "维保名称")
     private String maintainTitle;
 
     /** 电站类型 */
-    @ApiModelProperty("电站类型")
+    @Schema(description = "电站类型")
     @Excel(name = "电站类型")
     private Integer stationType;
 
     /** 维保站点 */
-    @ApiModelProperty("维保站点")
+    @Schema(description = "维保站点")
     @Excel(name = "维保站点")
     private Long stationId;
 
     /** 维保设备（多个，JSON格式） */
-    @ApiModelProperty("维保设备（多个，JSON格式）")
+    @Schema(description = "维保设备（多个，JSON格式）")
     @Excel(name = "维保设备", readConverterExp = "多个，JSON格式")
     @TableField(typeHandler = JsonCommonTypeHandler.class)
     private List<JsonCommonVo> deviceIdFor;
 
     /** 维保人员（多个，JSON格式） */
-    @ApiModelProperty("维保人员（多个，JSON格式）")
+    @Schema(description = "维保人员（多个，JSON格式）")
     @Excel(name = "维保人员", readConverterExp = "多个，JSON格式")
     @TableField(typeHandler = JsonCommonTypeHandler.class)
     private List<JsonCommonVo> userNameFor;
 
     /** 维保时间 */
-    @ApiModelProperty("维保时间")
+    @Schema(description = "维保时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Excel(name = "维保时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
     private Date maintainTime;
 
     /** 维保内容 */
-    @ApiModelProperty("维保内容")
+    @Schema(description = "维保内容")
     @Excel(name = "维保内容")
     private String maintainContent;
 
     /** 图片描述 */
-    @ApiModelProperty("图片描述")
+    @Schema(description = "图片描述")
     @Excel(name = "图片描述")
     @TableField(typeHandler = JsonCommonTypeHandler.class)
     private List<JsonCommonVo> maintainFiles;
 
     /** 是否停用（0正常 1停用） */
-    @ApiModelProperty("是否停用（0正常 1停用）")
+    @Schema(description = "是否停用（0正常 1停用）")
     @Excel(name = "是否停用", readConverterExp = "0=正常,1=停用")
     private Integer stopFlag;
 
     /** 是否删除（0正常 1删除） */
-    @ApiModelProperty("是否删除（0正常 1删除）")
+    @Schema(description = "是否删除（0正常 1删除）")
     @Excel(name = "是否删除", readConverterExp = "0=正常,1=删除")
     private Integer deleteFlag;
 

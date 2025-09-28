@@ -12,8 +12,8 @@ import com.yunpower.common.security.utils.SecurityUtils;
 import com.yunpower.system.domain.SysCommonMenu;
 import com.yunpower.system.service.ISysCommonMenuService;
 import com.yunpower.common.log.annotation.Log;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.yunpower.system.service.ISysEnterpriseMenuService;
@@ -24,7 +24,7 @@ import com.yunpower.system.service.ISysEnterpriseMenuService;
  * @author JUNFU.WANG
  * @date 2023-09-28
  */
-@Api(tags = "Q 企业专属菜单表")
+@Tag(name = "Q 企业专属菜单表", description = "Q 企业专属菜单表")
 @RestController
 @RequestMapping("/ent-menu")
 public class SysEnterpriseMenuController extends BaseController
@@ -39,7 +39,7 @@ public class SysEnterpriseMenuController extends BaseController
      * 获取企业专属菜单列表（不分页）
      * 用于：配置企业菜单列表，与用户无关
      */
-    @ApiOperation("获取企业专属菜单列表（不分页）")
+    @Operation(summary = "获取企业专属菜单列表（不分页）")
     @RequiresPermissions("system:menu:list")
     @GetMapping("/list")
     public AjaxResult list(SysCommonMenu menu)
@@ -53,7 +53,7 @@ public class SysEnterpriseMenuController extends BaseController
      * 获取企业专属菜单下拉树列表
      * 用于：数据权限配置
      */
-    @ApiOperation("获取企业专属菜单下拉列表")
+    @Operation(summary = "获取企业专属菜单下拉列表")
     @GetMapping("/treeselect")
     public AjaxResult treeselect(SysCommonMenu menu)
     {
@@ -65,7 +65,7 @@ public class SysEnterpriseMenuController extends BaseController
     /**
      * 加载对应角色菜单列表树
      */
-    @ApiOperation("加载对应角色企业专属菜单列表树")
+    @Operation(summary = "加载对应角色企业专属菜单列表树")
     @GetMapping(value = "/roleMenuTreeselect/{roleId}")
     public AjaxResult roleMenuTreeselect(@PathVariable("roleId") Long roleId)
     {
@@ -81,7 +81,7 @@ public class SysEnterpriseMenuController extends BaseController
     /**
      * 新增企业专属菜单
      */
-    @ApiOperation("新增企业专属菜单")
+    @Operation(summary = "新增企业专属菜单")
     @RequiresPermissions("system:menu:add")
     @Log(title = "企业专属菜单", businessType = BusinessType.INSERT)
     @PostMapping
@@ -93,7 +93,7 @@ public class SysEnterpriseMenuController extends BaseController
     /**
      * 获取菜单权限下拉列表
      */
-    @ApiOperation("获取菜单权限下拉列表")
+    @Operation(summary = "获取菜单权限下拉列表")
     @GetMapping(value = "/menuScopeList")
     public AjaxResult menuScopeList()
     {
