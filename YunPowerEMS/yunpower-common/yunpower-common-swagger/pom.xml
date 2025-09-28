@@ -31,11 +31,11 @@
             <version>${swagger.fox.version}</version>
         </dependency>-->
 
-        <!-- knife4j -->
+        <!-- SpringDoc OpenAPI for Spring Boot 3.x -->
         <dependency>
-            <groupId>com.github.xiaoymin</groupId>
-            <artifactId>knife4j-spring-boot-starter</artifactId>
-            <version>3.0.3</version>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.3.0</version>
         </dependency>
 
 	</dependencies>
