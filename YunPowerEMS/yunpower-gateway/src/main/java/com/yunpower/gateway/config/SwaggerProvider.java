@@ -11,8 +11,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.config.ResourceHandlerRegistry;
 import org.springframework.web.reactive.config.WebFluxConfigurer;
-import springfox.documentation.swagger.web.SwaggerResource;
-import springfox.documentation.swagger.web.SwaggerResourcesProvider;
+import com.yunpower.gateway.model.SwaggerResource;
 
 /**
  * 聚合系统接口
@@ -21,12 +20,12 @@ import springfox.documentation.swagger.web.SwaggerResourcesProvider;
  */
 @Primary
 @Component
-public class SwaggerProvider implements SwaggerResourcesProvider, WebFluxConfigurer
+public class SwaggerProvider implements WebFluxConfigurer
 {
     /**
-     * Swagger2默认的url后缀
+     * OpenAPI3默认的url后缀
      */
-    public static final String SWAGGER2URL = "/v2/api-docs";
+    public static final String OPENAPI3URL = "/v3/api-docs";
 
     /**
      * 网关路由
@@ -43,7 +42,6 @@ public class SwaggerProvider implements SwaggerResourcesProvider, WebFluxConfigu
      * 
      * @return
      */
-    @Override
     public List<SwaggerResource> get()
     {
         List<SwaggerResource> resourceList = new ArrayList<>();
@@ -58,7 +56,7 @@ public class SwaggerProvider implements SwaggerResourcesProvider, WebFluxConfigu
                         .filter(predicateDefinition -> !"yunpower-auth".equalsIgnoreCase(routeDefinition.getId()))
                         .forEach(predicateDefinition -> resourceList
                                 .add(swaggerResource(routeDefinition.getId(), predicateDefinition.getArgs()
-                                        .get(NameUtils.GENERATED_NAME_PREFIX + "0").replace("/**", SWAGGER2URL)))));
+                                        .get(NameUtils.GENERATED_NAME_PREFIX + "0").replace("/**", OPENAPI3URL)))));
         return resourceList;
     }
 
@@ -67,15 +65,15 @@ public class SwaggerProvider implements SwaggerResourcesProvider, WebFluxConfigu
         SwaggerResource swaggerResource = new SwaggerResource();
         swaggerResource.setName(name);
         swaggerResource.setLocation(location);
-        swaggerResource.setSwaggerVersion("2.0");
+        swaggerResource.setSwaggerVersion("3.0");
         return swaggerResource;
     }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry)
     {
-        /** swagger-ui 地址 */
-        registry.addResourceHandler("/swagger-ui/**")
-                .addResourceLocations("classpath:/META-INF/resources/webjars/springfox-swagger-ui/");
+        /** knife4j 地址 */
+        registry.addResourceHandler("/doc.html")
+                .addResourceLocations("classpath:/META-INF/resources/");
     }
 }

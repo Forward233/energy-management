@@ -56,12 +56,7 @@
             <artifactId>spring-boot-starter-undertow</artifactId>
         </dependency>
 
-        <!-- Swagger UI -->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>${swagger.fox.version}</version>
-        </dependency>
+        <!-- Swagger UI is included in knife4j-openapi3-jakarta-spring-boot-starter -->
 
         <!-- ShardingSphere 读写分离/分库分表 -->
         <dependency>

@@ -81,8 +81,8 @@ public class RefreshActualDataNodesAO {
      */
     public void updateShardRuleActualDataNodes(ShardingSphereDataSource dataSource, String schemaName, String logicTableName, String actualDataNodes) throws NoSuchFieldException, IllegalAccessException {
         // 根据inline 表达式转换DataNode节点
-        InlineExpressionParser parser = InlineExpressionParserFactory.newInstance();
-        List<String> newStrDataNodes = parser.splitAndEvaluate(actualDataNodes);
+        InlineExpressionParser parser = InlineExpressionParserFactory.newInstance(actualDataNodes);
+        List<String> newStrDataNodes = parser.splitAndEvaluate();
 
         // Sharding数据源
         ContextManager contextManager = getContextManager(dataSource);
