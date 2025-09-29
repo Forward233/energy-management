@@ -38,6 +38,13 @@
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+            <exclusions>
+                <!-- 排除WebMVC适配器，Gateway应该使用WebFlux -->
+                <exclusion>
+                    <groupId>com.alibaba.csp</groupId>
+                    <artifactId>sentinel-spring-webmvc-6x-adapter</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- SpringCloud Alibaba Sentinel Gateway -->
@@ -95,11 +102,11 @@
             <version>${swagger.fox.version}</version>
         </dependency>-->
 
-        <!-- knife4j for Spring Boot 3.x -->
+        <!-- SpringDoc OpenAPI for Gateway (WebFlux) -->
         <dependency>
-            <groupId>com.github.xiaoymin</groupId>
-            <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
-            <version>4.4.0</version>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
+            <version>2.3.0</version>
         </dependency>
 
     </dependencies>

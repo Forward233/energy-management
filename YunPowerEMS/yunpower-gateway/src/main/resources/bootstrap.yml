@@ -10,6 +10,9 @@ spring:
   profiles:
     # 环境配置
     active: dev
+  main:
+    # 设置为响应式Web应用类型，兼容Gateway
+    web-application-type: reactive
   cloud:
     nacos:
       discovery:
