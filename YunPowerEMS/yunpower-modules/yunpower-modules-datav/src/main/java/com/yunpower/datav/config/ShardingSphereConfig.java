@@ -65,7 +65,7 @@ public class ShardingSphereConfig {
     private Map<String, DataSource> createDataSourceMap(ShardingSphereProperties properties) {
         Map<String, DataSource> dataSourceMap = new HashMap<>();
 
-        properties.getDatasource().forEach((name, dsProps) -> {
+        properties.getDatasource().getDataSourceMap().forEach((name, dsProps) -> {
             HikariDataSource ds = new HikariDataSource();
             ds.setDriverClassName(dsProps.getDriverClassName());
             ds.setJdbcUrl(dsProps.getJdbcUrl());
@@ -127,15 +127,15 @@ public class ShardingSphereConfig {
     @Configuration
     @ConfigurationProperties(prefix = "spring.shardingsphere")
     public static class ShardingSphereProperties {
-        private Map<String, DataSourceProperties> datasource = new HashMap<>();
+        private DatasourceWrapperProperties datasource = new DatasourceWrapperProperties();
         private RulesProperties rules = new RulesProperties();
         private Map<String, String> props = new HashMap<>();
 
-        public Map<String, DataSourceProperties> getDatasource() {
+        public DatasourceWrapperProperties getDatasource() {
             return datasource;
         }
 
-        public void setDatasource(Map<String, DataSourceProperties> datasource) {
+        public void setDatasource(DatasourceWrapperProperties datasource) {
             this.datasource = datasource;
         }
 
@@ -153,6 +153,35 @@ public class ShardingSphereConfig {
 
         public void setProps(Map<String, String> props) {
             this.props = props;
+        }
+
+        public static class DatasourceWrapperProperties {
+            private String names;
+            private Map<String, DataSourceProperties> dataSourceMap = new HashMap<>();
+
+            public String getNames() {
+                return names;
+            }
+
+            public void setNames(String names) {
+                this.names = names;
+            }
+
+            // 使用 @ConfigurationProperties 的动态键绑定功能
+            public Map<String, DataSourceProperties> getDataSourceMap() {
+                return dataSourceMap;
+            }
+
+            public void setDataSourceMap(Map<String, DataSourceProperties> dataSourceMap) {
+                this.dataSourceMap = dataSourceMap;
+            }
+
+            // 为了支持 ds0, ds1 等动态键，需要这个方法
+            public void set(String key, DataSourceProperties value) {
+                if (!"names".equals(key)) {
+                    dataSourceMap.put(key, value);
+                }
+            }
         }
 
         public static class DataSourceProperties {
