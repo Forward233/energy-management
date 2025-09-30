@@ -6,6 +6,7 @@ import com.baomidou.dynamic.datasource.provider.DynamicDataSourceProvider;
 import com.baomidou.dynamic.datasource.creator.DataSourceProperty;
 import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties;
 import com.baomidou.dynamic.datasource.creator.DefaultDataSourceCreator;
+import com.baomidou.dynamic.datasource.creator.DruidDataSourceCreator;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,6 +23,17 @@ import java.util.Map;
 @Configuration
 @EnableConfigurationProperties(DynamicDataSourceProperties.class)
 public class DataSourceConfiguration {
+
+    /**
+     * 手动创建 DefaultDataSourceCreator
+     */
+    @Bean
+    public DefaultDataSourceCreator defaultDataSourceCreator() {
+        DefaultDataSourceCreator creator = new DefaultDataSourceCreator();
+        // 添加 Druid 数据源创建器
+        creator.addCreator(new DruidDataSourceCreator());
+        return creator;
+    }
 
     /**
      * 数据源提供者
