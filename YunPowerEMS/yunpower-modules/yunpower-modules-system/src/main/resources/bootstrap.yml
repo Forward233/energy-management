@@ -27,9 +27,6 @@ spring:
         # 共享配置
         shared-configs:
           - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
-  # 禁用默认数据源自动配置，使用动态数据源
-  autoconfigure:
-    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
 
 # MyBatis-Plus 配置
 mybatis-plus:
