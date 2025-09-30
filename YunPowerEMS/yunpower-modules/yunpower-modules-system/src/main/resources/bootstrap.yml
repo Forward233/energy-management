@@ -3,7 +3,9 @@ server:
   port: 19201
 
 # Spring
-spring: 
+spring:
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
   application:
     # 应用名称
     name: yunpower-system
