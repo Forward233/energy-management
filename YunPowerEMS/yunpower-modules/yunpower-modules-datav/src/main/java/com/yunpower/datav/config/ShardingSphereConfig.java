@@ -30,7 +30,7 @@ public class ShardingSphereConfig {
     private Environment env;
 
     /**
-     * 创建 ShardingSphere 数据源
+     * 创建 ShardingSphere 数据源（会被 DataSourceConfiguration 整合到动态数据源中）
      */
     @Bean(name = "shardingSphereDataSource")
     @ConditionalOnProperty(prefix = "spring.shardingsphere.datasource", name = "names")
