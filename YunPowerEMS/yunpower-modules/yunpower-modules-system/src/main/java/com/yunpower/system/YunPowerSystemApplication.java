@@ -2,6 +2,7 @@ package com.yunpower.system;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import com.yunpower.common.security.annotation.EnableCustomConfig;
 import com.yunpower.common.security.annotation.EnableRyFeignClients;
@@ -18,7 +19,7 @@ import org.mybatis.spring.annotation.MapperScan;
 @EnableRyFeignClients
 @MapperScan("com.yunpower.system.mapper")
 @ConfigurationPropertiesScan({"com.baomidou.dynamic.datasource"})
-@SpringBootApplication
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class YunPowerSystemApplication
 {
     public static void main(String[] args)
