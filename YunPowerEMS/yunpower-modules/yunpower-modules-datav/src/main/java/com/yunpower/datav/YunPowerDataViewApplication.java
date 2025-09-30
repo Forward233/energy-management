@@ -1,5 +1,6 @@
 package com.yunpower.datav;
 
+import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration;
 import com.yunpower.common.security.annotation.EnableCustomConfig;
 import com.yunpower.common.security.annotation.EnableRyFeignClients;
 import com.yunpower.common.swagger.annotation.EnableCustomSwagger2;
@@ -15,7 +16,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @EnableCustomConfig
 @EnableCustomSwagger2
 @EnableRyFeignClients
-@SpringBootApplication
+@SpringBootApplication(exclude = {DynamicDataSourceAutoConfiguration.class})
 public class YunPowerDataViewApplication {
     public static void main(String[] args)
     {

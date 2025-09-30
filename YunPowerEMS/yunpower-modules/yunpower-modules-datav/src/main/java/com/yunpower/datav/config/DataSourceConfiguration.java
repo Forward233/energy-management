@@ -18,9 +18,9 @@ import java.util.Map;
  * @title: 动态数据源配置
  * @Author: Jiajiaglam
  * @date: 2023-10-17 10:33
- * @description:
+ * @description: 已由 ShardingSphereConfig 替代，暂时禁用
  */
-@Configuration
+//@Configuration  // 禁用：使用 ShardingSphereConfig 手动配置
 public class DataSourceConfiguration {
     /**
      * 动态数据源配置项
