@@ -18,7 +18,7 @@ import java.util.Map;
  * @title: 动态数据源配置
  * @Author: Jiajiaglam
  * @date: 2023-10-17 10:33
- * @description: 系统模块动态数据源配置
+ * @description:
  */
 @Configuration
 public class DataSourceConfiguration {
@@ -36,7 +36,7 @@ public class DataSourceConfiguration {
     private DefaultDataSourceCreator dataSourceCreator;
 
     /**
-     * 动态数据源提供者
+     * 将 动态数据源 管理的数据源也交给动态数据源管理
      */
     @Bean
     public DynamicDataSourceProvider dynamicDataSourceProvider() {
@@ -52,7 +52,7 @@ public class DataSourceConfiguration {
     /**
      * 将动态数据源设置为首选的（可选 @Primary）
      * 当spring存在多个数据源时, 自动注入的是首选的对象
-     * 设置为主要的数据源之后，就可以支持MyBatis原生的配置方式了
+     * 设置为主要的数据源之后，就可以支持原生的配置方式了
      */
     @Primary
     @Bean
