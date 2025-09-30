@@ -1,23 +1,24 @@
 package com.yunpower.system.config;
 
 import com.baomidou.dynamic.datasource.DynamicRoutingDataSource;
+import com.baomidou.dynamic.datasource.creator.druid.DruidDataSourceCreator;
 import com.baomidou.dynamic.datasource.provider.AbstractDataSourceProvider;
 import com.baomidou.dynamic.datasource.provider.DynamicDataSourceProvider;
 import com.baomidou.dynamic.datasource.creator.DataSourceProperty;
 import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties;
 import com.baomidou.dynamic.datasource.creator.DefaultDataSourceCreator;
-import com.baomidou.dynamic.datasource.creator.DruidDataSourceCreator;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 import javax.sql.DataSource;
+import java.util.List;
 import java.util.Map;
 
 /**
  * 动态数据源配置
- * 
+ *
  * @author yunpower
  */
 @Configuration
@@ -31,7 +32,7 @@ public class DataSourceConfiguration {
     public DefaultDataSourceCreator defaultDataSourceCreator() {
         DefaultDataSourceCreator creator = new DefaultDataSourceCreator();
         // 添加 Druid 数据源创建器
-        creator.addCreator(new DruidDataSourceCreator());
+        creator.setCreators(List.of(new DruidDataSourceCreator()));
         return creator;
     }
 
@@ -56,8 +57,8 @@ public class DataSourceConfiguration {
      */
     @Primary
     @Bean
-    public DataSource dataSource(DynamicDataSourceProperties properties, 
-                                   DynamicDataSourceProvider dynamicDataSourceProvider) {
+    public DataSource dataSource(DynamicDataSourceProperties properties,
+                                 DynamicDataSourceProvider dynamicDataSourceProvider) {
         DynamicRoutingDataSource dataSource = new DynamicRoutingDataSource(
                 java.util.Collections.singletonList(dynamicDataSourceProvider));
         dataSource.setPrimary(properties.getPrimary());
