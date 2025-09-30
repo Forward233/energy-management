@@ -61,10 +61,10 @@
 
         <!-- Swagger UI is included in knife4j-openapi3-jakarta-spring-boot-starter -->
 
-        <!-- ShardingSphere 读写分离/分库分表 -->
+        <!-- ShardingSphere 读写分离/分库分表（Spring Boot Starter） -->
         <dependency>
             <groupId>org.apache.shardingsphere</groupId>
-            <artifactId>shardingsphere-jdbc-core</artifactId>
+            <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>
             <version>${shardingsphere.version}</version>
         </dependency>
 

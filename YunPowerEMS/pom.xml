@@ -36,7 +36,7 @@
         <minio.version>8.5.9</minio.version>
         <poi.version>5.2.5</poi.version>
         <transmittable-thread-local.version>2.14.4</transmittable-thread-local.version>
-        <shardingsphere.version>5.4.1</shardingsphere.version>
+        <shardingsphere.version>5.5.0</shardingsphere.version>
         <sharding.namespace.version>4.1.1</sharding.namespace.version>
         <pinyin4j.version>2.5.1</pinyin4j.version>
         <mybatis-plus.version>3.5.5</mybatis-plus.version>
@@ -267,27 +267,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- JAXB API for ShardingSphere (javax version required) -->
-        <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>2.3.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-impl</artifactId>
-            <version>2.3.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-core</artifactId>
-            <version>2.3.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.activation</groupId>
-            <artifactId>activation</artifactId>
-            <version>1.1.1</version>
-        </dependency>
+        <!-- remove legacy JAXB; ShardingSphere 5.5.x works with Jakarta & SnakeYAML 2.x -->
 
     </dependencies>
 
