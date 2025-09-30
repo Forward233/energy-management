@@ -64,10 +64,6 @@
             <artifactId>shardingsphere-jdbc-core</artifactId>
             <version>${shardingsphere.version}</version>
             <exclusions>
-                <exclusion>
-                    <groupId>com.h2database</groupId>
-                    <artifactId>h2</artifactId>
-                </exclusion>
                 <!-- 排除4.0.x版本的JAXB实现，它们是Jakarta版本，与ShardingSphere 5.4.1代码不兼容 -->
                 <exclusion>
                     <groupId>com.sun.xml.bind</groupId>
@@ -78,6 +74,13 @@
                     <artifactId>jaxb-impl</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <!-- H2 Database (ShardingSphere standalone模式需要用于元数据存储) -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
         </dependency>
 
         <!-- 
