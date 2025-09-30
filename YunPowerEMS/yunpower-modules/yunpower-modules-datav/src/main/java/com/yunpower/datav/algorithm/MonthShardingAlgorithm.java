@@ -82,11 +82,11 @@ public class MonthShardingAlgorithm implements StandardShardingAlgorithm<Timesta
         return result;
     }
 
-    // ShardingSphere 5.4.0+ 已移除此方法
-    // @Override
-    // public Properties getProps() {
-    //     return null;
-    // }
+    // ShardingSphere 5.2.1 需要此方法（5.4.0+ 已移除）
+    @Override
+    public Properties getProps() {
+        return new Properties();
+    }
 
     @Override
     public void init(Properties properties) {
