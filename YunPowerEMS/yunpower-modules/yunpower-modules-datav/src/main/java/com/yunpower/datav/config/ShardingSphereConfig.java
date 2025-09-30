@@ -55,8 +55,9 @@ public class ShardingSphereConfig {
         Properties props = new Properties();
         props.setProperty("sql-show", properties.getProps().getOrDefault("sql-show", "true"));
 
-        // 5. 使用工厂方法创建 ShardingSphere 数据源（传入 modeConfig）
-        return ShardingSphereDataSourceFactory.createDataSource(modeConfig, dataSourceMap, ruleConfigs, props);
+        // 5. 使用工厂方法创建 ShardingSphere 数据源
+        // 指定默认数据库名称为 logic_db（与 RefreshActualDataNodesAO 中的 schemaName 一致）
+        return ShardingSphereDataSourceFactory.createDataSource("logic_db", modeConfig, dataSourceMap, ruleConfigs, props);
     }
 
     /**
