@@ -24,9 +24,13 @@ spring:
         password: 123456
         # 配置文件格式
         file-extension: yml
+        # 配置组
+        group: DEFAULT_GROUP
         # 共享配置
         shared-configs:
-          - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+          - data-id: application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+            group: DEFAULT_GROUP
+            refresh: true
 
 # MyBatis-Plus 配置
 mybatis-plus:
