@@ -26,9 +26,14 @@ spring:
         file-extension: yml
         # 配置组
         group: DEFAULT_GROUP
+        # 扩展配置（明确指定要加载的配置文件）
+        extension-configs:
+          - data-id: yunpower-system-dev.yml
+            group: DEFAULT_GROUP
+            refresh: true
         # 共享配置
         shared-configs:
-          - data-id: application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+          - data-id: application-dev.yml
             group: DEFAULT_GROUP
             refresh: true
 
