@@ -267,16 +267,16 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- JAXB API for Spring Boot 3.x (removed in Java 11+) -->
+        <!-- JAXB API for ShardingSphere (javax version required) -->
         <dependency>
-            <groupId>jakarta.xml.bind</groupId>
-            <artifactId>jakarta.xml.bind-api</artifactId>
-            <version>4.0.0</version>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
         </dependency>
         <dependency>
-            <groupId>org.glassfish.jaxb</groupId>
-            <artifactId>jaxb-runtime</artifactId>
-            <version>4.0.3</version>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>2.3.8</version>
         </dependency>
     </dependencies>
 
