@@ -107,12 +107,7 @@ public class DayShardingAlgorithm implements StandardShardingAlgorithm<Timestamp
     }
 
 
-    // ShardingSphere 5.2.1 需要此方法（5.4.0+ 已移除）
-    @Override
-    public Properties getProps() {
-        return new Properties();
-    }
-
+    // ShardingSphere 5.4.0+ 已移除 getProps() 方法
     @Override
     public void init(Properties properties) {
 

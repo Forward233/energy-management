@@ -58,11 +58,18 @@
 
         <!-- Swagger UI is included in knife4j-openapi3-jakarta-spring-boot-starter -->
 
-        <!-- ShardingSphere Spring Boot Starter (5.2.1支持spring.shardingsphere.*配置) -->
+        <!-- ShardingSphere JDBC Core 5.4.1 (适配 Spring Boot 3.x) -->
         <dependency>
             <groupId>org.apache.shardingsphere</groupId>
-            <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>
+            <artifactId>shardingsphere-jdbc-core</artifactId>
             <version>${shardingsphere.version}</version>
+            <exclusions>
+                <!-- 排除 SnakeYAML 1.33，使用 Spring Boot 3.2.4 自带的 2.2 -->
+                <exclusion>
+                    <groupId>org.yaml</groupId>
+                    <artifactId>snakeyaml</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- Mysql Connector -->
