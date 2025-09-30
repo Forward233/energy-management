@@ -6,10 +6,18 @@ import com.baomidou.dynamic.datasource.provider.DynamicDataSourceProvider;
 import com.baomidou.dynamic.datasource.creator.DataSourceProperty;
 import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties;
 import com.baomidou.dynamic.datasource.creator.DefaultDataSourceCreator;
+import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
+import com.baomidou.mybatisplus.core.MybatisConfiguration;
+import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.type.JdbcType;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
 import java.util.Map;
@@ -64,5 +72,46 @@ public class DataSourceConfiguration {
         dataSource.setP6spy(properties.getP6spy());
         dataSource.setSeata(properties.getSeata());
         return dataSource;
+    }
+
+    /**
+     * SqlSessionFactory配置
+     */
+    @Bean
+    @Primary
+    public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
+        MybatisSqlSessionFactoryBean sqlSessionFactory = new MybatisSqlSessionFactoryBean();
+        sqlSessionFactory.setDataSource(dataSource);
+        
+        // 设置MyBatis配置
+        MybatisConfiguration configuration = new MybatisConfiguration();
+        configuration.setJdbcTypeForNull(JdbcType.NULL);
+        configuration.setMapUnderscoreToCamelCase(true);
+        configuration.setCacheEnabled(false);
+        sqlSessionFactory.setConfiguration(configuration);
+        
+        // 设置mapper文件位置
+        sqlSessionFactory.setMapperLocations(
+            new PathMatchingResourcePatternResolver().getResources("classpath*:mapper/**/*.xml")
+        );
+        
+        // 设置类型别名包
+        sqlSessionFactory.setTypeAliasesPackage("com.yunpower.system.domain,com.yunpower.system.api.domain");
+        
+        // 添加分页插件
+        MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
+        interceptor.addInnerInterceptor(new PaginationInnerInterceptor());
+        sqlSessionFactory.setPlugins(interceptor);
+        
+        return sqlSessionFactory.getObject();
+    }
+
+    /**
+     * SqlSessionTemplate配置
+     */
+    @Bean
+    @Primary
+    public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) {
+        return new SqlSessionTemplate(sqlSessionFactory);
     }
 }
