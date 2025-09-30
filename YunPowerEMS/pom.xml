@@ -36,7 +36,7 @@
         <minio.version>8.5.9</minio.version>
         <poi.version>5.2.5</poi.version>
         <transmittable-thread-local.version>2.14.4</transmittable-thread-local.version>
-        <shardingsphere.version>5.5.0</shardingsphere.version>
+        <shardingsphere.version>5.4.1</shardingsphere.version>
         <sharding.namespace.version>4.1.1</sharding.namespace.version>
         <pinyin4j.version>2.5.1</pinyin4j.version>
         <mybatis-plus.version>3.5.5</mybatis-plus.version>
