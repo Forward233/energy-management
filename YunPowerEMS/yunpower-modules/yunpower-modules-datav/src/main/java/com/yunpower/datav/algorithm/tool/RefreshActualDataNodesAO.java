@@ -12,6 +12,7 @@ import org.apache.shardingsphere.sharding.rule.TableRule;
 import org.springframework.stereotype.Component;
 
 import jakarta.annotation.Resource;
+import javax.sql.DataSource;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.Collection;
@@ -28,8 +29,8 @@ import java.util.stream.Collectors;
  */
 @Component
 public class RefreshActualDataNodesAO {
-    @Resource
-    private ShardingSphereDataSource shardingSphereDataSource;
+    @Resource(name = "shardingSphereDataSource")
+    private DataSource shardingSphereDataSourceRaw;
 
     /**
      * 数据库模式，有以下几5种：
@@ -57,7 +58,8 @@ public class RefreshActualDataNodesAO {
      * @param actualDataNodes 行表达式，如："ds_$->{0..1}.student_$->{0..2},ds_0.student_12345,ds_1.student_14258";
      */
     public void generateActualDataNodes(String logicTableName, String actualDataNodes) throws NoSuchFieldException, IllegalAccessException {
-        this.updateShardRuleActualDataNodes(shardingSphereDataSource, schemaName, logicTableName, actualDataNodes);
+        ShardingSphereDataSource dataSource = (ShardingSphereDataSource) shardingSphereDataSourceRaw;
+        this.updateShardRuleActualDataNodes(dataSource, schemaName, logicTableName, actualDataNodes);
     }
 
     /**
@@ -67,7 +69,8 @@ public class RefreshActualDataNodesAO {
      * @param actualDataNodes 行表达式列表，如：Arrays.asList("ds_$->{0..1}.student_$->{0..2}","ds_0.student_12345","ds_1.student_14258");
      */
     public void generateActualDataNodes(String logicTableName, List<String> actualDataNodes) throws NoSuchFieldException, IllegalAccessException {
-        this.updateShardRuleActualDataNodes(shardingSphereDataSource, schemaName, logicTableName, String.join(",", actualDataNodes));
+        ShardingSphereDataSource dataSource = (ShardingSphereDataSource) shardingSphereDataSourceRaw;
+        this.updateShardRuleActualDataNodes(dataSource, schemaName, logicTableName, String.join(",", actualDataNodes));
     }
 
     /**

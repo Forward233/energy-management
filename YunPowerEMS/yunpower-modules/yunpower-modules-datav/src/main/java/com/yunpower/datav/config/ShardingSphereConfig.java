@@ -2,12 +2,14 @@ package com.yunpower.datav.config;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.apache.shardingsphere.driver.api.ShardingSphereDataSourceFactory;
+import org.apache.shardingsphere.driver.jdbc.core.datasource.ShardingSphereDataSource;
 import org.apache.shardingsphere.infra.config.algorithm.AlgorithmConfiguration;
 import org.apache.shardingsphere.infra.config.mode.ModeConfiguration;
 import org.apache.shardingsphere.infra.config.rule.RuleConfiguration;
 import org.apache.shardingsphere.mode.repository.standalone.StandalonePersistRepositoryConfiguration;
 import org.apache.shardingsphere.sharding.api.config.ShardingRuleConfiguration;
 import org.apache.shardingsphere.sharding.api.config.rule.ShardingTableRuleConfiguration;
+import org.apache.shardingsphere.sharding.api.config.rule.ShardingTableReferenceRuleConfiguration;
 import org.apache.shardingsphere.sharding.api.config.strategy.sharding.StandardShardingStrategyConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -28,6 +30,9 @@ public class ShardingSphereConfig {
     /**
      * 创建 ShardingSphere 数据源
      * 只有配置了 spring.shardingsphere.datasource.names 时才创建
+     * 
+     * 注意：虽然工厂方法返回 DataSource 接口，但实际类型是 ShardingSphereDataSource
+     * 通过 Bean 名称 "shardingSphereDataSource" 可以让其他组件通过类型注入
      */
     @Bean(name = "shardingSphereDataSource")
     @ConditionalOnProperty(prefix = "spring.shardingsphere.datasource", name = "names")
@@ -50,8 +55,8 @@ public class ShardingSphereConfig {
         Properties props = new Properties();
         props.setProperty("sql-show", properties.getProps().getOrDefault("sql-show", "true"));
 
-        // 5. 使用工厂方法创建 ShardingSphere 数据源
-        return ShardingSphereDataSourceFactory.createDataSource(dataSourceMap, ruleConfigs, props);
+        // 5. 使用工厂方法创建 ShardingSphere 数据源（传入 modeConfig）
+        return ShardingSphereDataSourceFactory.createDataSource(modeConfig, dataSourceMap, ruleConfigs, props);
     }
 
     /**
@@ -97,11 +102,12 @@ public class ShardingSphereConfig {
             config.getTables().add(tableRuleConfig);
         });
 
-        // 绑定表配置
+        // 绑定表配置（5.4.1 使用 ShardingTableReferenceRuleConfiguration）
         if (properties.getRules().getSharding().getBindingTables() != null) {
-            config.setBindingTableGroups(Arrays.asList(
-                    properties.getRules().getSharding().getBindingTables().split(",\\s*")
-            ));
+            String bindingTablesStr = properties.getRules().getSharding().getBindingTables();
+            ShardingTableReferenceRuleConfiguration referenceRuleConfig = 
+                    new ShardingTableReferenceRuleConfiguration("binding_ref", bindingTablesStr);
+            config.getBindingTableGroups().add(referenceRuleConfig);
         }
 
         // 分片算法配置
