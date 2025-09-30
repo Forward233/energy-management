@@ -111,6 +111,10 @@ public class ShardingSphereConfig {
         }
 
         // 绑定表配置（去掉所有空格）
+        // 注意：绑定表必须使用相同的分片键和分片策略，否则会报错
+        // 由于 sharding_day、sharding_month、sharding_month_accumulate 的分片键和算法不同，
+        // 暂时注释掉绑定表配置，避免启动失败
+        /*
         String bindingTables = env.getProperty("spring.shardingsphere.rules.sharding.binding-tables");
         if (bindingTables != null && !bindingTables.trim().isEmpty()) {
             String cleanedBindingTables = bindingTables.replaceAll("\\s+", "");
@@ -118,6 +122,7 @@ public class ShardingSphereConfig {
                     new ShardingTableReferenceRuleConfiguration("binding_ref", cleanedBindingTables);
             config.getBindingTableGroups().add(referenceRuleConfig);
         }
+        */
 
         // 分片算法配置
         String[] algorithmNames = {"shardingDayInline", "shardingMonthInline", "shardingMonthAccumulateInline"};
