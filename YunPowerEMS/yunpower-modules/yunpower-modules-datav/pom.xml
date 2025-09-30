@@ -73,6 +73,11 @@
                     <groupId>com.sun.xml.bind</groupId>
                     <artifactId>jaxb-impl</artifactId>
                 </exclusion>
+                <!-- ⭐ 关键：排除ShardingSphere自带的SnakeYAML 1.33，避免与Spring Boot 3.2的SnakeYAML 2.x冲突 -->
+                <exclusion>
+                    <groupId>org.yaml</groupId>
+                    <artifactId>snakeyaml</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
 

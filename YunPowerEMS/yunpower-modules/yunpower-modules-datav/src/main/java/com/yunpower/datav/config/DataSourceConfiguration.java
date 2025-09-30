@@ -7,12 +7,10 @@ import com.baomidou.dynamic.datasource.creator.DataSourceProperty;
 import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties;
 import com.baomidou.dynamic.datasource.creator.DefaultDataSourceCreator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
-import jakarta.annotation.Resource;
 import javax.sql.DataSource;
 import java.util.Map;
 
@@ -24,11 +22,6 @@ import java.util.Map;
  */
 @Configuration
 public class DataSourceConfiguration {
-    /**
-     * 分表数据源名称
-     */
-    private static final String SHARDING_DATA_SOURCE_NAME = "sharding";
-
     /**
      * 动态数据源配置项
      */
@@ -42,24 +35,12 @@ public class DataSourceConfiguration {
     private DefaultDataSourceCreator dataSourceCreator;
 
     /**
-     * shardingjdbc有四种数据源，需要根据业务注入不同的数据源
-     * <p>1. 未使用分片, 脱敏的名称(默认): shardingDataSource;
-     * <p>2. 主从数据源: masterSlaveDataSource;
-     * <p>3. 脱敏数据源：encryptDataSource;
-     * <p>4. 影子数据源：shadowDataSource
-     */
-    @Resource
-    private DataSource shardingSphereDataSource;
-
-    //某些springBoot版本不加会报错
-    //@Resource
-    //private MasterSlaveDataSource masterSlaveDataSource;
-
-    //@Resource
-    //private ShardingDataSource shardingDataSource;
-
-    /**
-     * 将 shardingjdbc 管理的数据源也交给动态数据源管理
+     * ShardingSphere 5.3.0+ 使用 ShardingSphereDriver 方式，不再通过 Spring Bean 注入
+     * 如果需要分片功能，在 application.yml 或 Nacos 配置：
+     * spring.datasource.driver-class-name=org.apache.shardingsphere.driver.ShardingSphereDriver
+     * spring.datasource.url=jdbc:shardingsphere:classpath:shardingsphere.yaml
+     * 
+     * 动态数据源配置直接从 properties 读取
      */
     @Bean
     public DynamicDataSourceProvider dynamicDataSourceProvider() {
@@ -67,12 +48,7 @@ public class DataSourceConfiguration {
         return new AbstractDataSourceProvider(dataSourceCreator) {
             @Override
             public Map<String, DataSource> loadDataSources() {
-                Map<String, DataSource> dataSourceMap = createDataSourceMap(datasourceMap);
-                // 只有当 ShardingSphere 数据源存在时才添加
-                if (shardingSphereDataSource != null) {
-                    dataSourceMap.put(SHARDING_DATA_SOURCE_NAME, shardingSphereDataSource);
-                }
-                return dataSourceMap;
+                return createDataSourceMap(datasourceMap);
             }
         };
     }
