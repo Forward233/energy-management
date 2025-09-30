@@ -8,7 +8,7 @@ import org.apache.shardingsphere.infra.rule.ShardingSphereRule;
 import org.apache.shardingsphere.infra.expr.core.InlineExpressionParserFactory;
 import org.apache.shardingsphere.mode.manager.ContextManager;
 import org.apache.shardingsphere.sharding.rule.ShardingRule;
-import org.apache.shardingsphere.sharding.rule.TableRule;
+import org.apache.shardingsphere.sharding.rule.ShardingTable;
 import org.springframework.stereotype.Component;
 
 import jakarta.annotation.Resource;
@@ -100,10 +100,10 @@ public class RefreshActualDataNodesAO {
             for (ShardingSphereRule shardingSphereRule : tableRules) {
                 if (shardingSphereRule instanceof ShardingRule) {
                     ShardingRule rule = (ShardingRule) shardingSphereRule;
-                    TableRule tableRule = rule.getTableRule(logicTableName);
+                    ShardingTable tableRule = rule.getShardingTable(logicTableName);
 
                     // 动态刷新：ActualDataNodesField
-                    Field actualDataNodesField = TableRule.class.getDeclaredField("actualDataNodes");
+                    Field actualDataNodesField = ShardingTable.class.getDeclaredField("actualDataNodes");
                     Field modifiersField = Field.class.getDeclaredField("modifiers");
                     modifiersField.setAccessible(true);
 
@@ -125,12 +125,12 @@ public class RefreshActualDataNodesAO {
                     Map<String, List<DataNode>> dataSourceNodes = newDataNodes.stream().collect(Collectors.groupingBy(DataNode::getDataSourceName));
 
                     // 动态刷新：ActualTables
-                    Field actualTablesField = TableRule.class.getDeclaredField("actualTables");
+                    Field actualTablesField = ShardingTable.class.getDeclaredField("actualTables");
                     actualTablesField.setAccessible(true);
                     actualTablesField.set(tableRule, actualTables);
 
                     // 动态刷新：DataNodeIndexMap
-                    Field dataNodeIndexMapField = TableRule.class.getDeclaredField("dataNodeIndexMap");
+                    Field dataNodeIndexMapField = ShardingTable.class.getDeclaredField("dataNodeIndexMap");
                     dataNodeIndexMapField.setAccessible(true);
                     dataNodeIndexMapField.set(tableRule, dataNodeIntegerMap);
 
@@ -142,7 +142,7 @@ public class RefreshActualDataNodesAO {
                         datasourceToTablesMap.put(ds, node.stream().map(DataNode::getTableName).collect(Collectors.toSet()));
                     });
 
-                    Field datasourceToTablesMapField = TableRule.class.getDeclaredField("dataSourceToTablesMap");
+                    Field datasourceToTablesMapField = ShardingTable.class.getDeclaredField("dataSourceToTablesMap");
                     datasourceToTablesMapField.setAccessible(true);
                     datasourceToTablesMapField.set(tableRule, datasourceToTablesMap);
                 }
