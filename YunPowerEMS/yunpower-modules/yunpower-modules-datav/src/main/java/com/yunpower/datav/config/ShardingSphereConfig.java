@@ -2,7 +2,6 @@ package com.yunpower.datav.config;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.apache.shardingsphere.driver.api.ShardingSphereDataSourceFactory;
-import org.apache.shardingsphere.driver.jdbc.core.datasource.ShardingSphereDataSource;
 import org.apache.shardingsphere.infra.config.algorithm.AlgorithmConfiguration;
 import org.apache.shardingsphere.infra.config.mode.ModeConfiguration;
 import org.apache.shardingsphere.infra.config.rule.RuleConfiguration;
@@ -11,10 +10,12 @@ import org.apache.shardingsphere.sharding.api.config.ShardingRuleConfiguration;
 import org.apache.shardingsphere.sharding.api.config.rule.ShardingTableRuleConfiguration;
 import org.apache.shardingsphere.sharding.api.config.rule.ShardingTableReferenceRuleConfiguration;
 import org.apache.shardingsphere.sharding.api.config.strategy.sharding.StandardShardingStrategyConfiguration;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
@@ -37,8 +38,15 @@ public class ShardingSphereConfig {
     @Bean(name = "shardingSphereDataSource")
     @ConditionalOnProperty(prefix = "spring.shardingsphere.datasource", name = "names")
     public DataSource shardingSphereDataSource(ShardingSphereProperties properties) throws SQLException {
+        // DEBUG: 打印配置信息
+        System.out.println("=== ShardingSphere Config Debug ===");
+        System.out.println("datasource.names: " + properties.getDatasource().getNames());
+        System.out.println("datasource.dataSourceMap: " + properties.getDatasource().getDataSourceMap().keySet());
+        System.out.println("===================================");
+        
         // 1. 创建数据源 Map
         Map<String, DataSource> dataSourceMap = createDataSourceMap(properties);
+        System.out.println("Created DataSource Map keys: " + dataSourceMap.keySet());
 
         // 2. 创建分片规则配置
         Collection<RuleConfiguration> ruleConfigs = new ArrayList<>();
