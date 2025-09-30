@@ -64,11 +64,6 @@
             <artifactId>shardingsphere-jdbc-core</artifactId>
             <version>${shardingsphere.version}</version>
             <exclusions>
-                <!-- 排除 SnakeYAML 1.33，使用 Spring Boot 3.2.4 自带的 2.2 -->
-                <exclusion>
-                    <groupId>org.yaml</groupId>
-                    <artifactId>snakeyaml</artifactId>
-                </exclusion>
                 <!-- 排除 4.0.x 版本的 JAXB 实现（Jakarta 版本） -->
                 <exclusion>
                     <groupId>com.sun.xml.bind</groupId>
@@ -79,6 +74,13 @@
                     <artifactId>jaxb-impl</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <!-- SnakeYAML 1.33 (ShardingSphere 5.4.1 需要，覆盖 Spring Boot 3.2.4 的 2.2 版本) -->
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.33</version>
         </dependency>
 
         <!-- JAXB 2.3.x for Java 17 (ShardingSphere 5.4.1 内部使用 javax.xml.bind 包) -->
