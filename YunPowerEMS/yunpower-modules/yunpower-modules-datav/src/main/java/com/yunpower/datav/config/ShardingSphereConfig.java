@@ -58,9 +58,6 @@ public class ShardingSphereConfig {
             dataSourceMap.put(dsName.trim(), ds);
         }
 
-        System.out.println("=== ShardingSphere 数据源创建成功 ===");
-        System.out.println("数据源列表: " + dataSourceMap.keySet());
-
         // 3. 创建分片规则配置
         Collection<RuleConfiguration> ruleConfigs = new ArrayList<>();
         ShardingRuleConfiguration shardingRuleConfig = createShardingRuleConfiguration();
@@ -113,11 +110,12 @@ public class ShardingSphereConfig {
             }
         }
 
-        // 绑定表配置
+        // 绑定表配置（去掉所有空格）
         String bindingTables = env.getProperty("spring.shardingsphere.rules.sharding.binding-tables");
-        if (bindingTables != null) {
+        if (bindingTables != null && !bindingTables.trim().isEmpty()) {
+            String cleanedBindingTables = bindingTables.replaceAll("\\s+", "");
             ShardingTableReferenceRuleConfiguration referenceRuleConfig = 
-                    new ShardingTableReferenceRuleConfiguration("binding_ref", bindingTables);
+                    new ShardingTableReferenceRuleConfiguration("binding_ref", cleanedBindingTables);
             config.getBindingTableGroups().add(referenceRuleConfig);
         }
 
