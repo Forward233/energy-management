@@ -5,8 +5,7 @@ import com.google.common.collect.Sets;
 import org.apache.shardingsphere.driver.jdbc.core.datasource.ShardingSphereDataSource;
 import org.apache.shardingsphere.infra.datanode.DataNode;
 import org.apache.shardingsphere.infra.rule.ShardingSphereRule;
-import org.apache.shardingsphere.infra.expr.core.InlineExpressionParserFactory;
-import org.apache.shardingsphere.infra.expr.spi.InlineExpressionParser;
+import org.apache.shardingsphere.infra.util.expr.InlineExpressionParser;
 import org.apache.shardingsphere.mode.manager.ContextManager;
 import org.apache.shardingsphere.sharding.rule.ShardingRule;
 import org.apache.shardingsphere.sharding.rule.TableRule;
@@ -80,8 +79,8 @@ public class RefreshActualDataNodesAO {
      * @param actualDataNodes 行表达式
      */
     public void updateShardRuleActualDataNodes(ShardingSphereDataSource dataSource, String schemaName, String logicTableName, String actualDataNodes) throws NoSuchFieldException, IllegalAccessException {
-        // 根据inline 表达式转换DataNode节点
-        InlineExpressionParser parser = InlineExpressionParserFactory.newInstance(actualDataNodes);
+        // 根据inline 表达式转换DataNode节点（5.2.1 API）
+        InlineExpressionParser parser = new InlineExpressionParser(actualDataNodes);
         List<String> newStrDataNodes = parser.splitAndEvaluate();
 
         // Sharding数据源
