@@ -107,7 +107,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        
+
         <!-- MyBatis Spring 3.x for Spring Boot 3.x -->
         <dependency>
             <groupId>org.mybatis</groupId>

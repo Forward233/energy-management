@@ -2,6 +2,7 @@ package com.yunpower.system;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import com.yunpower.common.security.annotation.EnableCustomConfig;
 import com.yunpower.common.security.annotation.EnableRyFeignClients;
 import com.yunpower.common.swagger.annotation.EnableCustomSwagger2;
@@ -14,7 +15,7 @@ import com.yunpower.common.swagger.annotation.EnableCustomSwagger2;
 @EnableCustomConfig
 @EnableCustomSwagger2
 @EnableRyFeignClients
-@SpringBootApplication
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class YunPowerSystemApplication
 {
     public static void main(String[] args)
