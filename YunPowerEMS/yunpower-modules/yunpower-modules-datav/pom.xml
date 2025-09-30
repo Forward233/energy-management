@@ -58,32 +58,21 @@
 
         <!-- Swagger UI is included in knife4j-openapi3-jakarta-spring-boot-starter -->
 
-        <!-- ShardingSphere JDBC Core 5.4.1 (适配 Spring Boot 3.x) -->
+        <!-- ShardingSphere JDBC 5.5.0 (支持 Spring Boot 3.x) -->
         <dependency>
             <groupId>org.apache.shardingsphere</groupId>
-            <artifactId>shardingsphere-jdbc-core</artifactId>
-            <version>${shardingsphere.version}</version>
+            <artifactId>shardingsphere-jdbc</artifactId>
+            <version>5.5.0</version>
             <exclusions>
-                <!-- 排除 4.0.x 版本的 JAXB 实现（Jakarta 版本） -->
                 <exclusion>
-                    <groupId>com.sun.xml.bind</groupId>
-                    <artifactId>jaxb-core</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.sun.xml.bind</groupId>
-                    <artifactId>jaxb-impl</artifactId>
+                    <groupId>org.apache.shardingsphere</groupId>
+                    <artifactId>shardingsphere-test-util</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
 
-        <!-- SnakeYAML 1.33 (ShardingSphere 5.4.1 需要，覆盖 Spring Boot 3.2.4 的 2.2 版本) -->
-        <dependency>
-            <groupId>org.yaml</groupId>
-            <artifactId>snakeyaml</artifactId>
-            <version>1.33</version>
-        </dependency>
 
-        <!-- JAXB 2.3.x for Java 17 (ShardingSphere 5.4.1 内部使用 javax.xml.bind 包) -->
+        <!-- JAXB 2.3.x for Java 17 (ShardingSphere 5.x 内部使用 javax.xml.bind 包) -->
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>

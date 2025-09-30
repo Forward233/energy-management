@@ -8,34 +8,34 @@
         <version>3.6.4</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-	
+
     <artifactId>yunpower-modules-system</artifactId>
 
     <description>
         yunpower-modules-system系统模块
     </description>
-	
+
     <dependencies>
-    	
-    	<!-- SpringCloud Alibaba Nacos -->
+
+        <!-- SpringCloud Alibaba Nacos -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
-        
+
         <!-- SpringCloud Alibaba Nacos Config -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
-        
-    	<!-- SpringCloud Alibaba Sentinel -->
+
+        <!-- SpringCloud Alibaba Sentinel -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
-        
-    	<!-- SpringBoot Actuator -->
+
+        <!-- SpringBoot Actuator -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -59,53 +59,41 @@
             <artifactId>spring-boot-starter-undertow</artifactId>
         </dependency>
 
-        <!-- Swagger UI is included in knife4j-openapi3-jakarta-spring-boot-starter -->
 
-        <!-- ShardingSphere 读写分离/分库分表（JDBC Core） -->
         <dependency>
             <groupId>org.apache.shardingsphere</groupId>
-            <artifactId>shardingsphere-jdbc-core</artifactId>
-            <version>${shardingsphere.version}</version>
+            <artifactId>shardingsphere-jdbc</artifactId>
+            <version>5.5.0</version>
             <exclusions>
+                <exclusion>
+                    <groupId>org.apache.shardingsphere</groupId>
+                    <artifactId>shardingsphere-test-util</artifactId>
+                </exclusion>
                 <exclusion>
                     <groupId>com.h2database</groupId>
                     <artifactId>h2</artifactId>
                 </exclusion>
-                <!-- 排除4.0.x版本的JAXB实现，它们是Jakarta版本，与ShardingSphere 5.4.1代码不兼容 -->
-                <exclusion>
-                    <groupId>com.sun.xml.bind</groupId>
-                    <artifactId>jaxb-core</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.sun.xml.bind</groupId>
-                    <artifactId>jaxb-impl</artifactId>
-                </exclusion>
             </exclusions>
         </dependency>
 
-        <!-- 
-            JAXB 2.3.x for Java 11+ 
-            ShardingSphere 5.4.1代码使用javax.xml.bind包（不是jakarta），
-            需要2.3.x版本的实现，它们能在Java 17上运行
-        -->
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
             <version>2.3.1</version>
         </dependency>
-        
+
         <dependency>
             <groupId>com.sun.xml.bind</groupId>
             <artifactId>jaxb-core</artifactId>
             <version>2.3.0.1</version>
         </dependency>
-        
+
         <dependency>
             <groupId>com.sun.xml.bind</groupId>
             <artifactId>jaxb-impl</artifactId>
             <version>2.3.9</version>
         </dependency>
-        
+
         <dependency>
             <groupId>javax.activation</groupId>
             <artifactId>activation</artifactId>
@@ -123,19 +111,19 @@
             <groupId>com.yunpower</groupId>
             <artifactId>yunpower-common-datasource</artifactId>
         </dependency>
-        
+
         <!-- yunpower Common DataScope -->
         <dependency>
             <groupId>com.yunpower</groupId>
             <artifactId>yunpower-common-datascope</artifactId>
         </dependency>
-        
+
         <!-- yunpower Common Log -->
         <dependency>
             <groupId>com.yunpower</groupId>
             <artifactId>yunpower-common-log</artifactId>
         </dependency>
-        
+
         <!-- yunpower Common Swagger -->
         <dependency>
             <groupId>com.yunpower</groupId>
@@ -154,7 +142,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        
+
         <!-- MyBatis Spring 3.x for Spring Boot 3.x -->
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -180,5 +168,5 @@
             </plugin>
         </plugins>
     </build>
-   
+
 </project>
