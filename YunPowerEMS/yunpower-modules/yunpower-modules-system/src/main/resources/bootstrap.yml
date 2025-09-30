@@ -36,6 +36,17 @@ spring:
           - data-id: application-dev.yml
             group: DEFAULT_GROUP
             refresh: true
+  # 临时测试：直接配置数据源
+  datasource:
+    dynamic:
+      primary: master
+      strict: false
+      datasource:
+        master:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://127.0.0.1:3306/yunpower_cloud?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+          username: root
+          password: 778899
 
 # MyBatis-Plus 配置
 mybatis-plus:
