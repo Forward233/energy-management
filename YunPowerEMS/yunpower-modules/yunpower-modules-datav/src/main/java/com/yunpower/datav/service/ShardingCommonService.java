@@ -1,8 +1,8 @@
 package com.yunpower.datav.service;
 
+import com.alibaba.nacos.shaded.com.google.common.collect.Maps;
 import com.yunpower.datav.domain.ShardingMonth;
 import com.yunpower.datav.domain.ShardingQuery;
-import com.google.common.collect.Maps;
 
 import java.util.List;
 import java.util.Map;

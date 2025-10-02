@@ -1,7 +1,5 @@
 package com.yunpower.collect.storage;
 
-import com.yunpower.collect.storage.algorithm.tool.AutoLoadingShardingTableExecutor;
-import com.yunpower.collect.storage.algorithm.tool.RefreshActualDataNodesAO;
 import com.yunpower.collect.storage.executor.CalculateMemoryVariablesExecutor;
 import com.yunpower.collect.storage.executor.CreateTableForDayExecutor;
 import com.yunpower.collect.storage.executor.CreateTableForMonthExecutor;
@@ -31,22 +29,6 @@ public class StorageService implements SmartLifecycle {
 
     @Value("${yunpower.collect.scheduled.corePoolSize:1000}")
     private Integer scheduledCorePoolSize;
-
-    // 数据库连接
-    @Value("${spring.shardingsphere.datasource.ds0.jdbc-url}")
-    private String dbUrl;
-
-    // 数据库用户名
-    @Value("${spring.shardingsphere.datasource.ds0.username}")
-    private String dbUser;
-
-    // 数据库密码
-    @Value("${spring.shardingsphere.datasource.ds0.password}")
-    private String dbPwd;
-
-    // 数据采集库：配置别名（如：ds0）
-    @Value("${app.database.collect.db0.alias}")
-    private String aliasName;
 
     @Autowired
     private ICommunicationChannelService communicationChannelService;
@@ -82,9 +64,6 @@ public class StorageService implements SmartLifecycle {
     private RedisService redisService;
 
     @Autowired
-    private RefreshActualDataNodesAO refreshActualDataNodesAO;
-
-    @Autowired
     private IShardingCommonService shardingCommonService;
 
     @Autowired
@@ -105,8 +84,8 @@ public class StorageService implements SmartLifecycle {
             loadDataToMemery();
             //创建 日表、月表
             createStorageTable();
-            //加载 节点
-            autoConfigShardingDateNodes();
+            //加载 节点 (已移除 ShardingSphere 分片功能)
+            //autoConfigShardingDateNodes();
             //计算内存型变量
             calculateMemoryVariables();
         } catch (Exception ex) {
@@ -149,12 +128,10 @@ public class StorageService implements SmartLifecycle {
         StorageVariables.schemeConfigService = this.schemeConfigService;
         StorageVariables.stationService = this.stationService;
         StorageVariables.redisService = this.redisService;
-        StorageVariables.refreshActualDataNodesAO = this.refreshActualDataNodesAO;
         StorageVariables.shardingCommonService = this.shardingCommonService;
         StorageVariables.publisherService = this.publisherService;
         StorageVariables.alarmTriggerConfigService = this.alarmTriggerConfigService;
         StorageVariables.alarmTriggerService = this.alarmTriggerService;
-        StorageVariables.aliasName = this.aliasName;
         ScheduledService.initialize(scheduledCorePoolSize);
         LOGGER.info("数据存储服务 初始化全局变量 （1）... end");
     }
@@ -179,13 +156,6 @@ public class StorageService implements SmartLifecycle {
         // 因为有启动顺序，因此在此处加定时任务
         ScheduledService.getInstance().scheduleAtFixedRate(this::loadDataToMemery, 1, 1, TimeUnit.MINUTES);
         LOGGER.info("数据存储服务 初始化表 （3）... end");
-    }
-
-    /**
-     * 加载Sharding节点
-     */
-    private void autoConfigShardingDateNodes() {
-        ScheduledService.getInstance().scheduleWithFixedDelay(new AutoLoadingShardingTableExecutor(aliasName, refreshActualDataNodesAO, dbUrl, dbUser, dbPwd), 0, 1, TimeUnit.HOURS);
     }
 
     /**

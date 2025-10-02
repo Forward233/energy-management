@@ -38,7 +38,6 @@
         <druid.version>1.2.21</druid.version>
         <dynamic-ds.version>4.3.0</dynamic-ds.version>
         <mybatis.version>3.0.3</mybatis.version>
-        <shardingsphere.version>5.4.0</shardingsphere.version>
         <aviator.version>5.4.3</aviator.version>
     </properties>
 

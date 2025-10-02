@@ -1,7 +1,6 @@
 package com.yunpower.collect.storage;
 
 import cn.hutool.core.util.ObjectUtil;
-import com.yunpower.collect.storage.algorithm.tool.RefreshActualDataNodesAO;
 import com.yunpower.collect.storage.domain.*;
 import com.yunpower.collect.storage.domain.jsonvo.SeasonalRangeVo;
 import com.yunpower.collect.storage.service.*;
@@ -84,11 +83,6 @@ public class StorageVariables {
 
 	//保存已注册通道列表
 	public static Map<String, CommunicationChannel> REGISTER_LIST = new HashMap<>();
-
-	public static String aliasName;
-
-	//动态刷新分库分表节点配置
-	public static RefreshActualDataNodesAO refreshActualDataNodesAO;
 
 	//分库分表服务
 	public static IShardingCommonService shardingCommonService;

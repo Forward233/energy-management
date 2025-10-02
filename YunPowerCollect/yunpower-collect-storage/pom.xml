@@ -45,12 +45,6 @@
             <artifactId>yunpower-common-redis</artifactId>
         </dependency>
 
-        <!-- elt shardingsphere -->
-        <dependency>
-            <groupId>org.apache.shardingsphere</groupId>
-            <artifactId>shardingsphere-jdbc-core</artifactId>
-            <version>${shardingsphere.version}</version>
-        </dependency>
         <dependency>
             <groupId>com.yunpower.collect</groupId>
             <artifactId>yunpower-collect-mq-publisher</artifactId>

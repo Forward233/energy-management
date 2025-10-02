@@ -1,9 +1,9 @@
 package com.yunpower.datav.service;
 
+import com.alibaba.nacos.shaded.com.google.common.collect.Maps;
 import com.yunpower.datav.domain.vo.ChartCardInfoVo;
 import com.yunpower.datav.domain.vo.ChartQueryVo;
 import com.yunpower.datav.enums.SysChartTypeEnum;
-import com.google.common.collect.Maps;
 
 import java.util.Map;
 import java.util.function.Function;
