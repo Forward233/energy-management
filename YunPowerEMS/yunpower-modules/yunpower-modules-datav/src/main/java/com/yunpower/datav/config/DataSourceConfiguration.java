@@ -1,17 +1,19 @@
 package com.yunpower.datav.config;
 
 import com.baomidou.dynamic.datasource.DynamicRoutingDataSource;
+import com.baomidou.dynamic.datasource.creator.druid.DruidDataSourceCreator;
 import com.baomidou.dynamic.datasource.provider.AbstractDataSourceProvider;
 import com.baomidou.dynamic.datasource.provider.DynamicDataSourceProvider;
 import com.baomidou.dynamic.datasource.creator.DataSourceProperty;
 import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties;
 import com.baomidou.dynamic.datasource.creator.DefaultDataSourceCreator;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 import javax.sql.DataSource;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -20,24 +22,27 @@ import java.util.Map;
  * @description: 支持动态数据源切换（master、logdb等）
  */
 @Configuration
+@EnableConfigurationProperties(DynamicDataSourceProperties.class)
 public class DataSourceConfiguration {
-    /**
-     * 动态数据源配置项
-     */
-    @Autowired
-    private DynamicDataSourceProperties properties;
 
     /**
-     * 数据源创建器
-     */
-    @Autowired
-    private DefaultDataSourceCreator dataSourceCreator;
-
-    /**
-     * 动态数据源提供器
+     * 手动创建 DefaultDataSourceCreator
      */
     @Bean
-    public DynamicDataSourceProvider dynamicDataSourceProvider() {
+    public DefaultDataSourceCreator defaultDataSourceCreator() {
+        DefaultDataSourceCreator creator = new DefaultDataSourceCreator();
+        // 添加 Druid 数据源创建器
+        creator.setCreators(List.of(new DruidDataSourceCreator()));
+        return creator;
+    }
+
+    /**
+     * 数据源提供者
+     */
+    @Bean
+    public DynamicDataSourceProvider dynamicDataSourceProvider(
+            DynamicDataSourceProperties properties,
+            DefaultDataSourceCreator dataSourceCreator) {
         Map<String, DataSourceProperty> datasourceMap = properties.getDatasource();
         return new AbstractDataSourceProvider(dataSourceCreator) {
             @Override
@@ -53,8 +58,10 @@ public class DataSourceConfiguration {
      */
     @Primary
     @Bean
-    public DataSource dataSource() {
-        DynamicRoutingDataSource dataSource = new DynamicRoutingDataSource(java.util.Collections.singletonList(dynamicDataSourceProvider()));
+    public DataSource dataSource(DynamicDataSourceProperties properties,
+                                 DynamicDataSourceProvider dynamicDataSourceProvider) {
+        DynamicRoutingDataSource dataSource = new DynamicRoutingDataSource(
+                java.util.Collections.singletonList(dynamicDataSourceProvider));
         dataSource.setPrimary(properties.getPrimary());
         dataSource.setStrict(properties.getStrict());
         dataSource.setStrategy(properties.getStrategy());
